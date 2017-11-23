@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="性能 内存 包," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="打算对性能优化写一个系列的文章，先以之前负责的项目为例，对性能方面的优化做个总结。主要包括如下几个方面： 1、APK包的大小APK包不能做的太大，太大了不太好推广，国内市场好像还好一些，国外市场就要受限了，因为在推广时会按包的体积大小收费，越精简，推广费用越低，越受欢迎；包越大，推广费用越高，推广者也不愿意接。而对于普通的用户来说，肯定包越小，他下载的意愿会更强一些。以下总结了一些压缩方向： （1">
+<meta name="keywords" content="性能 内存 包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android性能优化（一）">
+<meta property="og:url" content="http://yoursite.com/2017/11/23/Android性能优化（一）/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="打算对性能优化写一个系列的文章，先以之前负责的项目为例，对性能方面的优化做个总结。主要包括如下几个方面： 1、APK包的大小APK包不能做的太大，太大了不太好推广，国内市场好像还好一些，国外市场就要受限了，因为在推广时会按包的体积大小收费，越精简，推广费用越低，越受欢迎；包越大，推广费用越高，推广者也不愿意接。而对于普通的用户来说，肯定包越小，他下载的意愿会更强一些。以下总结了一些压缩方向： （1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/memoryopt1/1.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/memoryopt1/2.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/memoryopt1/3.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/memoryopt1/5.png?raw=true">
+<meta property="og:updated_time" content="2017-11-23T10:48:56.712Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android性能优化（一）">
+<meta name="twitter:description" content="打算对性能优化写一个系列的文章，先以之前负责的项目为例，对性能方面的优化做个总结。主要包括如下几个方面： 1、APK包的大小APK包不能做的太大，太大了不太好推广，国内市场好像还好一些，国外市场就要受限了，因为在推广时会按包的体积大小收费，越精简，推广费用越低，越受欢迎；包越大，推广费用越高，推广者也不愿意接。而对于普通的用户来说，肯定包越小，他下载的意愿会更强一些。以下总结了一些压缩方向： （1">
+<meta name="twitter:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/memoryopt1/1.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/23/Android性能优化（一）/"/>
+
+
+
+
+
+  <title>Android性能优化（一） | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/23/Android性能优化（一）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android性能优化（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T18:26:09+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>打算对性能优化写一个系列的文章，先以之前负责的项目为例，对性能方面的优化做个总结。<br>主要包括如下几个方面：</p>
+<h2 id="1、APK包的大小"><a href="#1、APK包的大小" class="headerlink" title="1、APK包的大小"></a>1、APK包的大小</h2><p>APK包不能做的太大，太大了不太好推广，国内市场好像还好一些，国外市场就要受限了，因为在推广时会按包的体积大小收费，越精简，推广费用越低，越受欢迎；包越大，推广费用越高，推广者也不愿意接。<br>而对于普通的用户来说，肯定包越小，他下载的意愿会更强一些。<br>以下总结了一些压缩方向：</p>
+<h3 id="（1）、库"><a href="#（1）、库" class="headerlink" title="（1）、库"></a>（1）、库</h3><p>有多种方法，如果实现了同样的功能，可以用混淆的库代替源码库；库中的多国语言包，图片资源如果用不到可以删除；库中的某些模块用不到也可以将其删除。例如，google player service库，可以删除其中的无用部分。具体操作方法是通过解压缩工具，打开此库，然后将其中不用的模块删除即可。<br>具体哪些模块可以删除，可以参考，<br><a href="http://stackoverflow.com/questions/21555662/android-app-size-increased-after-adding-admob-ads-using-google-play-services-lib" title="http://stackoverflow.com/questions/21555662/android-app-size-increased-after-adding-admob-ads-using-google-play-services-lib" target="_blank" rel="external">http://stackoverflow.com/questions/21555662/android-app-size-increased-after-adding-admob-ads-using-google-play-services-lib</a></p>
+<h3 id="（2）、代码混淆"><a href="#（2）、代码混淆" class="headerlink" title="（2）、代码混淆"></a>（2）、代码混淆</h3><p>这个没有什么好说的，无论从代码安全性，还是压缩体积，删除无用代码，或者优化性能方面考虑，都需要进行混淆。混淆可以起到减少包大小的作用。</p>
+<h3 id="（3）、图片资源"><a href="#（3）、图片资源" class="headerlink" title="（3）、图片资源"></a>（3）、图片资源</h3><p>删除无用的图片资源，可以借助Lint工具，查找无用的资源，然后依次删除。<br>还可以对图片进行压缩，可以使用工具，例如这个网站：<a href="https://tinypng.com/" title="https://tinypng.com/" target="_blank" rel="external">https://tinypng.com/</a>，提供在线压缩工具，直接将图片拖到压缩位置，然后点击压缩即可生成压缩文件，非常方便，一般能够将原始图片压缩60%-80%。</p>
+<h3 id="（4）、删除无用的代码，文字资源，xml等"><a href="#（4）、删除无用的代码，文字资源，xml等" class="headerlink" title="（4）、删除无用的代码，文字资源，xml等"></a>（4）、删除无用的代码，文字资源，xml等</h3><p>Xml文件多了后会比较大，即使不使用，也会编译到apk包中，所以尽量删除无用的xml，代码和文字资源。</p>
+<p>以上只是我在工作中实际操作的方法，而精简apk并不限于这些方法，还要根据项目的特性，具体情况还要具体分析，达到精简的目的。原理就是删除无用的，精简有用的，将包大小降到最低。</p>
+<h2 id="2、应用占用的内存"><a href="#2、应用占用的内存" class="headerlink" title="2、应用占用的内存"></a>2、应用占用的内存</h2><p>主要指Pss，它的意思是Proportional Set Size 实际使用的物理内存（比例分配共享库占用的内存），通过dumpsys meminfo 包名可以看到应用占用的内存大小，这个等同于在设置–应用中看到的service或者缓存大小。<br>例如，(表示项目包名，这里我将实际包名替换成了xxx.xxx.xxx)</p>
+<pre><code>shell@android:/ # dumpsys meminfo xxx.xxx.xxx
+dumpsys meminfo xxx.xxx.xxx
+Applications Memory Usage (kB):
+Uptime: 71794048 Realtime: 122022986
+
+    ** MEMINFO in pid 588 [xxx.xxx.xxx] **
+             Shared  Private  Heap     Heap  　Heap
+               Pss    Dirty    Dirty     Size    Alloc     Free
+            ------   ------   ------   ------   ------   ------
+   Native        0        0        0     4364     3153        6
+   Dalvik    19772     5680    19688    19260    18951      309
+   Cursor        0        0        0
+   Ashmem        0        0        0
+ Other dev    20404    40840        0
+ .so mmap     1502     2576     1228
+.jar mmap        0        0        0
+.apk mmap      112        0        0
+.ttf mmap      435        0        0
+.dex mmap     1736        0        8
+   Other mmap      815      328      176
+   Unknown     1778      296     1776
+   TOTAL    46554    49720    22876    23624    22104      315
+</code></pre><p>可以看到Pss总大小为46554kB。<br>具体哪些模块占用多少内存，哪些有内存泄漏的隐患可以通过MAT工具进行优化，查找内存使用大的模块，一般有图片相关的功能时，bitmap占用是大头。<br>例如，<br>以下是应用中切换自定义主题后测试版本占用内存的分析。<br>从MAT分析的结果看有四处：</p>
+<h3 id="（1）、xxx-xxx-xxx-ui-WindowView占用2-903-680-15-52-bytes。"><a href="#（1）、xxx-xxx-xxx-ui-WindowView占用2-903-680-15-52-bytes。" class="headerlink" title="（1）、xxx.xxx.xxx.ui.WindowView占用2,903,680 (15.52%) bytes。"></a>（1）、xxx.xxx.xxx.ui.WindowView占用2,903,680 (15.52%) bytes。</h3><p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/memoryopt1/1.png?raw=true" alt=""></p>
+<h3 id="（2）、xxx-xxx-xxx-ui-ViewPager使用的bitmap占用内存为2-764-648-14-78-bytes"><a href="#（2）、xxx-xxx-xxx-ui-ViewPager使用的bitmap占用内存为2-764-648-14-78-bytes" class="headerlink" title="（2）、xxx.xxx.xxx.ui.ViewPager使用的bitmap占用内存为2,764,648 (14.78%) bytes."></a>（2）、xxx.xxx.xxx.ui.ViewPager使用的bitmap占用内存为2,764,648 (14.78%) bytes.</h3><p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/memoryopt1/2.png?raw=true" alt=""></p>
+<h3 id="（3）、xxx-xxx-xxx-ui-FloatImageButton使用的bitmap占用内存为2-536-984-13-56-bytes"><a href="#（3）、xxx-xxx-xxx-ui-FloatImageButton使用的bitmap占用内存为2-536-984-13-56-bytes" class="headerlink" title="（3）、xxx.xxx.xxx.ui. FloatImageButton使用的bitmap占用内存为2,536,984 (13.56%) bytes."></a>（3）、xxx.xxx.xxx.ui. FloatImageButton使用的bitmap占用内存为2,536,984 (13.56%) bytes.</h3><p> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/memoryopt1/3.png?raw=true" alt=""></p>
+<h3 id="（4）、”-xxx-xxx-xxx-ThemeLogic使用的bitmap占用内存为1-963-280-10-49-bytes"><a href="#（4）、”-xxx-xxx-xxx-ThemeLogic使用的bitmap占用内存为1-963-280-10-49-bytes" class="headerlink" title="（4）、” xxx.xxx.xxx.ThemeLogic使用的bitmap占用内存为1,963,280 (10.49%) bytes."></a>（4）、” xxx.xxx.xxx.ThemeLogic使用的bitmap占用内存为1,963,280 (10.49%) bytes.</h3><p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/memoryopt1/5.png?raw=true" alt=""></p>
+<p>可以看到前3块内存是系统预置的图片占用的内存，第4块是管理自定义主题后占用的内存，他们的使用的都是和bitmap相关的，可以统一管理起来。</p>
+<h3 id="优化方向："><a href="#优化方向：" class="headerlink" title="优化方向："></a>优化方向：</h3><h4 id="（1）、"><a href="#（1）、" class="headerlink" title="（1）、"></a>（1）、</h4><p>Android有一个机制，应用退出后会有一个缓存一直存在，这样便于以后启动。但这个后台缓存作用其实并不大，并且第三方内存统计软件会将其统计到内存使用中，所以可以在应用退出时考虑将后台缓存清除。<br>方案是客户端程序退出10秒后，将后台缓存杀死。杀死后台缓存不会影响到后台进程，这样能降低到原来内存占用的一半或者不到一半的样子（对于双进程或者多进程的应用比较有效，因为界面进程退出后，它的服务进程并没有退出，所以可以考虑将界面进程即缓存杀掉）。</p>
+<h4 id="（2）、"><a href="#（2）、" class="headerlink" title="（2）、"></a>（2）、</h4><p>去掉硬件加速配置android:hardwareAccelerated=”true”，可以节省内存。<br>硬件加速会占用一些内存，具体表现在使用 dumpsys meminfo统计到的Other dev字段中，去掉其后，内存占用经测试会小一些。但后果可能会影响画图的效率，但是否真正造成实际使用的影响，需要测试多验证，但从一些其它应用比如单手划划反编来看，都没有此设置，所以感觉可以去掉。</p>
+<h4 id="（３）、"><a href="#（３）、" class="headerlink" title="（３）、"></a>（３）、</h4><p>修改图片缓存机制，将private ArrayList<hashmap<string, bitmap="">&gt; CurrentBitmapsList = new ArrayList<hashmap<string, bitmap="">&gt;()使用lrucache代替缓存。使用lrucache进行图片缓存，之前是解析每个自定义主题包后将bitmap文件缓存到内存中，不使用时进行释放，采用手动管理，其中有bitmap的强引用，虽然解决了之前outofmemory的问题，但还是没有达到对内存最优的管理方式。使用新结构lrucache 可以起到由系统回收bitmap的作用，并且可以限制它的大小。</hashmap<string,></hashmap<string,></p>
+<h4 id="（4）、"><a href="#（4）、" class="headerlink" title="（4）、"></a>（4）、</h4><p>将预置的图片资源也要加到缓存中，切换自定义主题后可以删除。<br>因为预置的图片都是以类似.xml方式提供的，如下所示，</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;item android:drawable=&quot;@drawable/ ic_root &quot; android:state_pressed=&quot;false&quot;/&gt;
+    &lt;item android:drawable=&quot;@drawable/ ic_root_pressed &quot; android:state_pressed=&quot;true&quot;/&gt;
+&lt;/selector&gt;
+</code></pre><p>要对其中的bitmap进行分开解析，然后存储。<br>将预置图片也保存到缓存中，和自定义主题统一管理。程序主要占用内存的地方是bitmap,只要将这部分内存降下来，并且合理管理起来，例如切换主题时不产生内存泄露，及时释放，就能将程序内存降下来。优化的方向是通过解析预置图片，将其保存到了 lrucache 结构中进行管理，也起到的很好的作用。通过MAT内存工具可以看到，在将预置主题切换到自定义主题时，之前出现的预置图片多占用的内存已经不存在了。</p>
+<h4 id="（5）、"><a href="#（5）、" class="headerlink" title="（5）、"></a>（5）、</h4><p>确保系统中用到的资源都能放到缓存中，重点是自定义主题部分；方法同4介绍的相同。</p>
+<p>以上就是针对内存优化的解决方案，优化方向主要是DALVIK层，对bitmap使用的优化。优化后在悬浮窗待机情况下，可以维持在一个较小的范围之内（从测试结果看有的手机保持在20M-30M左右）。<br>如果有时间和精力可以再研究一下Other dev，.so map，unknown占用的内存优化方法。</p>
+<h2 id="3、启动的service尽量少。如果启动多个可以将其放到一个进程中"><a href="#3、启动的service尽量少。如果启动多个可以将其放到一个进程中" class="headerlink" title="3、启动的service尽量少。如果启动多个可以将其放到一个进程中"></a>3、启动的service尽量少。如果启动多个可以将其放到一个进程中</h2><p>这样用户在设置中看到的进程和服务会少一些。</p>
+<h2 id="4、耗电优化"><a href="#4、耗电优化" class="headerlink" title="4、耗电优化"></a>4、耗电优化</h2><p>这个主要是查找一下待机情况下是否有应用在工作，比如timer有没有停掉？程序退出了后台服务还在工作，和服务器端交互，是否在收发数据？有没有长连接等。<br>这个需要对项目代码有个充分的了解，再有一些预判的情况下，才能很好的定位问题。<br>还有一种方法，可以在debug模式下，通过打log来发现一些蛛丝马迹。</p>
+<p>以上是根据之前负责的项目优化情况做的一个总结，大家可以参考学习，有问题也可以随时讨论。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/性能-内存-包/" rel="tag"># 性能 内存 包</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/21/Android-TV-TextView如何实现增加滚动条/" rel="next" title="Android TV TextView如何实现增加滚动条">
+                <i class="fa fa-chevron-left"></i> Android TV TextView如何实现增加滚动条
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、APK包的大小"><span class="nav-number">1.</span> <span class="nav-text">1、APK包的大小</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、库"><span class="nav-number">1.1.</span> <span class="nav-text">（1）、库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、代码混淆"><span class="nav-number">1.2.</span> <span class="nav-text">（2）、代码混淆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、图片资源"><span class="nav-number">1.3.</span> <span class="nav-text">（3）、图片资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、删除无用的代码，文字资源，xml等"><span class="nav-number">1.4.</span> <span class="nav-text">（4）、删除无用的代码，文字资源，xml等</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、应用占用的内存"><span class="nav-number">2.</span> <span class="nav-text">2、应用占用的内存</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、xxx-xxx-xxx-ui-WindowView占用2-903-680-15-52-bytes。"><span class="nav-number">2.1.</span> <span class="nav-text">（1）、xxx.xxx.xxx.ui.WindowView占用2,903,680 (15.52%) bytes。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、xxx-xxx-xxx-ui-ViewPager使用的bitmap占用内存为2-764-648-14-78-bytes"><span class="nav-number">2.2.</span> <span class="nav-text">（2）、xxx.xxx.xxx.ui.ViewPager使用的bitmap占用内存为2,764,648 (14.78%) bytes.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、xxx-xxx-xxx-ui-FloatImageButton使用的bitmap占用内存为2-536-984-13-56-bytes"><span class="nav-number">2.3.</span> <span class="nav-text">（3）、xxx.xxx.xxx.ui. FloatImageButton使用的bitmap占用内存为2,536,984 (13.56%) bytes.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、”-xxx-xxx-xxx-ThemeLogic使用的bitmap占用内存为1-963-280-10-49-bytes"><span class="nav-number">2.4.</span> <span class="nav-text">（4）、” xxx.xxx.xxx.ThemeLogic使用的bitmap占用内存为1,963,280 (10.49%) bytes.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化方向："><span class="nav-number">2.5.</span> <span class="nav-text">优化方向：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）、"><span class="nav-number">2.5.1.</span> <span class="nav-text">（1）、</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）、"><span class="nav-number">2.5.2.</span> <span class="nav-text">（2）、</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（３）、"><span class="nav-number">2.5.3.</span> <span class="nav-text">（３）、</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（4）、"><span class="nav-number">2.5.4.</span> <span class="nav-text">（4）、</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（5）、"><span class="nav-number">2.5.5.</span> <span class="nav-text">（5）、</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、启动的service尽量少。如果启动多个可以将其放到一个进程中"><span class="nav-number">3.</span> <span class="nav-text">3、启动的service尽量少。如果启动多个可以将其放到一个进程中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、耗电优化"><span class="nav-number">4.</span> <span class="nav-text">4、耗电优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
