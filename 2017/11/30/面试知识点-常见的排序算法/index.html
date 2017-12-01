@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="常见的排序算法。常见的排序算法有如下8种，插入排序，希尔排序，归并排序，冒泡排序，快速排序，选择排序，堆排序，基数排序。我把这8种算法相似的归到了一起，然后分成了五类，如下所示：  1、插入排序（稳定的）—〉希尔排序（从插入衍生出来，不稳定的）–〉归并排序（归并内部用到了插入排序的方式，稳定的） 2、冒泡排序（稳定的）—〉快速排序（从冒泡而来，递归实现，不稳定的）； 3、选择排序（不稳定的）； 4">
+<meta name="keywords" content="面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试知识点--常见的排序算法">
+<meta property="og:url" content="http://yoursite.com/2017/11/30/面试知识点-常见的排序算法/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="常见的排序算法。常见的排序算法有如下8种，插入排序，希尔排序，归并排序，冒泡排序，快速排序，选择排序，堆排序，基数排序。我把这8种算法相似的归到了一起，然后分成了五类，如下所示：  1、插入排序（稳定的）—〉希尔排序（从插入衍生出来，不稳定的）–〉归并排序（归并内部用到了插入排序的方式，稳定的） 2、冒泡排序（稳定的）—〉快速排序（从冒泡而来，递归实现，不稳定的）； 3、选择排序（不稳定的）； 4">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/9.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/1.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/2.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/3.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/4.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/5.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/6.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/7.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/8.1.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/8.2.png?raw=true">
+<meta property="og:updated_time" content="2017-12-01T09:07:48.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试知识点--常见的排序算法">
+<meta name="twitter:description" content="常见的排序算法。常见的排序算法有如下8种，插入排序，希尔排序，归并排序，冒泡排序，快速排序，选择排序，堆排序，基数排序。我把这8种算法相似的归到了一起，然后分成了五类，如下所示：  1、插入排序（稳定的）—〉希尔排序（从插入衍生出来，不稳定的）–〉归并排序（归并内部用到了插入排序的方式，稳定的） 2、冒泡排序（稳定的）—〉快速排序（从冒泡而来，递归实现，不稳定的）； 3、选择排序（不稳定的）； 4">
+<meta name="twitter:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/9.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/30/面试知识点-常见的排序算法/"/>
+
+
+
+
+
+  <title>面试知识点--常见的排序算法 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/30/面试知识点-常见的排序算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试知识点--常见的排序算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-30T20:04:05+08:00">
+                2017-11-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">面试知识点</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="常见的排序算法。"><a href="#常见的排序算法。" class="headerlink" title="常见的排序算法。"></a>常见的排序算法。</h2><p>常见的排序算法有如下8种，插入排序，希尔排序，归并排序，冒泡排序，快速排序，选择排序，堆排序，基数排序。<br>我把这8种算法相似的归到了一起，然后分成了五类，如下所示：</p>
+<blockquote>
+<p>1、插入排序（稳定的）—〉希尔排序（从插入衍生出来，不稳定的）–〉归并排序（归并内部用到了插入排序的方式，稳定的）</p>
+<p>2、冒泡排序（稳定的）—〉快速排序（从冒泡而来，递归实现，不稳定的）；</p>
+<p>3、选择排序（不稳定的）；</p>
+<p>4、堆排序（用到二叉树，不稳定的）；</p>
+<p>5、基数排序（稳定的）</p>
+</blockquote>
+<h2 id="稳定和不稳定的定义和区别："><a href="#稳定和不稳定的定义和区别：" class="headerlink" title="稳定和不稳定的定义和区别："></a>稳定和不稳定的定义和区别：</h2><p>排序算法的稳定性，通俗地讲就是能保证排序前2个相等的数其在序列的前后位置顺序和排序后它们两个的前后位置顺序相同。举个例子，如果Ai= Aj, Ai原来在Aj位置前，排序后Ai还要在Aj位置前。<br>说一下稳定性的好处。排序算法如果是稳定的，那么从一个键上排序，然后再从另一个键上排序，第一个键排序的结果可以为第二个键排序所用。基数排序就是这样，先按低位排序，逐次按高位排序，低位相同的元素其顺序再高位也相同时是不会改变的。另外，如果排序算法稳定，对基于比较的排序算法而言，元素交换的次数可能会少一些。<br>每种算法都有它特定的使用场合，很难通用。因此，我们很有必要对所有常见的排序算法进行归纳。</p>
+<h2 id="8种排序算法的时间复杂度和空间复杂度："><a href="#8种排序算法的时间复杂度和空间复杂度：" class="headerlink" title="8种排序算法的时间复杂度和空间复杂度："></a>8种排序算法的时间复杂度和空间复杂度：</h2><p> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/9.png?raw=true" alt=""></p>
+<p>由上表可知，稳定排序和不稳定排序各自有4种，稳定排序的为插入排序，归并排序，冒泡排序和基数排序，不稳定的排序为希尔排序，快速排序，选择排序，堆排序4种。其中简单排序为插入排序，冒泡排序和选择排序，其它都为较复杂的排序方法。</p>
+<p>注意：下面的有些图片和思想来自于博客：<a href="http://blog.csdn.net/whuslei/article/details/6442755" title="http://blog.csdn.net/whuslei/article/details/6442755" target="_blank" rel="external">http://blog.csdn.net/whuslei/article/details/6442755</a>，这里标注一下。</p>
+<h2 id="一、直接插入排序-插入排序，稳定，简单-。"><a href="#一、直接插入排序-插入排序，稳定，简单-。" class="headerlink" title="一、直接插入排序(插入排序，稳定，简单)。"></a>一、直接插入排序(插入排序，稳定，简单)。</h2><h3 id="1、思想。"><a href="#1、思想。" class="headerlink" title="1、思想。"></a>1、思想。</h3><p>直接插入排序，就像名字那样是一种插入排序方法。如下图所示，每次从原来序列中选择一个元素K插入到之前已排好序的部分A[1…i]中，可以从原序列的第一个元素着手，插入过程中K依次由后向前与A[1…i]中的元素进行比较。若发现A[x]&gt;=K,则将K插入到A[x]的后面，插入前需要移动元素。<br> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/1.png?raw=true" alt=""></p>
+<h3 id="2、算法时间复杂度。"><a href="#2、算法时间复杂度。" class="headerlink" title="2、算法时间复杂度。"></a>2、算法时间复杂度。</h3><p>最好的情况下：正序有序(从小到大)，这样只需要比较n次，不需要移动。因此时间复杂度为O(n)<br>最坏的情况下：逆序有序,这样每一个元素就需要比较n次，共有n个元素，因此实际复杂度为O(n¬2)<br>平均情况下：O(n¬2)</p>
+<h3 id="3、代码。"><a href="#3、代码。" class="headerlink" title="3、代码。"></a>3、代码。</h3><pre><code>void insertsort(int *pData,int left,int right)
+{
+    int i,j;
+    int temp;
+    for(i=left+1;i&lt;right;i++)
+    {
+        temp = pData[i];
+        j = i;
+        while(--j&gt;=left &amp;&amp; pData[j]&gt;temp)
+        {
+            pData[j+1] = pData[j];
+        }
+        pData[j+1] =temp;
+    }
+}
+</code></pre><h3 id="4、稳定性和复杂度。"><a href="#4、稳定性和复杂度。" class="headerlink" title="4、稳定性和复杂度。"></a>4、稳定性和复杂度。</h3><p>在插入排序中，K1是已排序部分中的元素，当K2和K1比较时，直接插到K1的后面(没有必要插到K1的前面，这样做还需要移动)，因此，插入排序是稳定的。<br>此算法比较简单。</p>
+<h2 id="二、希尔排序-插入排序，不稳定，较复杂"><a href="#二、希尔排序-插入排序，不稳定，较复杂" class="headerlink" title="二、希尔排序(插入排序，不稳定，较复杂)"></a>二、希尔排序(插入排序，不稳定，较复杂)</h2><h3 id="1、思想。-1"><a href="#1、思想。-1" class="headerlink" title="1、思想。"></a>1、思想。</h3><p>希尔排序也是一种插入排序方法，实际上是一种分组插入方法。先定一个小于n的整数d1作为第一个增量，把表的全部记录分成d1个组,所有距离为d1的倍数的记录放在同一个组中,在各组内进行直接插入排序；然后,取第二个增量d2(＜d1),重复上述的分组和排序,直至所取的增量dt=1(dt&lt;dt-1&lt;…&lt;d2&lt;d1),即所有记录放在同一组中进行直接插入排序为止。<br>例如：将 n 个记录分成 d 个子序列： </p>
+<p> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/2.png?raw=true" alt=""></p>
+<p>说明：依次可以将d分为d=5,d=2,d=1,然后组内使用直接插入排序进行排序。</p>
+<h3 id="2、时间复杂度。"><a href="#2、时间复杂度。" class="headerlink" title="2、时间复杂度。"></a>2、时间复杂度。</h3><p>最好情况：由于希尔排序的好坏和步长d的选择有很多关系，因此，目前还没有得出最好的步长如何选择(现在有些比较好的选择了，但不确定是否是最好的)。所以，不知道最好的情况下的算法时间复杂度。<br>最坏情况下：O(N<em>logN)，最坏的情况下和平均情况下差不多。<br>平均情况下：O(N</em>logN)</p>
+<h3 id="3、代码。-1"><a href="#3、代码。-1" class="headerlink" title="3、代码。"></a>3、代码。</h3><pre><code>void shellsort(int *pData,int left,int right)
+{
+    int i,j,gap;
+    int temp;
+    for(gap=right/2;gap&gt;0;gap/=2)
+    {
+        for(i=gap;i&lt;right;i++)
+        {
+            temp = pData[i];
+            for(j=i-gap;(j&gt;=0)&amp;&amp;pData[j]&gt;temp;j-=gap)
+            {
+                pData[j+gap] = pData[j];
+            }
+            pData[j+gap] = temp;
+        }
+    }
+}
+</code></pre><h3 id="4、稳定性。"><a href="#4、稳定性。" class="headerlink" title="4、稳定性。"></a>4、稳定性。</h3><p>由于多次插入排序，我们知道一次插入排序是稳定的，不会改变相同元素的相对顺序，但在不同的插入排序过程中，相同的元素可能在各自的插入排序中移动，最后其稳定性就会被打乱，所以shell排序是不稳定的。<br>此算法比较复杂。</p>
+<h2 id="三、归并排序（插入排序，稳定，较复杂）"><a href="#三、归并排序（插入排序，稳定，较复杂）" class="headerlink" title="三、归并排序（插入排序，稳定，较复杂）"></a>三、归并排序（插入排序，稳定，较复杂）</h2><h3 id="1、思想。-2"><a href="#1、思想。-2" class="headerlink" title="1、思想。"></a>1、思想。</h3><p>多次将两个或两个以上的有序表合并成一个新的有序表。</p>
+<p>  <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/3.png?raw=true" alt=""></p>
+<p>首先选择2个为一组，组内进行排序，然后第2趟是4个为一组，依次类推，再次翻倍，8个一组，每组使用插入排序的方法。</p>
+<h3 id="2、算法时间复杂度"><a href="#2、算法时间复杂度" class="headerlink" title="2、算法时间复杂度"></a>2、算法时间复杂度</h3><p>最好的情况下：一趟归并需要n次，总共需要logN次，因此为O(N<em>logN)<br>最坏的情况下，接近于平均情况下，为O(N</em>logN) </p>
+<h3 id="3、代码。-2"><a href="#3、代码。-2" class="headerlink" title="3、代码。"></a>3、代码。</h3><h4 id="非递归方法："><a href="#非递归方法：" class="headerlink" title="非递归方法："></a>非递归方法：</h4><pre><code>void mergesort3(int *list,int length)
+{
+    int i, left_min, left_max, right_min, right_max, next;
+    int *tmp = (int*)malloc(sizeof(int) * length);
+    if (tmp == NULL)
+    {
+        fputs(&quot;Error: out of memory\n&quot;, stderr);
+        abort();
+    }
+    for (i = 1; i &lt; length; i *= 2)
+            for (left_min = 0; left_min &lt; length - i; left_min = right_max)
+            { 
+                right_min = left_max = left_min + i;
+                right_max = left_max + i;
+                if (right_max &gt; length)
+                        right_max = length;
+                next = 0;
+                while (left_min &lt; left_max &amp;&amp; right_min &lt; right_max)
+                        tmp[next++] = list[left_min] &gt; list[right_min] ? list[right_min++] : list[left_min++];
+                while (left_min &lt; left_max)
+                        list[--right_min] = list[--left_max];
+                while (next &gt; 0)
+                        list[--right_min] = tmp[--next];
+            }
+    free(tmp);
+} 
+</code></pre><h4 id="递归方法："><a href="#递归方法：" class="headerlink" title="递归方法："></a>递归方法：</h4><pre><code>void merges(int *pData,int *Des,int first,int mid,int last)
+{
+    int i = first;
+    int j = mid + 1;
+    int k = first;
+    while(i&lt;=mid&amp;&amp;j&lt;=last)
+    {
+        if(pData[i]&lt;pData[j])
+            Des[k++] = pData[i++];
+        else
+            Des[k++] = pData[j++];
+    }
+    while(i&lt;=mid)
+    {
+        Des[k++] = pData[i++];
+    }
+    while(j&lt;=last)
+    {
+        Des[k++] = pData[j++];
+    }
+    for(k=first;k&lt;=last;k++)
+        pData[k] = Des[k];
+}
+</code></pre><h3 id="4、稳定性"><a href="#4、稳定性" class="headerlink" title="4、稳定性"></a>4、稳定性</h3><p>归并排序最大的特色就是它是一种稳定的排序算法。归并过程中是不会改变元素的相对位置的。<br>此算法比较复杂。</p>
+<h2 id="四、冒泡排序-交换排序，稳定，简单"><a href="#四、冒泡排序-交换排序，稳定，简单" class="headerlink" title="四、冒泡排序 (交换排序，稳定，简单)"></a>四、冒泡排序 (交换排序，稳定，简单)</h2><h3 id="1、思想。-3"><a href="#1、思想。-3" class="headerlink" title="1、思想。"></a>1、思想。</h3><p>通过无序区中相邻记录关键字间的比较和位置的交换，使关键字最小的记录如气泡般逐渐往上“漂浮”直至“水面”。<br> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/4.png?raw=true" alt=""></p>
+<h3 id="2、时间复杂度"><a href="#2、时间复杂度" class="headerlink" title="2、时间复杂度"></a>2、时间复杂度</h3><p>最好情况下：正序有序，则只需要比较n次。故，为O(n)<br>最坏情况下：逆序有序，则需要比较(n-1)+(n-2)+……+1，故，为O(N*N)</p>
+<h3 id="3、代码。-3"><a href="#3、代码。-3" class="headerlink" title="3、代码。"></a>3、代码。</h3><pre><code>void bubblesort(int *pData,int left,int right)
+{
+    int i,j;
+    int temp;
+    for(i=left;i&lt;right-1;i++)
+    {
+        for(j=left;j&lt;right-i-1;j++)
+        {
+            if(pData[j+1]&lt;pData[j])
+            {
+                temp = pData[j+1];
+                pData[j+1] = pData[j];
+                pData[j] = temp;
+            }
+        }
+    }
+}
+</code></pre><h3 id="4、稳定性-。"><a href="#4、稳定性-。" class="headerlink" title="4、稳定性 。"></a>4、稳定性 。</h3><p> 排序过程中只交换相邻两个元素的位置。因此，当两个数相等时，是没必要交换两个数的位置的。所以，它们的相对位置并没有改变，冒泡排序算法是稳定的！<br>此算法简单。</p>
+<h2 id="五、快速排序-交换排序，不稳定，较复杂"><a href="#五、快速排序-交换排序，不稳定，较复杂" class="headerlink" title="五、快速排序 (交换排序，不稳定，较复杂)"></a>五、快速排序 (交换排序，不稳定，较复杂)</h2><h3 id="1、思想。-4"><a href="#1、思想。-4" class="headerlink" title="1、思想。"></a>1、思想。</h3><p>它是由冒泡排序改进而来的。在待排序的n个记录中任取一个记录(通常取第一个记录),把该记录放入适当位置后,数据序列被此记录划分成两部分。所有关键字比该记录关键字小的记录放置在前一部分,所有比它大的记录放置在后一部分，并把该记录排在这两部分的中间(称为该记录归位),这个过程称作一趟快速排序。</p>
+<p> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/5.png?raw=true" alt="">       </p>
+<p>说明：最核心的思想是将小的部分放在左边，大的部分放到右边，实现分割。         </p>
+<h3 id="2、算法复杂度。"><a href="#2、算法复杂度。" class="headerlink" title="2、算法复杂度。"></a>2、算法复杂度。</h3><p>最好的情况下：因为每次都将序列分为两个部分(一般二分都复杂度都和logN相关)，故为 O(N<em>logN)<br>最坏的情况下：基本有序时，退化为冒泡排序，几乎要比较N</em>N次，故为O(N*N)    </p>
+<h3 id="3、代码。-4"><a href="#3、代码。-4" class="headerlink" title="3、代码。"></a>3、代码。</h3><p>游标为最左边元素：</p>
+<pre><code>void quicksort(int *pData,int left,int right)
+{
+    int i,j,middle,temp;
+    middle = pData[left];
+    i = left + 1;
+    j = right - 1;
+    do{
+        while( i&lt;right &amp;&amp; pData[i]&lt;middle)
+            i++;
+        while( j&gt;left &amp;&amp; pData[j]&gt;middle)
+            j--;
+        if(i &gt;= j)
+            break;
+        temp = pData[i];
+        pData[i] = pData[j];
+        pData[j] = temp;
+        i++;
+        j--;
+    }while(i&lt;=j);
+    pData[left] = pData[j];
+    pData[j] = middle;
+    if(left&lt;j-1)
+        quicksort(pData,left,j);
+    if(right&gt;j+1)
+        quicksort(pData,j+1,right);
+}
+</code></pre><h3 id="4、稳定性-1"><a href="#4、稳定性-1" class="headerlink" title="4、稳定性"></a>4、稳定性</h3><p>由于每次都需要和中轴元素交换，因此原来的顺序就可能被打乱。所以说，快速排序是不稳定的。<br>此算法较复杂。</p>
+<h2 id="六、直接选择排序-选择排序，不稳定，简单"><a href="#六、直接选择排序-选择排序，不稳定，简单" class="headerlink" title="六、直接选择排序(选择排序，不稳定，简单)"></a>六、直接选择排序(选择排序，不稳定，简单)</h2><h3 id="1、思想。-5"><a href="#1、思想。-5" class="headerlink" title="1、思想。"></a>1、思想。</h3><p>首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，然后放到排序序列末尾。以此类推，直到所有元素均排序完毕。具体做法是：选择最小的元素与未排序部分的首部交换，使得序列的前面为有序。  </p>
+<p> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/6.png?raw=true" alt=""></p>
+<h3 id="2、时间复杂度。-1"><a href="#2、时间复杂度。-1" class="headerlink" title="2、时间复杂度。"></a>2、时间复杂度。</h3><p>最好情况下：交换0次，但是每次都要找到最小的元素，因此大约必须遍历N<em>N次，因此为O(N</em>N)。减少了交换次数！<br>最坏情况下：平均情况下：O(N*N)</p>
+<h3 id="3、代码。-5"><a href="#3、代码。-5" class="headerlink" title="3、代码。"></a>3、代码。</h3><pre><code>void selectsort(int *pData,int left,int right)
+{
+    int i,j,temp;
+    int tb;
+    for(i=left;i&lt;right-1;i++)
+    {
+        temp = i;
+        for(j=i+1;j&lt;right;j++)
+        {
+            if(pData[j]&lt;pData[temp])
+            {
+                temp = j;
+            }
+        }
+        if(i != temp )
+        {
+            tb = pData[temp];
+            pData[temp] = pData[i];
+            pData[i] = tb;
+        }
+    }
+}
+</code></pre><h3 id="4、稳定性-。-1"><a href="#4、稳定性-。-1" class="headerlink" title="4、稳定性 。"></a>4、稳定性 。</h3><p>由于每次都是选取未排序序列A中的最小元素x与A中的第一个元素交换，很可能破坏了元素间的相对位置，因此选择排序是不稳定的！<br>此算法较复杂。</p>
+<h2 id="七、堆排序（不稳定，较复杂）"><a href="#七、堆排序（不稳定，较复杂）" class="headerlink" title="七、堆排序（不稳定，较复杂）"></a>七、堆排序（不稳定，较复杂）</h2><h3 id="1、思想。-6"><a href="#1、思想。-6" class="headerlink" title="1、思想。"></a>1、思想。</h3><p>利用完全二叉树中双亲节点和孩子节点之间的内在关系，在当前无序区中选择关键字最大(或者最小)的记录。也就是说，以最大堆为例，根节点为最大元素，较小的节点偏向于分布在堆底附近。 </p>
+<p> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/7.png?raw=true" alt=""></p>
+<h3 id="2、算法复杂度"><a href="#2、算法复杂度" class="headerlink" title="2、算法复杂度"></a>2、算法复杂度</h3><p>最坏情况下，接近于最差情况下：O(N*logN)，因此它是一种效果不错的排序算法。</p>
+<h3 id="3、代码"><a href="#3、代码" class="headerlink" title="3、代码"></a>3、代码</h3><pre><code>void HeapAdjust(int array[], int i, int nLength)
+{
+    int nchild;
+    int ntemp;
+    while(i&gt;=0)
+    {
+        nchild = 2 * i + 1;
+        ntemp = array[i];
+        if (array[nchild]&lt;ntemp)
+        {
+            ntemp = array[nchild];
+            array[nchild] = array[i];
+            array[i] = ntemp;
+        }
+        if (nchild &lt; nLength - 1)
+        {
+            nchild++;
+            if (array[nchild]&lt;ntemp)
+            {
+                ntemp = array[nchild];
+                array[nchild] = array[i];
+                array[i] = ntemp;
+            }
+        }
+        i--;
+    }
+}
+// 堆排序算法
+void HeapSort(int array[],int length)
+{
+    int i,temp;
+    for (int nL = length; nL&gt;0;nL--)
+    {
+        i = nL/2 - 1;
+        HeapAdjust(array,i,nL);
+        temp = array[0];
+        array[0] = array[nL-1];
+        array[nL-1] = temp;
+    }
+}
+</code></pre><h3 id="4、稳定性-。-2"><a href="#4、稳定性-。-2" class="headerlink" title="4、稳定性 。"></a>4、稳定性 。</h3><p>堆排序需要不断地调整堆，因此它是一种不稳定的排序。<br>此算法较复杂。</p>
+<h2 id="八、基数排序（稳定，较复杂）"><a href="#八、基数排序（稳定，较复杂）" class="headerlink" title="八、基数排序（稳定，较复杂）"></a>八、基数排序（稳定，较复杂）</h2><h3 id="1、思想。-7"><a href="#1、思想。-7" class="headerlink" title="1、思想。"></a>1、思想。</h3><p>它是一种非比较排序。它是根据位的高低进行排序的，也就是先按个位排序，然后依据十位排序……以此类推。示例如下：<br> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/8.1.png?raw=true" alt=""><br> <img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-paixusuanfa/8.2.png?raw=true" alt=""></p>
+<h3 id="2、算法的时间复杂度。"><a href="#2、算法的时间复杂度。" class="headerlink" title="2、算法的时间复杂度。"></a>2、算法的时间复杂度。</h3><p>分配需要O(n),收集为O(r),其中r为分配后链表的个数，以r=10为例，则有0～9这样10个链表来将原来的序列分类。而d，也就是位数(如最大的数是1234，位数是4，则d=4)，即”分配-收集”的趟数。因此时间复杂度为O(d*(n+r))。</p>
+<h3 id="3、代码。-6"><a href="#3、代码。-6" class="headerlink" title="3、代码。"></a>3、代码。</h3><pre><code>const int base=10;
+struct wx
+{
+    int num;
+    wx *next;
+    wx()
+    {
+        next=NULL;
+    }
+};
+wx *headn,*curn,*box[base],*curbox[base];
+
+void basesort(int t)
+{
+    int i,k=1,r,bn;
+    // k,r 分别表示10的幂次方，用来得到相应位上的单个数字，比如 k=10，r=100，数字207，则 十位上 0 = //(207/r)%10 
+    for(i=1;i&lt;=t;i++)
+    {
+        k*=base;
+    }
+    r=k*base;
+    //curbox和box中的指针指向相同的位置，当curbox中有新元素时，curbox指向会发生变化，形成box元素为//头指针，curbox元素相当于滑动指针，这样可以通过比较两者的不同来判断指针的走向。
+    for(i=0;i&lt;base;i++)
+    {
+        curbox[i]=box[i];
+    }
+
+    for(curn=headn-&gt;next;curn!=NULL;curn=curn-&gt;next)
+    {
+             bn=(curn-&gt;num%r)/k;               // bn表示元素相应位上的值，
+        curbox[bn]-&gt;next=curn;             //curbox[i]的next指向相应位为i的元素
+        curbox[bn]=curbox[bn]-&gt;next;    //此时curbox[i]向后移位，以box[i]为首的链表长度增加
+    }
+    curn=headn;
+    for(i=0;i&lt;base;i++)
+    {
+        if(curbox[i]!=box[i])
+        {
+            curn-&gt;next=box[i]-&gt;next;
+            curn=curbox[i];        //curn此时指向了在box中具有相同值的链表的最后一个，例如 123，                                //33，783，67，56，在3开头的 元素链表中，此时cur指向了783。
+        }
+    }
+    curn-&gt;next=NULL;
+}
+
+void printwx()
+{
+    for(curn=headn-&gt;next;curn!=NULL;curn=curn-&gt;next)
+    {
+        cout&lt;&lt;curn-&gt;num&lt;&lt;&apos; &apos;;
+    }
+    cout&lt;&lt;endl;
+}
+
+int main()
+{
+    int i,n,z=0,maxn=0;
+    curn=headn=new wx;
+    cin&gt;&gt;n;
+    for(i=0;i&lt;base;i++)
+    {
+        curbox[i]=box[i]=new wx;
+    }
+    for(i=1;i&lt;=n;i++)
+    {
+        curn=curn-&gt;next=new wx;
+        cin&gt;&gt;curn-&gt;num;
+        maxn=max(maxn,curn-&gt;num);
+    }
+    while(maxn/base&gt;0)
+    {
+        maxn/=base;
+        z++;
+    }
+    for(i=0;i&lt;=z;i++)
+    {
+        basesort(i);
+    }
+    printwx();
+    return 0;
+} 
+</code></pre><h3 id="4、稳定性。-1"><a href="#4、稳定性。-1" class="headerlink" title="4、稳定性。"></a>4、稳定性。</h3><p>基数排序过程中不改变元素的相对位置，因此是稳定的。<br>此算法较复杂。</p>
+<h3 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h3><p>本篇文章主要参考了博客<br><a href="http://blog.csdn.net/whuslei/article/details/6442755" title="http://blog.csdn.net/whuslei/article/details/6442755" target="_blank" rel="external">http://blog.csdn.net/whuslei/article/details/6442755</a>，作者对排序总结的非常详细，大家感兴趣可以去阅读原文。<br>另外，<a href="http://www.blogjava.net/todayx-org/archive/2012/01/08/368091.html" title="http://www.blogjava.net/todayx-org/archive/2012/01/08/368091.html" target="_blank" rel="external">http://www.blogjava.net/todayx-org/archive/2012/01/08/368091.html</a>总结的也不错，其中有GIF动态图可以清晰的浏览到算法是如何实现的。</p>
+<p>提前声明一下，面试知识点这个系列的文章，有很多借鉴了网上的一些文章，因为我的本意也不是完全原创，而是基于原创进行整理，难免会引用到别人的图或文字。<br>整理这些知识点时，我会尽量将自己理解消化调后总结，然后表述出来，但为了使大家理解更深刻，不可避免也会引用到别人的内容。当引用到别人写的内容时，我也会尽量注明出处，如果引用的内容忘了或者没有标记原来出处，如涉及到侵权，还请联系我修改。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/29/android小知识（2）/" rel="next" title="android小知识（2）">
+                <i class="fa fa-chevron-left"></i> android小知识（2）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/01/每天一点小知识（3）/" rel="prev" title="每天一点小知识（3）">
+                每天一点小知识（3） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的排序算法。"><span class="nav-number">1.</span> <span class="nav-text">常见的排序算法。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稳定和不稳定的定义和区别："><span class="nav-number">2.</span> <span class="nav-text">稳定和不稳定的定义和区别：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8种排序算法的时间复杂度和空间复杂度："><span class="nav-number">3.</span> <span class="nav-text">8种排序算法的时间复杂度和空间复杂度：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、直接插入排序-插入排序，稳定，简单-。"><span class="nav-number">4.</span> <span class="nav-text">一、直接插入排序(插入排序，稳定，简单)。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、思想。"><span class="nav-number">4.1.</span> <span class="nav-text">1、思想。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、算法时间复杂度。"><span class="nav-number">4.2.</span> <span class="nav-text">2、算法时间复杂度。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、代码。"><span class="nav-number">4.3.</span> <span class="nav-text">3、代码。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、稳定性和复杂度。"><span class="nav-number">4.4.</span> <span class="nav-text">4、稳定性和复杂度。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、希尔排序-插入排序，不稳定，较复杂"><span class="nav-number">5.</span> <span class="nav-text">二、希尔排序(插入排序，不稳定，较复杂)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、思想。-1"><span class="nav-number">5.1.</span> <span class="nav-text">1、思想。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、时间复杂度。"><span class="nav-number">5.2.</span> <span class="nav-text">2、时间复杂度。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、代码。-1"><span class="nav-number">5.3.</span> <span class="nav-text">3、代码。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、稳定性。"><span class="nav-number">5.4.</span> <span class="nav-text">4、稳定性。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、归并排序（插入排序，稳定，较复杂）"><span class="nav-number">6.</span> <span class="nav-text">三、归并排序（插入排序，稳定，较复杂）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、思想。-2"><span class="nav-number">6.1.</span> <span class="nav-text">1、思想。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、算法时间复杂度"><span class="nav-number">6.2.</span> <span class="nav-text">2、算法时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、代码。-2"><span class="nav-number">6.3.</span> <span class="nav-text">3、代码。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非递归方法："><span class="nav-number">6.3.1.</span> <span class="nav-text">非递归方法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归方法："><span class="nav-number">6.3.2.</span> <span class="nav-text">递归方法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、稳定性"><span class="nav-number">6.4.</span> <span class="nav-text">4、稳定性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、冒泡排序-交换排序，稳定，简单"><span class="nav-number">7.</span> <span class="nav-text">四、冒泡排序 (交换排序，稳定，简单)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、思想。-3"><span class="nav-number">7.1.</span> <span class="nav-text">1、思想。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、时间复杂度"><span class="nav-number">7.2.</span> <span class="nav-text">2、时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、代码。-3"><span class="nav-number">7.3.</span> <span class="nav-text">3、代码。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、稳定性-。"><span class="nav-number">7.4.</span> <span class="nav-text">4、稳定性 。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、快速排序-交换排序，不稳定，较复杂"><span class="nav-number">8.</span> <span class="nav-text">五、快速排序 (交换排序，不稳定，较复杂)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、思想。-4"><span class="nav-number">8.1.</span> <span class="nav-text">1、思想。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、算法复杂度。"><span class="nav-number">8.2.</span> <span class="nav-text">2、算法复杂度。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、代码。-4"><span class="nav-number">8.3.</span> <span class="nav-text">3、代码。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、稳定性-1"><span class="nav-number">8.4.</span> <span class="nav-text">4、稳定性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、直接选择排序-选择排序，不稳定，简单"><span class="nav-number">9.</span> <span class="nav-text">六、直接选择排序(选择排序，不稳定，简单)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、思想。-5"><span class="nav-number">9.1.</span> <span class="nav-text">1、思想。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、时间复杂度。-1"><span class="nav-number">9.2.</span> <span class="nav-text">2、时间复杂度。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、代码。-5"><span class="nav-number">9.3.</span> <span class="nav-text">3、代码。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、稳定性-。-1"><span class="nav-number">9.4.</span> <span class="nav-text">4、稳定性 。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、堆排序（不稳定，较复杂）"><span class="nav-number">10.</span> <span class="nav-text">七、堆排序（不稳定，较复杂）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、思想。-6"><span class="nav-number">10.1.</span> <span class="nav-text">1、思想。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、算法复杂度"><span class="nav-number">10.2.</span> <span class="nav-text">2、算法复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、代码"><span class="nav-number">10.3.</span> <span class="nav-text">3、代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、稳定性-。-2"><span class="nav-number">10.4.</span> <span class="nav-text">4、稳定性 。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、基数排序（稳定，较复杂）"><span class="nav-number">11.</span> <span class="nav-text">八、基数排序（稳定，较复杂）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、思想。-7"><span class="nav-number">11.1.</span> <span class="nav-text">1、思想。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、算法的时间复杂度。"><span class="nav-number">11.2.</span> <span class="nav-text">2、算法的时间复杂度。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、代码。-6"><span class="nav-number">11.3.</span> <span class="nav-text">3、代码。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、稳定性。-1"><span class="nav-number">11.4.</span> <span class="nav-text">4、稳定性。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附录："><span class="nav-number">11.5.</span> <span class="nav-text">附录：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
