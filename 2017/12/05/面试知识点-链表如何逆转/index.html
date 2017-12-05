@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="面试," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这个问题应该是面试最常见的题型之一了，很多大公司都会经常提问，如阿里巴巴。它的原理简单，学过数据结构，C语言，熟悉链表的同学应该很容易就掌握。但如果不熟练的话，也容易把代码写复杂了，或者写不出来。下面我带大家分析一下这个算法。 先定义一个链表节点， struct ListNode{    int val;    ListNode next;    ListNode(int v) : val(v),">
+<meta name="keywords" content="面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试知识点--链表如何逆转">
+<meta property="og:url" content="http://yoursite.com/2017/12/05/面试知识点-链表如何逆转/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="这个问题应该是面试最常见的题型之一了，很多大公司都会经常提问，如阿里巴巴。它的原理简单，学过数据结构，C语言，熟悉链表的同学应该很容易就掌握。但如果不熟练的话，也容易把代码写复杂了，或者写不出来。下面我带大家分析一下这个算法。 先定义一个链表节点， struct ListNode{    int val;    ListNode next;    ListNode(int v) : val(v),">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/1.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/2.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/3.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/4.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/5.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/6.png?raw=true">
+<meta property="og:updated_time" content="2017-12-05T12:27:41.922Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面试知识点--链表如何逆转">
+<meta name="twitter:description" content="这个问题应该是面试最常见的题型之一了，很多大公司都会经常提问，如阿里巴巴。它的原理简单，学过数据结构，C语言，熟悉链表的同学应该很容易就掌握。但如果不熟练的话，也容易把代码写复杂了，或者写不出来。下面我带大家分析一下这个算法。 先定义一个链表节点， struct ListNode{    int val;    ListNode next;    ListNode(int v) : val(v),">
+<meta name="twitter:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/1.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/05/面试知识点-链表如何逆转/"/>
+
+
+
+
+
+  <title>面试知识点--链表如何逆转 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/面试知识点-链表如何逆转/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试知识点--链表如何逆转</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-05T20:14:22+08:00">
+                2017-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面试知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">面试知识点</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这个问题应该是面试最常见的题型之一了，很多大公司都会经常提问，如阿里巴巴。它的原理简单，学过数据结构，C语言，熟悉链表的同学应该很容易就掌握。但如果不熟练的话，也容易把代码写复杂了，或者写不出来。<br>下面我带大家分析一下这个算法。</p>
+<p>先定义一个链表节点，</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cpp" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-class" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">struct</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">ListNode</span><br>{</span><br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> val;<br>    ListNode <em>next;<br>    ListNode(<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> v) : val(v), next(<span class="hljs-literal" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>) {}<br>};<br></em></code></pre></div><br>这个节点结构很简单，有一个整数值，一个指向下个节点的指针。ListNode(int v) : val(v), next(NULL) {}是C/C++常用的初始化方法，这个可以看做是ListNode结构的构造函数，val(v)是对val初始化，next(NULL)对next进行初始化，这种初始化速度比较快。<br><br>然后创建一个0，1，2，3共4个元素的链表。<br><div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs php" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;">ListNode createList()<br>{<br>    ListNode <em>root = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> ListNode(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">0</span>);<br>    ListNode </em>p1 = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> ListNode(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">1</span>);<br>    ListNode <em>p2 = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> ListNode(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">2</span>);<br>    ListNode </em>p3 = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> ListNode(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">3</span>);<br>    root-&gt;next = p1;<br>    p1-&gt;next = p2;<br>    p2-&gt;next = p3;<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">return</span> root;<br>}<br></code></pre></div>
+
+<p>我们采用new来创建，使用C++来实现。创建完成后，生成一个单链表，共有4个元素。</p>
+<p>然后，以下是核心的逆转算法函数，我们会详细的进行分析。</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs php" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;">ListNode<em> reverseList(ListNode </em>root)<br>{<br>    <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//如果链表为空，直接返回null</span><br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">if</span> (root == <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>)<br>        <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">return</span> root;<br>    <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//定义cur指针，指向当前列表的当前元素</span><br>    ListNode <em>cur = root;<br>    <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//定义pre指针，指向前一个元素</span><br>    ListNode </em>pre = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>;<br>    <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//定义post指针，指向后一个元素</span><br>    ListNode <em>post = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>;<br>    <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//链表逆转后，指向逆转链表的首元素，或者表示新的逆转链表头</span><br>    ListNode </em>revRoot = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>;<br>    <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//只要当前指向不为null，就一直循环</span><br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">while</span> (cur != <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>)<br>    { <br>        <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//将当前元素的指向位置赋值给post，即让post指向当前元素的下一个元素</span><br>        post = cur-&gt;next;<br>        <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//如果post为null，说明已经到了链表的末尾，则让revRoot指向当前元素</span><br>        <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">if</span> (post == <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>)<br>            revRoot = cur;<br>        <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//将当前元素的前一个元素的位置赋值给cur，即让当前元素指向前一个元素，而不再指向后一个元素 </span><br>        cur-&gt;next = pre;<br>        <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//将前一个元素的指向赋值成当前指向，即pre指向当前元素</span><br>        pre = cur;<br>        <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//同上，cur指向后一个元素</span><br>        cur = post;<br>    }<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">return</span> revRoot;<br>}<br></code></pre></div>
+
+<p>我们看一下这个循环的执行过程，为方便理解，我这里画了一下循环执行图，</p>
+<p>1、初始状态</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/1.png?raw=true" alt=""></p>
+<p>2、第一次循环执行后</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/2.png?raw=true" alt=""></p>
+<p>3、第二次循环执行后</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/3.png?raw=true" alt=""></p>
+<p>4、第三次循环执行后</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/4.png?raw=true" alt=""></p>
+<p>5、第四次循环执行后</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/5.png?raw=true" alt=""></p>
+<p>6、最终状态</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/interview-lianbiaonizhuan/6.png?raw=true" alt=""></p>
+<p>然后我们写一个main函数来测试一下。</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cpp" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">main</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">()</span><br></span>{<br>    ListNode *root = createList();<br>    <span class="hljs-built_in" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">cout</span> &lt;&lt; <span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“init List is: “</span>;<br>    showList(root);<br>    root = reverseList(root);<br>    <span class="hljs-built_in" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">cout</span> &lt;&lt; <span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“reverse List is: “</span>;<br>    showList(root);<br>    deleteList(root);<br>}<br></code></pre></div>
+
+<p>显示函数：</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cpp" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">void</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">showList</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">(ListNode* root)</span><br></span>{<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">while</span>(root != <span class="hljs-literal" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>)<br>    {<br>        <span class="hljs-built_in" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">cout</span> &lt;&lt; root-&gt;val &lt;&lt; <span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“ “</span>;<br>        root = root-&gt;next;<br>    }<br>    <span class="hljs-built_in" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">cout</span> &lt;&lt; <span class="hljs-built_in" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">endl</span>;<br>}<br></code></pre></div>
+
+<p>删除函数：</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cpp" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">void</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">deleteList</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">(ListNode <em>root)</em></span><br></span>{<br>    ListNode p = root;<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">while</span>(root != <span class="hljs-literal" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>)<br>    {<br>        p = root-&gt;next;<br>        <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">delete</span>(root);<br>        root = p;<br>    }<br>}<br></code></pre></div>
+
+<p>我们看到执行结果如下所示，<br>init List is:<br>0 1 2 3<br>reverse List is:<br>3 2 1 0</p>
+<p>以上就是链表逆转的典型写法，大家都明白了吗？如有因为欢迎留言交流。<br>另外， 链表还可以使用递归的方式实现，如下是递归实现的方法，有兴趣的也可以研究一下它的实现逻辑。</p>
+<p>//递归法实现链表的逆置</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs php" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;">pNode reverseList_reverse(pNode head)<br>{<br>    pNode current_head, head_next;<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">if</span> (head == <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>)<br>        <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">return</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>;<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">if</span> (head-&gt;next == <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>)<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//边界条件</span><br>        <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">return</span> head;<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">else</span>{<br>        current_head = head;<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//记下当前的头结点a0</span><br>        head_next = head-&gt;next;<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//记下当前头结点后面的结点a1</span><br>        head = reverseList_reverse(head_next);<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//返回(a1…an)逆转后的头结点</span><br>        head_next-&gt;next = current_head;<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//用上面保存的地址（逆转后的尾结点）指向原来的头结点a0</span><br>        current_head-&gt;next = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">NULL</span>;<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//将a0的next域置零</span><br>    }<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">return</span> head;<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//返回a0</span><br>}<br></code></pre></div>
+
+<p>本文参考了如下文章链接：<br><a href="https://www.cnblogs.com/kaituorensheng/archive/2014/01/18/3524888.html" target="_blank" rel="external">https://www.cnblogs.com/kaituorensheng/archive/2014/01/18/3524888.html</a><br><a href="http://blog.csdn.net/worldwindjp/article/details/18861093" target="_blank" rel="external">http://blog.csdn.net/worldwindjp/article/details/18861093</a><br>对以上文章的作者表示感谢。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/02/面试知识点-Vector和ArrayList的比较/" rel="next" title="面试知识点--Vector和ArrayList的比较">
+                <i class="fa fa-chevron-left"></i> 面试知识点--Vector和ArrayList的比较
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
