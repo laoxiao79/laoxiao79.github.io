@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="小知识," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="以下是本人在工作过程中的一些小知识点总结，其中有代码片段，也有知识点，经验总结和分享。1、如何根据传入的包名来显示对应应用的详细信息？ private static final String SCHEME = “package”;   private static final String APP_PKG_NAME_21 = “com.android.settings.ApplicationPkg">
+<meta name="keywords" content="小知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一点小知识【4】">
+<meta property="og:url" content="http://yoursite.com/2017/12/06/每天一点小知识【4】/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="以下是本人在工作过程中的一些小知识点总结，其中有代码片段，也有知识点，经验总结和分享。1、如何根据传入的包名来显示对应应用的详细信息？ private static final String SCHEME = “package”;   private static final String APP_PKG_NAME_21 = “com.android.settings.ApplicationPkg">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-4/1.png?raw=true">
+<meta property="og:updated_time" content="2017-12-06T12:19:13.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每天一点小知识【4】">
+<meta name="twitter:description" content="以下是本人在工作过程中的一些小知识点总结，其中有代码片段，也有知识点，经验总结和分享。1、如何根据传入的包名来显示对应应用的详细信息？ private static final String SCHEME = “package”;   private static final String APP_PKG_NAME_21 = “com.android.settings.ApplicationPkg">
+<meta name="twitter:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-4/1.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/06/每天一点小知识【4】/"/>
+
+
+
+
+
+  <title>每天一点小知识【4】 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/06/每天一点小知识【4】/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">每天一点小知识【4】</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-06T19:53:48+08:00">
+                2017-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android小知识/" itemprop="url" rel="index">
+                    <span itemprop="name">Android小知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="以下是本人在工作过程中的一些小知识点总结，其中有代码片段，也有知识点，经验总结和分享。"><a href="#以下是本人在工作过程中的一些小知识点总结，其中有代码片段，也有知识点，经验总结和分享。" class="headerlink" title="以下是本人在工作过程中的一些小知识点总结，其中有代码片段，也有知识点，经验总结和分享。"></a>以下是本人在工作过程中的一些小知识点总结，其中有代码片段，也有知识点，经验总结和分享。</h3><h2 id="1、如何根据传入的包名来显示对应应用的详细信息？"><a href="#1、如何根据传入的包名来显示对应应用的详细信息？" class="headerlink" title="1、如何根据传入的包名来显示对应应用的详细信息？"></a>1、如何根据传入的包名来显示对应应用的详细信息？</h2><div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs java" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">private</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">final</span> String SCHEME = <span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“package”</span>;  <br> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">private</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">final</span> String APP_PKG_NAME_21 = <span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“com.android.settings.ApplicationPkgName”</span>;  <br> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">private</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">final</span> String APP_PKG_NAME_22 = <span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“pkg”</span>;  <br> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">private</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">final</span> String APP_DETAILS_PACKAGE_NAME = <span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“com.android.settings”</span>;  <br> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">private</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">final</span> String APP_DETAILS_CLASS_NAME = <span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“com.android.settings.InstalledAppDetails”</span>;  <br> <span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">private</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">void</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">showInstalledAppDetails</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">(Context context, String packageName)</span> </span>{  <br>     Intent intent = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> Intent();  <br>     <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">final</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> apiLevel = Build.VERSION.SDK_INT;  <br>     <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">if</span> (apiLevel &gt;= <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">9</span>) { <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">// 2.3（ApiLevel 9）以上，使用SDK提供的接口  </span><br>         intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);  <br>         Uri uri = Uri.fromParts(SCHEME, packageName, <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">null</span>);  <br>         intent.setData(uri);  <br>     } <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">else</span> { <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">// 2.3以下，使用非公开的接口（查看InstalledAppDetails源码）  </span><br>         <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">// 2.2和2.1中，InstalledAppDetails使用的APP_PKG_NAME不同。  </span><br>         <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">final</span> String appPkgName = (apiLevel == <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">8</span> ? APP_PKG_NAME_22  <br>                 : APP_PKG_NAME_21);  <br>         intent.setAction(Intent.ACTION_VIEW);  <br>         intent.setClassName(APP_DETAILS_PACKAGE_NAME,  <br>                 APP_DETAILS_CLASS_NAME);  <br>         intent.putExtra(appPkgName, packageName);  <br>     } <br>     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);<br>     context.startActivity(intent);  <br>     <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">if</span>(context <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">instanceof</span> Activity){<br>         ((Activity) context).overridePendingTransition(R.anim.fade_in, R.anim.fade_out);<br>     }<br> }<br></code></pre></div>
+
+<h2 id="2、如何获取所有的应用图标？"><a href="#2、如何获取所有的应用图标？" class="headerlink" title="2、如何获取所有的应用图标？"></a>2、如何获取所有的应用图标？</h2><div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs java" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">private</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">void</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">saveAppIcons</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">()</span> </span>{<br>    <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">// TODO Auto-generated method stub</span><br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> Thread(){<br>        <span class="hljs-meta" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(91, 218, 237); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">@Override</span><br>        <span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">void</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">run</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">()</span> </span>{<br>            <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">super</span>.run();<br>            ArrayList&lt;AppLauncher&gt; infos = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> ArrayList&lt;AppLauncher&gt;();<br>            <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//获取所有的launcher应用</span><br>            Intent launcherIntent = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> Intent(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“android.intent.action.MAIN”</span>, <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">null</span>);<br>            launcherIntent.addCategory(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“android.intent.category.LAUNCHER”</span>);<br>            PackageManager packageManager = getPackageManager();<br>            <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//查询launcher应用信息</span><br>            List&lt;ResolveInfo&gt; resolveInfos = packageManager.queryIntentActivities(launcherIntent, <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">0</span>);<br>            <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> size = resolveInfos.size();<br>            <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">for</span> (<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> i = <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">0</span>; i &lt; size; i++) {<br>                <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//通过ResolveInfo得到所有的应用信息，包括包名，应用程序名，图标等信息</span><br>                ResolveInfo resolveInfo = resolveInfos.get(i);<br>                String packageName = resolveInfo.activityInfo.packageName;<br>                String acname = resolveInfo.activityInfo.name;<br>                Drawable icon = resolveInfo.activityInfo.loadIcon(packageManager); <br>                <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//todo save or use</span><br>                }<br>            }<br>    }.start();<br>}<br></code></pre></div>
+
+<h2 id="3、获取状态栏的高度的方法。"><a href="#3、获取状态栏的高度的方法。" class="headerlink" title="3、获取状态栏的高度的方法。"></a>3、获取状态栏的高度的方法。</h2><p>这里总结了两种方法，可以根据不同情况选择适合自己的。</p>
+<h3 id="（1）、直接调用系统函数"><a href="#（1）、直接调用系统函数" class="headerlink" title="（1）、直接调用系统函数"></a>（1）、直接调用系统函数</h3><div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cpp" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">private</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">getStatusBarHeight</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">()</span></span>{<br>    Rect rectangle = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> Rect();<br>    Window window =getWindow();<br>            window.getDecorView().getWindowVisibleDisplayFrame(rectangle);<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> statusBarHeight = rectangle.top;<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">return</span> statusBarHeight;<br>}<br></code></pre></div>
+
+<h3 id="（2）、通过反射的方法"><a href="#（2）、通过反射的方法" class="headerlink" title="（2）、通过反射的方法"></a>（2）、通过反射的方法</h3><div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cs" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">getStatusBarHight</span>(<span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">Context context</span>) </span>{<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> statusBarHeight = <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">-1</span>;<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">try</span> {<br>        Class&lt;?&gt; clazz = Class.forName(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“com.android.internal.R$dimen”</span>);<br>        Object <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">object</span> = clazz.newInstance();<br>        <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> height = Integer.parseInt(clazz.getField(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“status_bar_height”</span>).<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">get</span>(<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">object</span>).toString());<br>        statusBarHeight = context.getResources().getDimensionPixelSize(height);<br>    } <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">catch</span> (Exception e) {<br>        e.printStackTrace();<br>    }<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">return</span> statusBarHeight;<br>}<br></code></pre></div>
+
+<h2 id="4、如何在activity运行时正确的获取某个view的宽高信息？"><a href="#4、如何在activity运行时正确的获取某个view的宽高信息？" class="headerlink" title="4、如何在activity运行时正确的获取某个view的宽高信息？"></a>4、如何在activity运行时正确的获取某个view的宽高信息？</h2><p>我们知道，获取view信息必须在view绘制完成后，也就是Activity彻底运行起来后才能获取，不然getWidth(),getHight()得到都为0，这里个人总结了两种方法，可以准确获取view宽高信息。</p>
+<h3 id="（1）、利用ViewTreeObserver这个类来获取view的宽高信息"><a href="#（1）、利用ViewTreeObserver这个类来获取view的宽高信息" class="headerlink" title="（1）、利用ViewTreeObserver这个类来获取view的宽高信息"></a>（1）、利用ViewTreeObserver这个类来获取view的宽高信息</h3><div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs java" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;">view.getViewTreeObserver().addOnGlobalLayoutListener(<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> ViewTreeObserver.OnGlobalLayoutListener() {<br>    <span class="hljs-meta" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(91, 218, 237); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">@Override</span><br>    <span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">void</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">onGlobalLayout</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">()</span> </span>{<br>        Log.i(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“ViewTreeObserver : view.getWidth():”</span> + view.getWidth()+ <span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“ view.getHeight():”</span> + view.getHeight());<br>    }<br>}<br></code></pre></div>
+
+<p>这个类是用来注册当view tree全局状态改变时的回调监听器，这些全局事件包括很多，比如整个view tree视图的布局，视图绘制的开始，点击事件的改变等。</p>
+<p>注意：不要在应用程序中实例化ViewTreeObserver对象，因为该对象仅是由视图提供的。</p>
+<h3 id="（2）、还有一个方法是onPostCreate-Activity彻底运行起来之后的会回调此方法。我们可以重写onPostCreate（）来获取某个view的宽高"><a href="#（2）、还有一个方法是onPostCreate-Activity彻底运行起来之后的会回调此方法。我们可以重写onPostCreate（）来获取某个view的宽高" class="headerlink" title="（2）、还有一个方法是onPostCreate( )Activity彻底运行起来之后的会回调此方法。我们可以重写onPostCreate（）来获取某个view的宽高"></a>（2）、还有一个方法是onPostCreate( )Activity彻底运行起来之后的会回调此方法。我们可以重写onPostCreate（）来获取某个view的宽高</h3><h2 id="5、-项目推荐。"><a href="#5、-项目推荐。" class="headerlink" title="5、 项目推荐。"></a>5、 项目推荐。</h2><p>GitHub 有一个十分详细的针对数十种项目及语言的 .gitignore 文件列表，地址为：<br><a href="https://github.com/github/gitignore目前star达到了50K+，有需要的可以拿走。" target="_blank" rel="external">https://github.com/github/gitignore目前star达到了50K+，有需要的可以拿走。</a><br><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-4/1.png?raw=true" alt=""></p>
+<h2 id="6、无线AP是什么？"><a href="#6、无线AP是什么？" class="headerlink" title="6、无线AP是什么？"></a>6、无线AP是什么？</h2><p>无线AP为Access Point简称，翻译为“无线访问节点”，它主要是提供无线工作站对有线局域网和从有线局域网对无线工作站的访问，在访问接入点覆盖范围内的无线工作站可以通过它进行相互通信。通俗的讲，无线AP是无线网和有线网之间沟通的桥梁。</p>
+<h2 id="7、音频采样率。"><a href="#7、音频采样率。" class="headerlink" title="7、音频采样率。"></a>7、音频采样率。</h2><p>音频采样率是指录音设备在一秒钟内对声音信号的采样次数，采样频率越高声音的还原就越真实越自然。在当今的主流采集卡上，采样频率一般共分为22.05KHz、44.1KHz、48KHz三个等级。22.05KHz只能达到FM广播的声音品质，44.1KHz则是理论上的CD音质界限，48KHz则更加精确一些。我们平时常用的采样率有：8,000 Hz - 电话所用采样率, 对于人的说话已经足够。11,025 Hz 22,050 Hz - 无线电广播所用采样率。</p>
+<h2 id="8、音频比特率（码率）。"><a href="#8、音频比特率（码率）。" class="headerlink" title="8、音频比特率（码率）。"></a>8、音频比特率（码率）。</h2><p>比特率这个词有多种翻译，比如码率等，表示经过编码（压缩）后的音频数据每秒钟需要用多少个比特来表示，而比特就是二进制里面最少的单位，要么是0，要么是1。比特率与音频压缩的关系简单的说就是比特率越高音质就越好，但编码后的文件就越大；如果比特率越少则情况刚好翻转。<br>比特率使用音频数据每秒钟需要用多少个比特来表示，与它们密切相关的是表示每个PCM样点的bit位数。比如8bit,16bit。<br> 以电话为例，每秒3000次取样，每个取样是7比特，那么电话的比特率是21000。而CD是每秒44100次取样，两个声道，每个取样是13位PCM编码，所以CD的比特率是44100<em>2</em>13=1146600，也就是说CD每秒的数据量大约是144KB，而一张CD的容量是74分等于4440秒，就是639360KB＝640MB。<br>比特率可以通过采样率算出来， 前提知道采样率，声道数，每个采样的编码位数，如果采样编码位数为16为，声道为1,并且1秒钟8000次采样，则采样率为8000<em>1</em>16bps。比特率也代表了每1秒的数据量是多少，通过时间，可以计算容量，或者由容量推导出播放时间。</p>
+<h2 id="9、小规范。"><a href="#9、小规范。" class="headerlink" title="9、小规范。"></a>9、小规范。</h2><p>写XML布局文件时，要使用错行分层的方法，增加新的控件时，如果此控件带有id，那id应该和此空间放在第一行，没有id的要另起一行进行书写，例如，</p>
+<h4 id="带id的LinearLayout写法"><a href="#带id的LinearLayout写法" class="headerlink" title="带id的LinearLayout写法:"></a>带id的LinearLayout写法:</h4><div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs xml" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-tag" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">&lt;<span class="hljs-name" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">LinearLayout</span> <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:id</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“@+id/check_result_discription”</span><br>    <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_width</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“match_parent”</span> <br>    <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_height</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“wrap_content”</span><br>    <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:paddingTop</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“2dip”</span><br>    <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:background</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“@drawable/check_head_background”</span><br>    <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:orientation</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“vertical”</span><br>    <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:visibility</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“gone”</span>&gt;</span><br><span class="hljs-tag" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">&lt;/<span class="hljs-name" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">LinearLayout</span>&gt;</span><br></code></pre></div>
+
+<h4 id="不带id的LinearLayout写法："><a href="#不带id的LinearLayout写法：" class="headerlink" title="不带id的LinearLayout写法："></a>不带id的LinearLayout写法：</h4><div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs xml" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-tag" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">&lt;<span class="hljs-name" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">LinearLayout</span> <br>    <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_width</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“match_parent”</span> <br>    <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_height</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“wrap_content”</span><br>    <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_gravity</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“center_vertical”</span>&gt;</span><br>    <span class="hljs-tag" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">&lt;<span class="hljs-name" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">Button</span> <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:id</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“@+id/check_result_button_fix”</span><br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">style</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“@style/checkButtonStyleLarge”</span><br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_width</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“wrap_content”</span> <br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_height</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“wrap_content”</span><br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_weight</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“1”</span><br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:text</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“@string/check_button_fix”</span>/&gt;</span><br>    <span class="hljs-tag" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">&lt;<span class="hljs-name" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">Button</span> <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:id</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“@+id/check_result_button_again”</span><br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">style</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“@style/checkButtonStyleLarge”</span><br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_width</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“wrap_content”</span> <br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_height</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“wrap_content”</span><br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:layout_weight</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“1”</span><br>        <span class="hljs-attr" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android:text</span>=<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“@string/check_button_again”</span>/&gt;</span><br><span class="hljs-tag" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">&lt;/<span class="hljs-name" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">LinearLayout</span>&gt;</span><br></code></pre></div>
+
+<p>其他控件类似处理，这样层次分明，便于阅读和维护。控件与控件之前以空行分割。</p>
+<h2 id="10、AlarmManager的使用。"><a href="#10、AlarmManager的使用。" class="headerlink" title="10、AlarmManager的使用。"></a>10、AlarmManager的使用。</h2><p>使用如下语句创建定时发送广播的闹钟后，</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cpp" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;">AlarmManager am = (AlarmManager)mContext.getSystemService(Context.ALARM_SERVICE);<br>Intent intent = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> Intent(<em>**</em>);<br>PendingIntent sender = PendingIntent.getBroadcast(<br>        mContext, <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">0</span>, intent, PendingIntent.FLAG_CANCEL_CURRENT);<br>    <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//设置周期</span><br>    am.setRepeating(AlarmManager.RTC_WAKEUP, atTimeInMillis, interval, sender);<br></code></pre></div>
+
+<p>在手动修改系统时间后，应该会收到android.intent.action.DATE_CHANGED的广播，但是经过测试发现，如果修改的系统时间大于之前修改的时间，这个广播是可以收到的；但如果往前修改，即修改的系统时间小于当前值，将收不到此广播。但可以收到这个广播–android.intent.action.TIME_SET，所以应该使用它来进行监控系统时间的改变。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/小知识/" rel="tag"># 小知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/05/面试知识点-链表如何逆转/" rel="next" title="面试知识点--链表如何逆转">
+                <i class="fa fa-chevron-left"></i> 面试知识点--链表如何逆转
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#以下是本人在工作过程中的一些小知识点总结，其中有代码片段，也有知识点，经验总结和分享。"><span class="nav-number">1.</span> <span class="nav-text">以下是本人在工作过程中的一些小知识点总结，其中有代码片段，也有知识点，经验总结和分享。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、如何根据传入的包名来显示对应应用的详细信息？"><span class="nav-number"></span> <span class="nav-text">1、如何根据传入的包名来显示对应应用的详细信息？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、如何获取所有的应用图标？"><span class="nav-number"></span> <span class="nav-text">2、如何获取所有的应用图标？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、获取状态栏的高度的方法。"><span class="nav-number"></span> <span class="nav-text">3、获取状态栏的高度的方法。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、直接调用系统函数"><span class="nav-number">1.</span> <span class="nav-text">（1）、直接调用系统函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、通过反射的方法"><span class="nav-number">2.</span> <span class="nav-text">（2）、通过反射的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、如何在activity运行时正确的获取某个view的宽高信息？"><span class="nav-number"></span> <span class="nav-text">4、如何在activity运行时正确的获取某个view的宽高信息？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、利用ViewTreeObserver这个类来获取view的宽高信息"><span class="nav-number">1.</span> <span class="nav-text">（1）、利用ViewTreeObserver这个类来获取view的宽高信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、还有一个方法是onPostCreate-Activity彻底运行起来之后的会回调此方法。我们可以重写onPostCreate（）来获取某个view的宽高"><span class="nav-number">2.</span> <span class="nav-text">（2）、还有一个方法是onPostCreate( )Activity彻底运行起来之后的会回调此方法。我们可以重写onPostCreate（）来获取某个view的宽高</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、-项目推荐。"><span class="nav-number"></span> <span class="nav-text">5、 项目推荐。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、无线AP是什么？"><span class="nav-number"></span> <span class="nav-text">6、无线AP是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、音频采样率。"><span class="nav-number"></span> <span class="nav-text">7、音频采样率。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、音频比特率（码率）。"><span class="nav-number"></span> <span class="nav-text">8、音频比特率（码率）。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、小规范。"><span class="nav-number"></span> <span class="nav-text">9、小规范。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#带id的LinearLayout写法"><span class="nav-number">0.1.</span> <span class="nav-text">带id的LinearLayout写法:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不带id的LinearLayout写法："><span class="nav-number">0.2.</span> <span class="nav-text">不带id的LinearLayout写法：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、AlarmManager的使用。"><span class="nav-number"></span> <span class="nav-text">10、AlarmManager的使用。</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
