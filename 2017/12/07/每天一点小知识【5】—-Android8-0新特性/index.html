@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="小知识," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Android 8.0对应的API版本号为26，新系统取名为Android O，O代表是Oreo（奥利奥）。以下总结了Android8.0最新发布版本的较突出的一些新特性。 1、画中画模式– PIP在I/O2017上，谷歌演示了增强功能的画中画模式。例如用户可以在打电话时观看电影，支持将电影屏幕缩小成悬浮窗口，在看电影的同时也可以进行查看日历、搜索信息等其他工作，这比普通的画中画分屏模式功能更强大">
+<meta name="keywords" content="小知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一点小知识【5】— Android8.0新特性">
+<meta property="og:url" content="http://yoursite.com/2017/12/07/每天一点小知识【5】—-Android8-0新特性/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="Android 8.0对应的API版本号为26，新系统取名为Android O，O代表是Oreo（奥利奥）。以下总结了Android8.0最新发布版本的较突出的一些新特性。 1、画中画模式– PIP在I/O2017上，谷歌演示了增强功能的画中画模式。例如用户可以在打电话时观看电影，支持将电影屏幕缩小成悬浮窗口，在看电影的同时也可以进行查看日历、搜索信息等其他工作，这比普通的画中画分屏模式功能更强大">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-5/1.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-5/2.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-5/3.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-5/4.png?raw=true">
+<meta property="og:updated_time" content="2017-12-07T12:14:27.186Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每天一点小知识【5】— Android8.0新特性">
+<meta name="twitter:description" content="Android 8.0对应的API版本号为26，新系统取名为Android O，O代表是Oreo（奥利奥）。以下总结了Android8.0最新发布版本的较突出的一些新特性。 1、画中画模式– PIP在I/O2017上，谷歌演示了增强功能的画中画模式。例如用户可以在打电话时观看电影，支持将电影屏幕缩小成悬浮窗口，在看电影的同时也可以进行查看日历、搜索信息等其他工作，这比普通的画中画分屏模式功能更强大">
+<meta name="twitter:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-5/1.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/07/每天一点小知识【5】—-Android8-0新特性/"/>
+
+
+
+
+
+  <title>每天一点小知识【5】— Android8.0新特性 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/07/每天一点小知识【5】—-Android8-0新特性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">每天一点小知识【5】— Android8.0新特性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T20:07:50+08:00">
+                2017-12-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android小知识/" itemprop="url" rel="index">
+                    <span itemprop="name">Android小知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Android 8.0对应的API版本号为26，新系统取名为Android O，O代表是Oreo（奥利奥）。以下总结了Android8.0最新发布版本的较突出的一些新特性。</p>
+<h2 id="1、画中画模式–-PIP"><a href="#1、画中画模式–-PIP" class="headerlink" title="1、画中画模式– PIP"></a>1、画中画模式– PIP</h2><p>在I/O2017上，谷歌演示了增强功能的画中画模式。例如用户可以在打电话时观看电影，支持将电影屏幕缩小成悬浮窗口，在看电影的同时也可以进行查看日历、搜索信息等其他工作，这比普通的画中画分屏模式功能更强大。这一功能的唤醒只需要轻轻点击Home键按钮，如果想结束这一模式，可以将小窗口滑下来以终止。<br><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-5/1.png?raw=true" alt=""></p>
+<h2 id="2、通知–Notification"><a href="#2、通知–Notification" class="headerlink" title="2、通知–Notification"></a>2、通知–Notification</h2><p>在 Android O 中重新设计了通知，可以很方便的为管理通知行为和设置提供更轻松和更统一的方式。<br>这些变更包括<br>通知渠道：Android O 引入了通知渠道的概念，其允许用户为要显示的每种通知类型创建可自定义的渠道，借助渠道，开发者可以让用户对不同种类的通知进行精细控制，用户可以单独拦截或更改每个渠道的行为，而不是统一管理应用的所有通知。</p>
+<p>通知标志：Android O 引入了对在应用启动器图标上显示通知标志的支持。</p>
+<p>休眠：用户可以将通知置于休眠状态，以便稍后重新显示它。</p>
+<p>通知超时：现在使用 setTimeoutAfter() 创建通知时您可以设置超时。</p>
+<p>通知设置：当您使用 Notification.INTENT_CATEGORY_NOTIFICATION_PREFERENCESIntent 从通知创建指向应用通知设置的链接时，您可以调用 setSettingsText() 来设置要显示的文本。</p>
+<p>通知清除：系统现在可区分通知是由用户清除，还是由应用移除。</p>
+<p>背景颜色：您现在可以设置和启用通知的背景颜色。</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-5/2.png?raw=true" alt=""></p>
+<h2 id="3、后台执行限制-–-Background-execution-Limits-和-后台定位限制-–-background-location-limits"><a href="#3、后台执行限制-–-Background-execution-Limits-和-后台定位限制-–-background-location-limits" class="headerlink" title="3、后台执行限制 – Background execution Limits 和 后台定位限制 – background location limits"></a>3、后台执行限制 – Background execution Limits 和 后台定位限制 – background location limits</h2><p>谷歌一直在优化安卓Android的后台应用限制策略，以最大程度减小后台应用对电池的消耗和对资源的占用。<br> Background execution Limits主要有下面两个方面：</p>
+<h3 id="（1）、对Background-Service-的限制"><a href="#（1）、对Background-Service-的限制" class="headerlink" title="（1）、对Background Service 的限制"></a>（1）、对Background Service 的限制</h3><p>当一个应用程序在前台的时候，可以自由运行Foreground 和Background service。但是当应用程序切换到后台的时候，在开始几分钟所有的services都可以正常使用，过几分钟后，系统将会停止所有的Background service，就好比调用了Service.stopSelf( ) 。<br>在Android O之前，创建一个Foreground Service的方式通常是先创建一个Background Service的方式，再通过startForeground()的方式变为前台。但是在Android O中，如果应用程序运行在后台，那么即不能查创建Background Service，同时也就不能创建Foreground Servicele了。</p>
+<h3 id="（2）、对Broadcast-的限制"><a href="#（2）、对Broadcast-的限制" class="headerlink" title="（2）、对Broadcast 的限制"></a>（2）、对Broadcast 的限制</h3><p>如果一个应用创建了一个广播接收器，每当这个receiver收到广播的时候，都会消耗系统资源。如果太多应用注册了某个系统事件的receiver，一个系统事件将会唤起所有的receiver，造成同时大量的系统资源被消耗，从而影响用户体验。为了解决这个问题，在Android N中添加了对广播的限制，在Android O这些限制更加严格了。</p>
+<p>background location limits<br>主要是增加了对定位服务，位置更新服务的限制。进一步信息可以参考官方链接：<br><a href="https://developer.android.com/preview/features/background-location-limits.html" target="_blank" rel="external">https://developer.android.com/preview/features/background-location-limits.html</a></p>
+<h2 id="4、自适应图标-–-Adaptive-Icons"><a href="#4、自适应图标-–-Adaptive-Icons" class="headerlink" title="4、自适应图标 – Adaptive Icons"></a>4、自适应图标 – Adaptive Icons</h2><p>Android 的屏幕适配一直以来开发者不得不面对的难题。为了帮助开发者更好的在设备 UI上进行集成，Android O 开始支持创建自适应图标，系统可以基于设备选择的蒙版将这些图标显示为不同形状。<br>如果开发者默认在应用程序图示中使用了圆角正方形，那么应用程序的图标都将是这个形状，将不会出现方形图标和圆形图标混合的现象。<br>具体可以参考官方链接：<br><a href="https://developer.android.google.cn/preview/features/adaptive-icons.html" target="_blank" rel="external">https://developer.android.google.cn/preview/features/adaptive-icons.html</a></p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-5/3.png?raw=true" alt=""></p>
+<h2 id="5、固定快捷方式和小部件-—-Pinning-shortcuts"><a href="#5、固定快捷方式和小部件-—-Pinning-shortcuts" class="headerlink" title="5、固定快捷方式和小部件 — Pinning shortcuts"></a>5、固定快捷方式和小部件 — Pinning shortcuts</h2><p>Pinning shortcuts 是一个比 APP shortcuts 更小的快捷方式，放置于桌面上，用于更快速的打开某一 APP 的某单一任务。Pinning shortcuts 在桌面上可呈现不同的图标显示。在您的应用中，您可以根据用户权限为支持的启动器创建固定的快捷方式和小部件。<br>可以参考官方链接了解更多：<br><a href="https://developer.android.google.cn/guide/topics/ui/shortcuts.html" target="_blank" rel="external">https://developer.android.google.cn/guide/topics/ui/shortcuts.html</a></p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-5/4.png?raw=true" alt=""></p>
+<h2 id="6、自动填充框架–AutoFill-framework"><a href="#6、自动填充框架–AutoFill-framework" class="headerlink" title="6、自动填充框架–AutoFill framework"></a>6、自动填充框架–AutoFill framework</h2><p>Android O 通过引入自动填充框架,在用户选择接受自动填充之后，新老应用都可使用自动填充框架。这个功能对于经常密码登陆或获取重复信息的应用是个福音，对于老应用来说，Android O将会帮助用户进行快速登录，而不用每次都填写账户名和密码。当用户在使用一个新设备时，可以从其他应用中提取已经保存的账户名和密码，选择之后，自动填充功能便可以在本地进行，适用于你可能用到的大多数应用程序。<br>开发人员需要做的是对其应用程序进行优化，让其应用程序能够和自动填充功能更好地兼容。</p>
+<h2 id="7、其它"><a href="#7、其它" class="headerlink" title="7、其它"></a>7、其它</h2><p>除了以上比较突出的特性外，Android O还增加了如下特性。</p>
+<h3 id="（1）、字体的支持。"><a href="#（1）、字体的支持。" class="headerlink" title="（1）、字体的支持。"></a>（1）、字体的支持。</h3><p>应用开发人员可以自定义字体样式。</p>
+<h3 id="（2）、WiFi感知功能。"><a href="#（2）、WiFi感知功能。" class="headerlink" title="（2）、WiFi感知功能。"></a>（2）、WiFi感知功能。</h3><p>WiFi感知可让用户的Android O设备或应用通过Wi-Fi和附近的其他设备或应用进行通讯，无需实际的互联网连接。</p>
+<h3 id="（3）、设置菜单的调整。"><a href="#（3）、设置菜单的调整。" class="headerlink" title="（3）、设置菜单的调整。"></a>（3）、设置菜单的调整。</h3><p>设置菜单整体比Android N更加简洁。</p>
+<h3 id="（4）、限制未知来源应用功能。"><a href="#（4）、限制未知来源应用功能。" class="headerlink" title="（4）、限制未知来源应用功能。"></a>（4）、限制未知来源应用功能。</h3><p>在应用权限设置的“特殊访问权限”中，加入了“安装其他应用”的设置，这主要是为了防止应用内引导用户安装其他无关应用，特别是针对一些流氓应用会比较有效。</p>
+<h3 id="（5）、Font资源XML。"><a href="#（5）、Font资源XML。" class="headerlink" title="（5）、Font资源XML。"></a>（5）、Font资源XML。</h3><p>Fonts格式在Android O上已经完全支持了。</p>
+<h3 id="（6）、WebView增强。"><a href="#（6）、WebView增强。" class="headerlink" title="（6）、WebView增强。"></a>（6）、WebView增强。</h3><p>在Android O里,系统默认开启了多进程提供API来处理错误和异常,增强了安全和稳定性。</p>
+<h3 id="（7）、Java8语言API和运行时-runtime-优化。"><a href="#（7）、Java8语言API和运行时-runtime-优化。" class="headerlink" title="（7）、Java8语言API和运行时(runtime)优化。"></a>（7）、Java8语言API和运行时(runtime)优化。</h3><p>增加支持了新的JavaAPI比如java.time API。另外,Android Runtime在某些应用基准下提升了2x的运行速度。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/小知识/" rel="tag"># 小知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/06/每天一点小知识【4】/" rel="next" title="每天一点小知识【4】">
+                <i class="fa fa-chevron-left"></i> 每天一点小知识【4】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、画中画模式–-PIP"><span class="nav-number">1.</span> <span class="nav-text">1、画中画模式– PIP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、通知–Notification"><span class="nav-number">2.</span> <span class="nav-text">2、通知–Notification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、后台执行限制-–-Background-execution-Limits-和-后台定位限制-–-background-location-limits"><span class="nav-number">3.</span> <span class="nav-text">3、后台执行限制 – Background execution Limits 和 后台定位限制 – background location limits</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、对Background-Service-的限制"><span class="nav-number">3.1.</span> <span class="nav-text">（1）、对Background Service 的限制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、对Broadcast-的限制"><span class="nav-number">3.2.</span> <span class="nav-text">（2）、对Broadcast 的限制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、自适应图标-–-Adaptive-Icons"><span class="nav-number">4.</span> <span class="nav-text">4、自适应图标 – Adaptive Icons</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、固定快捷方式和小部件-—-Pinning-shortcuts"><span class="nav-number">5.</span> <span class="nav-text">5、固定快捷方式和小部件 — Pinning shortcuts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、自动填充框架–AutoFill-framework"><span class="nav-number">6.</span> <span class="nav-text">6、自动填充框架–AutoFill framework</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、其它"><span class="nav-number">7.</span> <span class="nav-text">7、其它</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、字体的支持。"><span class="nav-number">7.1.</span> <span class="nav-text">（1）、字体的支持。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、WiFi感知功能。"><span class="nav-number">7.2.</span> <span class="nav-text">（2）、WiFi感知功能。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、设置菜单的调整。"><span class="nav-number">7.3.</span> <span class="nav-text">（3）、设置菜单的调整。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、限制未知来源应用功能。"><span class="nav-number">7.4.</span> <span class="nav-text">（4）、限制未知来源应用功能。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）、Font资源XML。"><span class="nav-number">7.5.</span> <span class="nav-text">（5）、Font资源XML。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）、WebView增强。"><span class="nav-number">7.6.</span> <span class="nav-text">（6）、WebView增强。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（7）、Java8语言API和运行时-runtime-优化。"><span class="nav-number">7.7.</span> <span class="nav-text">（7）、Java8语言API和运行时(runtime)优化。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
