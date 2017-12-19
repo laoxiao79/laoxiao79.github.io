@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="小知识," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="之前介绍了Android 8.0的特性，现在让我们回顾一下Android 7.0都有哪些特性或新功能。Android 7.0对应的API版本号为24，新系统取名为Android N，N代表是Nougat（牛轧糖）的意思。让我们看看它都有哪些较突出的新特性。 2016年5月18日，Android7.0系统首个版本初次在GoogleI/O大会上亮相，8月22日，谷歌正式推送Android 7.0Nou">
+<meta name="keywords" content="小知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一点小知识【7】—Android7.0新特性">
+<meta property="og:url" content="http://yoursite.com/2017/12/16/每天一点小知识【7】—Android7-0新特性/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="之前介绍了Android 8.0的特性，现在让我们回顾一下Android 7.0都有哪些特性或新功能。Android 7.0对应的API版本号为24，新系统取名为Android N，N代表是Nougat（牛轧糖）的意思。让我们看看它都有哪些较突出的新特性。 2016年5月18日，Android7.0系统首个版本初次在GoogleI/O大会上亮相，8月22日，谷歌正式推送Android 7.0Nou">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-7/1.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-7/2.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-7/3.png?raw=true">
+<meta property="og:updated_time" content="2017-12-19T11:56:26.769Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每天一点小知识【7】—Android7.0新特性">
+<meta name="twitter:description" content="之前介绍了Android 8.0的特性，现在让我们回顾一下Android 7.0都有哪些特性或新功能。Android 7.0对应的API版本号为24，新系统取名为Android N，N代表是Nougat（牛轧糖）的意思。让我们看看它都有哪些较突出的新特性。 2016年5月18日，Android7.0系统首个版本初次在GoogleI/O大会上亮相，8月22日，谷歌正式推送Android 7.0Nou">
+<meta name="twitter:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-7/1.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/12/16/每天一点小知识【7】—Android7-0新特性/"/>
+
+
+
+
+
+  <title>每天一点小知识【7】—Android7.0新特性 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/16/每天一点小知识【7】—Android7-0新特性/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">每天一点小知识【7】—Android7.0新特性</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-16T19:28:53+08:00">
+                2017-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android小知识/" itemprop="url" rel="index">
+                    <span itemprop="name">Android小知识</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前介绍了Android 8.0的特性，现在让我们回顾一下Android 7.0都有哪些特性或新功能。Android 7.0对应的API版本号为24，新系统取名为Android N，N代表是Nougat（牛轧糖）的意思。让我们看看它都有哪些较突出的新特性。</p>
+<p>2016年5月18日，Android7.0系统首个版本初次在GoogleI/O大会上亮相，8月22日，谷歌正式推送Android 7.0Nougat正式版。<br>新特性有如下这些：</p>
+<h2 id="1、多窗口支持"><a href="#1、多窗口支持" class="headerlink" title="1、多窗口支持"></a>1、多窗口支持</h2><p>在此版本中，Android N引入了一个非常实用的多任务处理功能 — 多窗口支持。利用这个新特性，用户可以一次在屏幕上打开两个应用。<br>（1）、如果是在运行 Android N 的手机和平板电脑上，处于分屏模式时，用户可以并排运行两个应用，或者将一个应用位于另一个应用之上，用户可以通过拖动两个应用之间的分隔线来调整应用。<br>（2）、如果是在 Android TV 设备上，应用可以将自身置于画中画模式，从而让它们可以在用户浏览或与其他应用交互时继续显示内容。<br>多窗口支持有什么作用呢？我们可以在应用间进行内容的拖放，使用户可以方便地将内容从一个应用拖放到另一个应用中，这是一个非常好的增强用户体验的方式。<br>如下图所示：</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-7/1.png?raw=true" alt=""></p>
+<h2 id="2、增强通知功能"><a href="#2、增强通知功能" class="headerlink" title="2、增强通知功能"></a>2、增强通知功能</h2><p>在 Android N 中，系统重新设计了通知，使其更易于使用并且速度更快。 部分变更包括有：</p>
+<h3 id="（1）、模板更新。"><a href="#（1）、模板更新。" class="headerlink" title="（1）、模板更新。"></a>（1）、模板更新。</h3><p>更新了通知模板，新强调了英雄形象和化身， 开发者能够充分利用新模板，只需进行少量的代码调整即可。</p>
+<h3 id="（2）、消息样式自定义。"><a href="#（2）、消息样式自定义。" class="headerlink" title="（2）、消息样式自定义。"></a>（2）、消息样式自定义。</h3><p>用户可以自定义更多的用户界面标签，可以配置消息、会话标题和内容视图。</p>
+<h3 id="（3）、捆绑通知。"><a href="#（3）、捆绑通知。" class="headerlink" title="（3）、捆绑通知。"></a>（3）、捆绑通知。</h3><p>系统可以将各种消息组合在一起并显示为一个组。 用户可以适当地进行 Dismiss 或 Archive 等操作。</p>
+<h3 id="（4）、直接回复。"><a href="#（4）、直接回复。" class="headerlink" title="（4）、直接回复。"></a>（4）、直接回复。</h3><p>对于实时通信应用，Android 系统支持内联回复，用户可以直接在通知界面中快速回复短信。</p>
+<h3 id="（5）、自定义视图。"><a href="#（5）、自定义视图。" class="headerlink" title="（5）、自定义视图。"></a>（5）、自定义视图。</h3><p>更多新的 API 让开发者在通知中使用自定义视图时可以充分利用系统装饰元素，如通知标题和操作等来进行自定义。</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-7/2.png?raw=true" alt=""></p>
+<h2 id="3、个人资料的-JIT-AOT-编译"><a href="#3、个人资料的-JIT-AOT-编译" class="headerlink" title="3、个人资料的 JIT/AOT 编译"></a>3、个人资料的 JIT/AOT 编译</h2><p>在 Android N 中，添加了 Just in Time (JIT) 编译器，它可以对 ART 进行代码分析，让它在应用运行时能够持续提升 Android 应用的性能。<br>这个功能有什么作用呢？JIT 编译器对 Android 运行组件当前的 Ahead of Time (AOT) 编译器进行了补充，有助于提升系统运行时的性能，节省存储空间，加快应用更新和系统更新速度。<br>Android N不会一股脑地全部进行AOT预先编译，而是结合JIT实时编译、混合编译，都针对每个应用进行优化，可大大提升应用安装速度、性能、存储和能效，号称安装速度比原来快最多75％。<br>这个功能还有助于减少整个 RAM 占用，包括关联的二进制文件。 此功能对于低内存设备非常有意义。同时，它可以最大程度降低对设备电池的影响，能够使系统更省电，因为仅当设备处于空闲状态和充电时才进行编译。</p>
+<h2 id="4、快速部署应用"><a href="#4、快速部署应用" class="headerlink" title="4、快速部署应用"></a>4、快速部署应用</h2><p>由于Android N添加用了JIT 编译器，能够提高应用安装和系统更新的速度，之前在 Android 6.0 中需要几分钟才能够完成的优化和安装大型应用，现在只需几秒钟就可以完成了，速度提高了几十倍。<br>另外，系统更新也变得更快，因为它节省了一些优化步骤。</p>
+<h2 id="5、升级的低电耗模式"><a href="#5、升级的低电耗模式" class="headerlink" title="5、升级的低电耗模式"></a>5、升级的低电耗模式</h2><p>在Android 6.0 推出了低电耗模式，即设备处于空闲状态时，通过推迟应用的 CPU 和网络活动以实现省电目的的系统模式。<br>而在 Android N 中，低电耗模式又更前进了一步，随时随地可以省电。只要屏幕关闭了一段时间，且设备未插入电源充电时，低电耗模式就会对应用的 CPU 和网络进行限制。这意味着用户即使将设备放入口袋中时就开启了省电模式。这样，最大限度的延长了电池寿命。</p>
+<h2 id="6、后台优化"><a href="#6、后台优化" class="headerlink" title="6、后台优化"></a>6、后台优化</h2><p>后台处理是大多数应用的一个重要部分。处理得当，可实现非常棒的用户体验 — 即时，快速，便捷，流畅；处理不得当，后台处理会毫无必要地消耗 更多的RAM和电量，同时影响到其它应用的运行以及系统性能。<br>在 Android N 中，谷歌删除了三个常用的隐式广播 — CONNECTIVITY_ACTION、ACTION_NEW_PICTURE 和 ACTION_NEW_VIDEO。因为这些广播可能会一次唤醒多个应用的后台进程，同时会耗尽内存和电池。所以在7.0上开发者想进行进程保活越来越难。</p>
+<h2 id="7、性能提升"><a href="#7、性能提升" class="headerlink" title="7、性能提升"></a>7、性能提升</h2><p>系统采用了Vulkan API，能够大大降低CPU系统开销，提升描绘指令(Draw Call)，当然也支持预编译着色器，这对于应用、游戏开发无疑是个大好消息。<br>Vulkan API是一套新的 3D 渲染函数集。就像 OpenGL ES 一样，Vulkan 是 3D 图形和渲染的一项开放标准，由 Khronos Group 维护。</p>
+<h2 id="8、增强型快速便捷的设置栏"><a href="#8、增强型快速便捷的设置栏" class="headerlink" title="8、增强型快速便捷的设置栏"></a>8、增强型快速便捷的设置栏</h2><p>“快速设置”通常用于直接从通知栏显示关键设置和操作，非常简单。 在 Android N 中，我们已扩展“快速设置”的范围，使其更加有用更方便。<br>对于开发者，Android N 还添加了一个新的 API，可以自定义自己的“快速设置”模块，使用户可以轻松访问应用中的关键控件和操作。<br>在“快速设置”图块添加了更多空间，用户可以通过向左或向右滑动跨分页的显示区域访问它们。</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xiaozhishi-7/3.png?raw=true" alt=""></p>
+<h2 id="9、号码屏蔽"><a href="#9、号码屏蔽" class="headerlink" title="9、号码屏蔽"></a>9、号码屏蔽</h2><p>这个功能在国内的很多手机厂商已经实现，而在Android N 现在支持类似这些功能，在平台中可以进行号码屏蔽，提供框架 API，让服务提供商可以维护屏蔽的号码列表。 默认短信应用、默认手机应用和提供商应用可以对屏蔽的号码列表进行读取和写入操作。 其他应用则无法访问此列表。<br>具体功能有，<br>  ● 屏蔽已屏蔽的来电号码发出的短信<br>  ● 通过 Backup &amp; Restore（备份和还原）功能可以跨重置和设备保留屏蔽的号码<br>  ● 多个应用可以使用相同的屏蔽号码列表</p>
+<h2 id="10、来电拦截"><a href="#10、来电拦截" class="headerlink" title="10、来电拦截"></a>10、来电拦截</h2><p>Android N 允许默认的手机应用过滤来电。<br>  ● 拒绝来电<br>  ● 不允许来电到达通话记录<br>  ● 不向用户显示来电通知</p>
+<h2 id="11、其他功能"><a href="#11、其他功能" class="headerlink" title="11、其他功能"></a>11、其他功能</h2><p>另外，还有一些其他的新功能，如</p>
+<h3 id="（1）、多区域设置、多语言。"><a href="#（1）、多区域设置、多语言。" class="headerlink" title="（1）、多区域设置、多语言。"></a>（1）、多区域设置、多语言。</h3><p>Android N 现在允许用户在设置中选择多个区域设置，以更好地支持双语用例。</p>
+<h3 id="（2）、新增的表情。"><a href="#（2）、新增的表情。" class="headerlink" title="（2）、新增的表情。"></a>（2）、新增的表情。</h3><p>Android N 引入更多表情符号和表情符号相关功能，包括肤色表情符号和支持变量选择符。 </p>
+<h3 id="（3）、OpenGL-ES-3-2-API。"><a href="#（3）、OpenGL-ES-3-2-API。" class="headerlink" title="（3）、OpenGL ES 3.2 API。"></a>（3）、OpenGL ES 3.2 API。</h3><p>Android N 添加了框架接口和对 OpenGL ES 3.2 的平台支持</p>
+<h3 id="（4）、Android-TV-节目录制。"><a href="#（4）、Android-TV-节目录制。" class="headerlink" title="（4）、Android TV 节目录制。"></a>（4）、Android TV 节目录制。</h3><p>android N 通过新的录制 API 添加了从 Android TV 输入服务录制和播放内容的功能。</p>
+<h3 id="（5）、长连接的VPN。"><a href="#（5）、长连接的VPN。" class="headerlink" title="（5）、长连接的VPN。"></a>（5）、长连接的VPN。</h3><p>设备所有者和个人资料所有者可以确保运行的应用始终通过指定的 VPN 连接。 </p>
+<h3 id="（6）、VR-支持。"><a href="#（6）、VR-支持。" class="headerlink" title="（6）、VR 支持。"></a>（6）、VR 支持。</h3><p>Android N 添加了新的 VR 模式的平台支持和优化，以使开发者能为用户打造高质量移动 VR 体验。                                                                                   </p>
+<h3 id="（7）、改进的Doze休眠机制。"><a href="#（7）、改进的Doze休眠机制。" class="headerlink" title="（7）、改进的Doze休眠机制。"></a>（7）、改进的Doze休眠机制。</h3><p>谷歌在安卓7.0中对Doze休眠机制做了进一步的优化。</p>
+<h3 id="（8）、菜单键快速应用切换。"><a href="#（8）、菜单键快速应用切换。" class="headerlink" title="（8）、菜单键快速应用切换。"></a>（8）、菜单键快速应用切换。</h3><p>双击菜单键，就能自动切换到上一个应用。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/小知识/" rel="tag"># 小知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/12/每天一点小知识【6】/" rel="next" title="每天一点小知识【6】">
+                <i class="fa fa-chevron-left"></i> 每天一点小知识【6】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/19/每天一点小知识【8】/" rel="prev" title="每天一点小知识【8】">
+                每天一点小知识【8】 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、多窗口支持"><span class="nav-number">1.</span> <span class="nav-text">1、多窗口支持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、增强通知功能"><span class="nav-number">2.</span> <span class="nav-text">2、增强通知功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、模板更新。"><span class="nav-number">2.1.</span> <span class="nav-text">（1）、模板更新。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、消息样式自定义。"><span class="nav-number">2.2.</span> <span class="nav-text">（2）、消息样式自定义。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、捆绑通知。"><span class="nav-number">2.3.</span> <span class="nav-text">（3）、捆绑通知。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、直接回复。"><span class="nav-number">2.4.</span> <span class="nav-text">（4）、直接回复。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）、自定义视图。"><span class="nav-number">2.5.</span> <span class="nav-text">（5）、自定义视图。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、个人资料的-JIT-AOT-编译"><span class="nav-number">3.</span> <span class="nav-text">3、个人资料的 JIT/AOT 编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、快速部署应用"><span class="nav-number">4.</span> <span class="nav-text">4、快速部署应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、升级的低电耗模式"><span class="nav-number">5.</span> <span class="nav-text">5、升级的低电耗模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、后台优化"><span class="nav-number">6.</span> <span class="nav-text">6、后台优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、性能提升"><span class="nav-number">7.</span> <span class="nav-text">7、性能提升</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、增强型快速便捷的设置栏"><span class="nav-number">8.</span> <span class="nav-text">8、增强型快速便捷的设置栏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、号码屏蔽"><span class="nav-number">9.</span> <span class="nav-text">9、号码屏蔽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、来电拦截"><span class="nav-number">10.</span> <span class="nav-text">10、来电拦截</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11、其他功能"><span class="nav-number">11.</span> <span class="nav-text">11、其他功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、多区域设置、多语言。"><span class="nav-number">11.1.</span> <span class="nav-text">（1）、多区域设置、多语言。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、新增的表情。"><span class="nav-number">11.2.</span> <span class="nav-text">（2）、新增的表情。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、OpenGL-ES-3-2-API。"><span class="nav-number">11.3.</span> <span class="nav-text">（3）、OpenGL ES 3.2 API。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、Android-TV-节目录制。"><span class="nav-number">11.4.</span> <span class="nav-text">（4）、Android TV 节目录制。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）、长连接的VPN。"><span class="nav-number">11.5.</span> <span class="nav-text">（5）、长连接的VPN。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）、VR-支持。"><span class="nav-number">11.6.</span> <span class="nav-text">（6）、VR 支持。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（7）、改进的Doze休眠机制。"><span class="nav-number">11.7.</span> <span class="nav-text">（7）、改进的Doze休眠机制。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（8）、菜单键快速应用切换。"><span class="nav-number">11.8.</span> <span class="nav-text">（8）、菜单键快速应用切换。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
