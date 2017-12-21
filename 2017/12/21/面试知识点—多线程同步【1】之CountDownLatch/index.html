@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="控件 TV," />
+  <meta name="keywords" content="面试," />
 
 
 
@@ -79,24 +79,18 @@
 
 
 
-<meta name="description" content="Android TV TextView如何实现增加滚动条这两天在进行TV端应用商店的版本迭代，其中应用详情界面有这样一个需求，“应用介绍在焦点落在其上时，字数超过3行，需要有滚动条，并可上下滚动查看内容，当滚动滑到底，再按下键，焦点可离开应用介绍；如果向上滚动，当滚动到顶部，再按上键，焦点也可离开应用介绍”。当看到这个需求时，立即想到要给应用介绍所在的TextView增加一个滚动条，并且可以获取到">
-<meta name="keywords" content="控件 TV">
+<meta name="description" content="本系列将梳理一下多线程同步的一些经常用到方法或类，包括有CountDownLatch，CyclicBarriar，join，synchronized，wait/notify/notifyAll，Semaphore，ReentrantLock，Phaser，Future，Exchanger，concurrent等。通过这些方法或类的对比和使用，不仅可以拓宽我们的知识面，提高我们的线程同步处理能力，还">
+<meta name="keywords" content="面试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android TV TextView如何实现增加滚动条">
-<meta property="og:url" content="http://yoursite.com/2017/11/21/Android-TV-TextView如何实现增加滚动条/index.html">
+<meta property="og:title" content="面试知识点—多线程同步【1】之CountDownLatch">
+<meta property="og:url" content="http://yoursite.com/2017/12/21/面试知识点—多线程同步【1】之CountDownLatch/index.html">
 <meta property="og:site_name" content="老肖的博客">
-<meta property="og:description" content="Android TV TextView如何实现增加滚动条这两天在进行TV端应用商店的版本迭代，其中应用详情界面有这样一个需求，“应用介绍在焦点落在其上时，字数超过3行，需要有滚动条，并可上下滚动查看内容，当滚动滑到底，再按下键，焦点可离开应用介绍；如果向上滚动，当滚动到顶部，再按上键，焦点也可离开应用介绍”。当看到这个需求时，立即想到要给应用介绍所在的TextView增加一个滚动条，并且可以获取到">
+<meta property="og:description" content="本系列将梳理一下多线程同步的一些经常用到方法或类，包括有CountDownLatch，CyclicBarriar，join，synchronized，wait/notify/notifyAll，Semaphore，ReentrantLock，Phaser，Future，Exchanger，concurrent等。通过这些方法或类的对比和使用，不仅可以拓宽我们的知识面，提高我们的线程同步处理能力，还">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/1.png?raw=true">
-<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/2.png?raw=true">
-<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/3.png?raw=true">
-<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/4.png?raw=true">
-<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/5.png?raw=true">
-<meta property="og:updated_time" content="2017-11-21T12:01:22.190Z">
+<meta property="og:updated_time" content="2017-12-21T12:30:37.842Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android TV TextView如何实现增加滚动条">
-<meta name="twitter:description" content="Android TV TextView如何实现增加滚动条这两天在进行TV端应用商店的版本迭代，其中应用详情界面有这样一个需求，“应用介绍在焦点落在其上时，字数超过3行，需要有滚动条，并可上下滚动查看内容，当滚动滑到底，再按下键，焦点可离开应用介绍；如果向上滚动，当滚动到顶部，再按上键，焦点也可离开应用介绍”。当看到这个需求时，立即想到要给应用介绍所在的TextView增加一个滚动条，并且可以获取到">
-<meta name="twitter:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/1.png?raw=true">
+<meta name="twitter:title" content="面试知识点—多线程同步【1】之CountDownLatch">
+<meta name="twitter:description" content="本系列将梳理一下多线程同步的一些经常用到方法或类，包括有CountDownLatch，CyclicBarriar，join，synchronized，wait/notify/notifyAll，Semaphore，ReentrantLock，Phaser，Future，Exchanger，concurrent等。通过这些方法或类的对比和使用，不仅可以拓宽我们的知识面，提高我们的线程同步处理能力，还">
 
 
 
@@ -126,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/21/Android-TV-TextView如何实现增加滚动条/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/21/面试知识点—多线程同步【1】之CountDownLatch/"/>
 
 
 
 
 
-  <title>Android TV TextView如何实现增加滚动条 | 老肖的博客</title>
+  <title>面试知识点—多线程同步【1】之CountDownLatch | 老肖的博客</title>
   
 
 
@@ -269,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/Android-TV-TextView如何实现增加滚动条/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/21/面试知识点—多线程同步【1】之CountDownLatch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Jason Xiao">
@@ -286,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android TV TextView如何实现增加滚动条</h1>
+          <h1 class="post-title" itemprop="name headline">面试知识点—多线程同步【1】之CountDownLatch</h1>
         
 
         <div class="post-meta">
@@ -298,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-21T19:49:18+08:00">
-                2017-11-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-21T20:23:01+08:00">
+                2017-12-21
               </time>
             
 
@@ -321,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android控件/" itemprop="url" rel="index">
-                    <span itemprop="name">Android控件</span>
+                  <a href="/categories/面试知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">面试知识点</span>
                   </a>
                 </span>
 
@@ -358,61 +352,104 @@
       
 
       
-        <h1 id="Android-TV-TextView如何实现增加滚动条"><a href="#Android-TV-TextView如何实现增加滚动条" class="headerlink" title="Android TV TextView如何实现增加滚动条"></a>Android TV TextView如何实现增加滚动条</h1><p>这两天在进行TV端应用商店的版本迭代，其中应用详情界面有这样一个需求，“应用介绍在焦点落在其上时，字数超过3行，需要有滚动条，并可上下滚动查看内容，当滚动滑到底，再按下键，焦点可离开应用介绍；如果向上滚动，当滚动到顶部，再按上键，焦点也可离开应用介绍”。当看到这个需求时，立即想到要给应用介绍所在的TextView增加一个滚动条，并且可以获取到焦点，这样才可以上下滚动。<br>思路有了，于是开始撸代码。</p>
-<h2 id="首先第一步，"><a href="#首先第一步，" class="headerlink" title="首先第一步，"></a>首先第一步，</h2><p>要让应用介绍所在的TextView获取到焦点，这个很容易，只需要增加如下两个属性即可实现，</p>
-<pre><code>android:focusable=&quot;true&quot;
-android:focusableInTouchMode=&quot;true&quot;
-</code></pre><p>这里简单介绍一下这两个属性，android:focusable=”true”表示此控件是否能够获取到焦点，android:focusableInTouchMode=”true”表示是否可以通过touch或方向键来获得焦点，在手机开发上一般不会设置，因为大多手机都是触摸式的，触摸后会直接响应按键事件了。而盒子或TV上在移动方向键时需要控件先获取焦点，然后再点击确认键才能响应按键消息。</p>
-<h2 id="第二步，"><a href="#第二步，" class="headerlink" title="第二步，"></a>第二步，</h2><p>设置最大行数，增加滚动条响应。<br>在xml布局文件中增加如下两行，</p>
-<pre><code>android:maxLines=&quot;3&quot;
-android:scrollbars=&quot;vertical&quot;
-</code></pre><p>其中android:maxLines=”3”表示最多显示3行数据，android:scrollbars=”vertical”滚动条设置为纵向。同时，需要需修改代码，</p>
-<pre><code>TextView textView = (TextView)findViewById(R.id.tv_appDesc); 
-textView.setMovementMethod(ScrollingMovementMethod.getInstance());
-</code></pre><p>此方法的作用是给TextView增加一个滚动的方法对象，可以直接调用ScrollingMovementMethod的静态方法getInstance()生成此对象。</p>
-<h2 id="第三步，"><a href="#第三步，" class="headerlink" title="第三步，"></a>第三步，</h2><p>设置焦点选中后的效果。<br>意思就是在焦点落在此控件时，增加一个选中效果，这里根据效果图，自己自定义了一个selector，代码如下所示，</p>
-<blockquote>
-<p>textview_selector.xml</p>
-</blockquote>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
-    &lt;item android:state_focused=&quot;true&quot; &gt;
-        &lt;shape
-            android:shape=&quot;rectangle&quot; &gt;
-            &lt;stroke
-                android:width=&quot;2px&quot;
-                android:color=&quot;#ffffff&quot; /&gt;
-            &lt;corners android:radius=&quot;4px&quot;/&gt;
-        &lt;/shape&gt;
-    &lt;/item&gt;
-&lt;/selector&gt;
-</code></pre><p>焦点选中时是一个白色的矩形框，矩形角的弧度为4px，未选中什么也不显示。<br>然后在布局中将其设置成背景。</p>
-<pre><code>android:background=&quot;@drawable/textview_selector&quot;
-</code></pre><p>至此，需求的雏形已经实现。</p>
-<p>但有些细节还需要继续调试，比如，默认的滚动条太暗或者随着应用主题而改变，我们想保持不变，那可以设置滚动条的图片。滚动条由两部分可以设置，滚动图片和滚动轨道。<br>分别对应这两个属性，android:scrollbarThumbVertical和android:scrollbarTrackVertical<br>我用到了android:scrollbarThumbVertical属性，重新指定了一个滚动图片，图片是UI提供的一个.9图。<br>如下所示：</p>
-<pre><code>android:scrollbarThumbVertical=&quot;@drawable/scrollbar&quot;
-</code></pre><p>滚动条设置完毕后，发现滚动条和文字贴的很近，于是进行了一下优化。<br>滚动条有这样一个属性android:scrollbarStyle，它可以设置4种值，4种可选值有insideOverlay、insideInset、outsideOverlay、outsideInset四种。<br>四种值分别表示：<br>insideOverlay：默认值，表示在padding区域内并且覆盖在view上，如下所示，</p>
-<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/1.png?raw=true" alt=""></p>
-<p>insideInset：表示在padding区域内并且插入在view后面，如下所示，</p>
-<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/2.png?raw=true" alt=""></p>
-<p>outsideOverlay：表示在padding区域外并且覆盖在view上，如下所示，</p>
-<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/3.png?raw=true" alt=""></p>
-<p>outsideInset：表示在padding区域外并且插入在view后面，如下所示，</p>
-<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/4.png?raw=true" alt=""></p>
-<p>再对比四种效果后，我最终选择了outsideInset方式。xml中进行如下设置，</p>
-<pre><code>android:paddingRight=&quot;20px&quot;
-android:scrollbarStyle=&quot;outsideInset&quot;
-</code></pre><p>最后，设置完成后，需求基本实现，但是，发现在从应用介绍上面的控件按向下，或者下面的控件在按向上键时，有时TextView并不能获取到焦点，于是增加了如下代码，</p>
-<pre><code>android:nextFocusDown=&quot;@+id/recycler_view&quot;
-android:nextFocusUp=&quot;@id/re_progressbar&quot;
-</code></pre><p>这里的nextFocusDown和nextFocusUp表示当焦点离开这个控件时，并且按的是向下键时就跳转到recycler_view控件，向上时跳转到re_progressbar控件。<br>并给re_progressbar按钮指定向下的控件，</p>
-<pre><code>android:nextFocusDown=&quot;@+id/tv_appDesc&quot;
-</code></pre><p>给recycler_view列表指定向上的控件，</p>
-<pre><code>android:nextFocusUp=&quot;@id/tv_appDesc&quot;
-</code></pre><p>这样上下移动焦点后，逻辑才能正常。<br>在做完如上设置后，实现的效果如下所示，</p>
-<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/textviewscroll/5.png?raw=true" alt=""></p>
-<p>怎么样，还可以吧。</p>
+        <p>本系列将梳理一下多线程同步的一些经常用到方法或类，包括有CountDownLatch，CyclicBarriar，join，synchronized，wait/notify/notifyAll，Semaphore，ReentrantLock，Phaser，Future，Exchanger，concurrent等。通过这些方法或类的对比和使用，不仅可以拓宽我们的知识面，提高我们的线程同步处理能力，还可以让我们在面试时可以更从容和淡定。</p>
+<p>本节将首先介绍一下CountDownLatch–倒计数锁存器<br>CountDownLatch的一个特别典型的应用场景是：有一个任务想要继续往下执行，它必须等到其它任务执行完毕后才可以继续往下执行。</p>
+<h2 id="1、CountDownLatch是什么？"><a href="#1、CountDownLatch是什么？" class="headerlink" title="1、CountDownLatch是什么？"></a>1、CountDownLatch是什么？</h2><p>CountDownLatch是在Java1.5中被引入的一个线程同步类，跟它一起被引入的并发工具类还有CyclicBarrier、Semaphore、ConcurrentHashMap和BlockingQueue等，它们都位在于java.util.concurrent包中。<br>CountDownLatch是通过一个计数器来实现的，计数器的初始值为线程的数量。每当一个线程完成了自己的任务后，计数器的值就会减1。当计数器值到达0时，它表示所有的线程已经完成了任务，然后在闭锁上等待的线程就可以恢复执行任务。<br>因此CountDownLatch这个类用作这样的场景，一个线程在等待其他线程完成各自的工作后再执行。例如，应用程序的主线程希望一些初始化参数或者属性的子线程都完成后再执行。</p>
+<h2 id="2、基本元素和常用方法"><a href="#2、基本元素和常用方法" class="headerlink" title="2、基本元素和常用方法"></a>2、基本元素和常用方法</h2><p>CountDownLatch类有4个基本元素或方法：</p>
+<ul>
+<li>初始值。它决定CountDownLatch类需要等待的事件或者线程的数量。</li>
+<li>await() 方法。 被等待全部事件终结的线程调用。</li>
+<li>countDown() 。方法事件在结束执行后调用。</li>
+<li>await(long time, TimeUnit unit)。此方法会休眠直到被中断；</li>
+</ul>
+<p>当创建 CountDownLatch 对象时，对象使用构造函数的参数来初始化内部计数器。每次调用 countDown() 方法, CountDownLatch 对象内部计数器减一。当内部计数器达到0时， CountDownLatch 对象唤醒全部使用 await() 方法睡眠的线程们。<br>CountDownLatch是不可逆的，即不可能重新初始化或者修改CountDownLatch对象的内部计数器的值。一旦计数器的值初始后，唯一可以修改它的方法就是之前用的 countDown() 方法，也就是只能创建CountDownLatch对象，并使其内部值减少，不能重新修改或增加内部值。当计数器到达0时， 全部调用 await() 方法将会立刻返回，后面再调用此CountDownLatch对象的countDown() 方法都将不会产生任何作用。后续会介绍CyclicBarriar，它除了可以实现CountDownLatch的功能外，还可以重新进行初始化，重复使用。<br>另一种版本的 await() 方法是await(long time, TimeUnit unit)，表示CountDownLatch内部计数器到达0或者特定的时间过去了。TimeUnit 类包含了:DAYS, HOURS, MICROSECONDS, MILLISECONDS, MINUTES, NANOSECONDS和 SECONDS等多种类型，在此方法中都可以使用。</p>
+<h2 id="3、演示代码"><a href="#3、演示代码" class="headerlink" title="3、演示代码"></a>3、演示代码</h2><p>以下是使用了两个CountDownLatch的demo， CountDownLatch begin保证了所有线程都能在相同时间点开始处理。CountDownLatch end保证所有线程执行完毕后，主线程再退出。</p>
+<pre><code>import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
+public class CountDownLatchDemo {
+    //赛跑运动员的个数
+    private static final int RUNNER_AMOUNT = 5;
+    public CountDownLatchDemo() {
+    }
+
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        //对于每位运动员，裁判员发令枪响了后才开始比赛，只有一次发令枪
+        CountDownLatch cdl_startgun = new CountDownLatch(1);
+
+        //对于整个比赛，所有赛跑人员跑完后才算结束，有RUNNER_AMOUNT个运动员
+        CountDownLatch cdl_runner = new CountDownLatch(RUNNER_AMOUNT);
+        Runner[] plays = new Runner[RUNNER_AMOUNT];
+
+        for(int i=0;i&lt;RUNNER_AMOUNT;i++)
+            plays[i] = new Runner(i+1,cdl_startgun,cdl_runner);
+
+        //定义特定的线程池，大小为5，每个线程对应一个运动员
+        ExecutorService exe = Executors.newFixedThreadPool(RUNNER_AMOUNT);
+        for(Runner p:plays)
+            exe.execute(p); //分配线程
+
+        System.out.println(&quot;Race begins!&quot;);
+        //启动所有运动员的线程后，发令枪发令，cdl_startgun归0
+        cdl_startgun.countDown();
+        try{
+            //开始等待所有运动员结束各自的跑步，只有都跑完后才能继续运行，否则一直处于阻塞状态
+            cdl_runner.wait(); //等待cdl_runner变为0，即为比赛结束
+        }catch (InterruptedException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }finally{
+            System.out.println(&quot;Race ends!&quot;);
+        }
+        exe.shutdown();
+    }
+}
+</code></pre><p>接下来是Runner类：</p>
+<pre><code>import java.util.concurrent.CountDownLatch;
+public class Runner implements Runnable {
+    private int id;
+    private CountDownLatch cdl_startgun;
+    private CountDownLatch cdl_runner;
+    public Runner(int i, CountDownLatch cdl_startgun, CountDownLatch cdl_runner) {
+        // TODO Auto-generated constructor stub
+        super();
+        this.id = i;
+        this.cdl_startgun = cdl_startgun;
+        this.cdl_runner = cdl_runner;
+    }
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+        try{
+            //等待发令枪响起，一旦发令枪响过，cdl_startgun归0，程序就可以往下执行
+            cdl_startgun.await(); //等待begin的状态为0
+            Thread.sleep((long)(Math.random()*100)); //随机分配时间，即运动员完成时间
+            System.out.println(&quot;Play&quot;+id+&quot; arrived.&quot;);
+        }catch (InterruptedException e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }finally{
+            //本运动员完成跑步，通知cdl_runner减1
+            cdl_runner.countDown(); //使end状态减1，最终减至0
+        }
+    }
+}
+</code></pre><p>执行结果可能是这样：</p>
+<pre><code>Race begins!
+Play2 arrived.
+Play4 arrived.
+Play3 arrived.
+Play5 arrived.
+Play1 arrived.
+Race ends!
+</code></pre>
       
     </div>
     
@@ -466,7 +503,7 @@ android:nextFocusUp=&quot;@id/re_progressbar&quot;
       
         <div class="post-tags">
           
-            <a href="/tags/控件-TV/" rel="tag"># 控件 TV</a>
+            <a href="/tags/面试/" rel="tag"># 面试</a>
           
         </div>
       
@@ -479,8 +516,8 @@ android:nextFocusUp=&quot;@id/re_progressbar&quot;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/11/20/hexo搭建Github博客上传后，网页显示404问题解决方案/" rel="next" title="hexo搭建Github博客上传后，网页显示404问题解决方案">
-                <i class="fa fa-chevron-left"></i> hexo搭建Github博客上传后，网页显示404问题解决方案
+              <a href="/2017/12/19/每天一点小知识【8】/" rel="next" title="每天一点小知识【8】">
+                <i class="fa fa-chevron-left"></i> 每天一点小知识【8】
               </a>
             
           </div>
@@ -488,10 +525,6 @@ android:nextFocusUp=&quot;@id/re_progressbar&quot;
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/23/Android性能优化（一）/" rel="prev" title="Android性能优化（一）">
-                Android性能优化（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -629,7 +662,7 @@ android:nextFocusUp=&quot;@id/re_progressbar&quot;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-TV-TextView如何实现增加滚动条"><span class="nav-number">1.</span> <span class="nav-text">Android TV TextView如何实现增加滚动条</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先第一步，"><span class="nav-number">1.1.</span> <span class="nav-text">首先第一步，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步，"><span class="nav-number">1.2.</span> <span class="nav-text">第二步，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步，"><span class="nav-number">1.3.</span> <span class="nav-text">第三步，</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、CountDownLatch是什么？"><span class="nav-number">1.</span> <span class="nav-text">1、CountDownLatch是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、基本元素和常用方法"><span class="nav-number">2.</span> <span class="nav-text">2、基本元素和常用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、演示代码"><span class="nav-number">3.</span> <span class="nav-text">3、演示代码</span></a></li></ol></div>
             
 
           </div>
