@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="小知识," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="继续总结本司机在工作过程中涉及到的一些小知识点或小的技巧，其中有代码片段，也有知识点，经验总结和分享。因为工作比较忙，真的没法保证每天都有一篇公号文章发出，所以标题再叫“每天一点小知识”就不太合适了，因此改名为“小知识集锦”。后续使用这个名称，继续为大家总结各种小知识或技巧。 1、Drawable和Bitmap区别Bitmap - 称作位图文件（Bitmap），扩展名可以是.bmp或者.dib。位">
+<meta name="keywords" content="小知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小知识集锦【1】">
+<meta property="og:url" content="http://yoursite.com/2018/01/06/小知识集锦【1】/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="继续总结本司机在工作过程中涉及到的一些小知识点或小的技巧，其中有代码片段，也有知识点，经验总结和分享。因为工作比较忙，真的没法保证每天都有一篇公号文章发出，所以标题再叫“每天一点小知识”就不太合适了，因此改名为“小知识集锦”。后续使用这个名称，继续为大家总结各种小知识或技巧。 1、Drawable和Bitmap区别Bitmap - 称作位图文件（Bitmap），扩展名可以是.bmp或者.dib。位">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-06T01:54:18.599Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小知识集锦【1】">
+<meta name="twitter:description" content="继续总结本司机在工作过程中涉及到的一些小知识点或小的技巧，其中有代码片段，也有知识点，经验总结和分享。因为工作比较忙，真的没法保证每天都有一篇公号文章发出，所以标题再叫“每天一点小知识”就不太合适了，因此改名为“小知识集锦”。后续使用这个名称，继续为大家总结各种小知识或技巧。 1、Drawable和Bitmap区别Bitmap - 称作位图文件（Bitmap），扩展名可以是.bmp或者.dib。位">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/06/小知识集锦【1】/"/>
+
+
+
+
+
+  <title>小知识集锦【1】 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/06/小知识集锦【1】/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">小知识集锦【1】</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T09:52:25+08:00">
+                2018-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>继续总结本司机在工作过程中涉及到的一些小知识点或小的技巧，其中有代码片段，也有知识点，经验总结和分享。因为工作比较忙，真的没法保证每天都有一篇公号文章发出，所以标题再叫“每天一点小知识”就不太合适了，因此改名为“小知识集锦”。后续使用这个名称，继续为大家总结各种小知识或技巧。</p>
+<h2 id="1、Drawable和Bitmap区别"><a href="#1、Drawable和Bitmap区别" class="headerlink" title="1、Drawable和Bitmap区别"></a>1、Drawable和Bitmap区别</h2><p>Bitmap - 称作位图文件（Bitmap），扩展名可以是.bmp或者.dib。位图是Windows标准格式图形文件，它将图像定义为由点（像素）组成，每个点可以由多种色彩表示，包括2、4、8、16、24和32位色彩。例如，一幅1024×768分辨率的32位真彩图片，其所占存储字节数为：1024×768×32/(8*1024)=3072KB。<br>位图文件图像效果比较好，但是是非压缩格式的，需要占用较大存储空间，不利于在网络上传送。jpg格式则恰好弥补了位图文件这个缺点。<br>Drawable -是 Android平台通用的图形处理对象，它可以装载常用格式的图像，比如 GIF、PNG、JPG，以及 BMP，另外还提供一些高级的可视化对象，比如渐变、图形等。</p>
+<h2 id="2、Android编译器一点知识"><a href="#2、Android编译器一点知识" class="headerlink" title="2、Android编译器一点知识"></a>2、Android编译器一点知识</h2><p>最近在调试一些开源项目时遇到如下报错，<br>Error:Jack is required to support java 8 language features. Either enable Jack or remove sourceCompatibility JavaVersion.VERSION_1_8.错误解决<br>经过在网上查找资料，找到一个知识点需要跟大家普及一下。<br>2016 年 3 月，Google 向外界发布了 Android N 的预览版的同时，指出 Android N 增加了一项的新特性，这个特性是一项新的工具链，它与 Android 生态圈的所有开发者关系，即 Jack &amp; Jill 编译器的引入。我们知道，Android一直依赖 Sun/Oracle 的 Java 编译器达十年之久，而Google和Sun/Oracle一直在为Java的版权问题打官司，所以，Google研发了自己的Java编译器–Jack。Jack 是 Java Android Compiler Kit 的缩写，它可以将 Java 代码直接编译为 Dalvik 字节码，可以进行 Minification, Obfuscation, Repackaging, Multidexing, Incremental compilation等工作。它可以取代 javac/dx/proguard/jarjar/multidex 库等目前已有的这些工具。<br>而Android N 7.0（API24）在对JAVA8的支持上，采用了新的编译器。所以这个变异错误的解决方法是在app的gradle文件defaultConfig 段中，增加如下声明语句，</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs nginx" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); background: rgb(40, 43, 46); overflow-x: auto; padding: 0.5em; display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-section" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">jackOptions</span> {<br>    <span class="hljs-attribute" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">enabled</span> <span class="hljs-literal" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">true</span><br>}<br></code></pre></div>
+
+<p>即可解决问题。<br>参考官网定义如下，</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs bash" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); background: rgb(40, 43, 46); overflow-x: auto; padding: 0.5em; display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;">android {<br>  …<br>  defaultConfig {<br>    …<br>    jackOptions {<br>      enabled <span class="hljs-literal" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">true</span><br>    }<br>  }<br>  compileOptions {<br>    sourceCompatibility JavaVersion.VERSION_1_8<br>    targetCompatibility JavaVersion.VERSION_1_8<br>  }<br>}<br></code></pre></div>
+
+<p>注意： 需要使用Android N 也就是API24</p>
+<h2 id="3、Canvas-和和-Paint-的关系"><a href="#3、Canvas-和和-Paint-的关系" class="headerlink" title="3、Canvas 和和 Paint 的关系"></a>3、Canvas 和和 Paint 的关系</h2><p><strong>Canvas - 画布。</strong></p>
+<p>我们可以看作处理工具，使用其提供的方法可以管理 Bitmap、或Path 所在的图形对象，同时它可以配合 Matrix 矩阵类给图像做旋转、缩放等操作，以及可以进行裁剪、选取等操作。</p>
+<p><strong>Paint - 画笔。</strong></p>
+<p>可以把它看做一个画图工具，比如画笔、画刷。用它可以设置画图时的字体、颜色、样式等。</p>
+<h2 id="4、插件化和热修复的区别"><a href="#4、插件化和热修复的区别" class="headerlink" title="4、插件化和热修复的区别"></a>4、插件化和热修复的区别</h2><p>这两个概念对于新手来说，比较容易混淆，这里简单介绍一下二者的区别。<br>实际上，两者的表现并不相同，而且差别也较明显，虽然有些框架实现上可能有相同之处，比如利用ClassLoad进行hook等。<br>插件化或者叫组件化的目的是为了减小模块耦合，方便在项目体量变大之后实现更好地团队协作。说白一些就是让你把部分功能提取出来，放到插件里面，而不是一股脑都放到主APK里面，等你需要用到这个插件对应的功能的时候再把它下载下来，这样可以充分减少你主APK的大小。还有一个好处是可以灵活扩展功能，比如版本迭代，引入新的功能。<br>热更新或者热修复主要目的是不用重新下载和安装新的apk，使用户可以在无感知的情况下修复线上的问题，避免了应用在遇到问题后或者严重bug后频繁发布新版本。</p>
+<h2 id="5、比较新和有权威的插件化框架"><a href="#5、比较新和有权威的插件化框架" class="headerlink" title="5、比较新和有权威的插件化框架"></a>5、比较新和有权威的插件化框架</h2><p>插件化或组件化：</p>
+<p>  ● DroidPlugin – 360团队出品</p>
+<p>质量有保证，成功案例——360手机助手</p>
+<p>  ● Replugin – 360出品</p>
+<p>2017年06月30日开源，360 公司几乎所有的亿级用户量的 APP ，以及多款主流第三方 APP ，都采用了 RePlugin 方案</p>
+<p>  ● Small–wequick推出的框架</p>
+<p>轻巧的插件化框架，酷狗音乐等著名开发团队在使用。</p>
+<p>  ● Atlas–阿里框架</p>
+<p>淘宝开发和实用的组件化开发框架。</p>
+<p>  ● VirtualAPK–滴滴</p>
+<p>2017年6月3号开源，良好的兼容性，且入侵性较低，可以作为加载耦合插件方案是较好选择。</p>
+<p>除了以上，还有写比较老一些的或者个人开发者框架如，AndroidDymnamicLoader，dynamic-load-apk，CJFrameForAndroid，direct-load-api。</p>
+<h2 id="6、比较有名的热修复框架"><a href="#6、比较有名的热修复框架" class="headerlink" title="6、比较有名的热修复框架"></a>6、比较有名的热修复框架</h2><p>  ● Weex–阿里</p>
+<p>不仅可以实现热修复，还支持跨平台。</p>
+<p>  ● andfix（或hotfix）–阿里</p>
+<p>2015年下半年开源，提供了一种运行时在Native修改Filed指针的方式，实现方法的替换，达到即时生效无需重启。</p>
+<p>  ● dexposed–阿里</p>
+<p>阿里大部分App客户端采用的热修复、线上调试能力的框架。</p>
+<p>  ● Sophix–阿里</p>
+<p>2017年阿里新开源的框架，Sophix 可以说是博采众长，前面提到的Tinker及AndFix 都在某一方面存在缺陷。</p>
+<p>  ● Robust–美团</p>
+<p>Robust 兼容性与成功率较高，但是它与 AndFix 一样，无法新增变量与类只能用做的 bugFix 方案。</p>
+<p>  ● QQ 空间超级补丁方案–腾讯</p>
+<p>采用Dex分包机制实现，让修复后的类替换原有的类。</p>
+<p>  ● Tinker–腾讯</p>
+<p>它是微信官网的Android热补丁解决方案</p>
+<h2 id="7、UID和PID区别"><a href="#7、UID和PID区别" class="headerlink" title="7、UID和PID区别"></a>7、UID和PID区别</h2><p>UID是用户ID。每个应用程序只有一个。<br>Android中的UID和计算机不一样，计算机指的是每个用户都具有一个Uid，而Android中每个程序都有一个Uid，默认情况下，Android会给每个程序分配一个普通级别互不相同的 Uid，Android规定只有Uid相同的组件才可以互相调用，因此同一个应用下的Activity是可以互相调用的。<br>可以通过读取文件data/system/packages.list来查看应用对应的UID。<br>也可以通过如下代码获取UID，</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cs" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); background: rgb(40, 43, 46); overflow-x: auto; padding: 0.5em; display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;">ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);<br>ApplicationInfo appinfo = getApplicationInfo();<br>List&lt;RunningAppProcessInfo&gt; run = am.getRunningAppProcesses();<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">for</span> (RunningAppProcessInfo runningProcess : run) {<br>    <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">if</span> ((runningProcess.processName != <span class="hljs-literal" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">null</span>) &amp;&amp; runningProcess.processName.<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">equals</span>(appinfo.processName)) {<br>        uid = String.valueOf(runningProcess.uid);<br>        <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">break</span>;<br>    }<br>}<br></code></pre></div>
+
+<p>PID是进程ID。每个进程对应一个ID，但一个应用可能会有多个进程，因此应用的PID并不是唯一的，它可能会有多个。<br>可以通过如下shell指令查看应用对应的PID。<br>ps|grep XXX<br>XXX表示程序的包名。</p>
+<h2 id="8、模拟产生点击事件"><a href="#8、模拟产生点击事件" class="headerlink" title="8、模拟产生点击事件"></a>8、模拟产生点击事件</h2><p>有些同学不知道，在Android原生系统中有一个input工具，位于/system/bin目录下，国内大部分国产手机是保留这个二进制可执行文件的，而有些手机却将其阉割掉了。它的使用方法如下：<br>input keyevent xxx&lt;按键名或者按键值&gt;<br>xxx指具体的事件，如KEYCODE_BACK，表示一个返回键，对应的值为3，再比如KEYCODE<em>HOME模拟一个home键。按键名或者值可以从官方文档查询，只要是以KEYCODE</em>开头的都可以。<br>但是这个指令的执行需要root权限才行。</p>
+<h2 id="9、如何判断activity是否已经被销毁"><a href="#9、如何判断activity是否已经被销毁" class="headerlink" title="9、如何判断activity是否已经被销毁"></a>9、如何判断activity是否已经被销毁</h2><p>一般我们使用activity.isFinishing()方法来判断activity是否已经被销毁，若Activity被结束，这返回true，否则的话返回false。但是在实际的项目中还是有问题，需要增加activity.isDestoryed()方法来判断activity是否被销毁，但是isDestoryed()方法支持的最低版本为Level 17，因此这个方法也不是太靠谱？<br>官方给出一个方法，<br>FragmentManager的API doc 中有这样的定义：</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs java" style="margin: 0px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); background: rgb(40, 43, 46); overflow-x: auto; padding: 0.5em; display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">/<em>*<br></em> Returns true if the final {<span class="hljs-doctag" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">@link</span> Android.app.Activity#onDestroy()     Activity.onDestroy()}<br><em> call has been made on the FragmentManager’s Activity, so this instance is now dead.<br></em>/</span><br><span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">abstract</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">boolean</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">isDestroyed</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">()</span></span>;<br></code></pre></div>
+
+<p>因此可以借助FragmentManager对象来判断，即</p>
+<blockquote>
+<p>　if(fragmentManager.isDestroyed) return;</p>
+</blockquote>
+<h2 id="10、Opus文件格式"><a href="#10、Opus文件格式" class="headerlink" title="10、Opus文件格式"></a>10、Opus文件格式</h2><p>前一段时间协助遥控器端调节智能语音遥控器，需要将遥控器端用户输入的语音数据由遥控器的智能芯片通过蓝牙BLE传输给盒子端，然后盒子端进行解码后用来识别，从而控制盒子的操作。我们使用的这个芯片支持三种语音格式，broadvoice，adpcm和opus这三种格式。于是对opus进行了一下了解，以下内容来自于网上。这里带大家了解一下这种音频压缩格式。<br>Opus编码器 是一个有损声音编码的格式，由互联网工程任务组近来开发的。Opus 格式是一种声音编码格式，并且是一个开放的格式，使用上没有任何专利或限制。它前身是celt编码器。在当今的有损音频格式争夺上，拥有众多不同编码器的AAC格式打败了颇有潜力的Musepack、Vorbis等格式，而在Opus格式诞生后，情况有所变化。通过诸多的对比测试，低码率下Opus完胜曾经优势明显的HE AAC，中码率就已经可以媲敌码率高出30%左右的AAC格式，而高码率下更接近原始音频。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/小知识/" rel="tag"># 小知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/28/每天一点小知识【9】/" rel="next" title="每天一点小知识【9】">
+                <i class="fa fa-chevron-left"></i> 每天一点小知识【9】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/06/面试知识点—多线程同步【2】之CyclicBarrier/" rel="prev" title="面试知识点—多线程同步【2】之CyclicBarrier">
+                面试知识点—多线程同步【2】之CyclicBarrier <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Drawable和Bitmap区别"><span class="nav-number">1.</span> <span class="nav-text">1、Drawable和Bitmap区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Android编译器一点知识"><span class="nav-number">2.</span> <span class="nav-text">2、Android编译器一点知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Canvas-和和-Paint-的关系"><span class="nav-number">3.</span> <span class="nav-text">3、Canvas 和和 Paint 的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、插件化和热修复的区别"><span class="nav-number">4.</span> <span class="nav-text">4、插件化和热修复的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、比较新和有权威的插件化框架"><span class="nav-number">5.</span> <span class="nav-text">5、比较新和有权威的插件化框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、比较有名的热修复框架"><span class="nav-number">6.</span> <span class="nav-text">6、比较有名的热修复框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、UID和PID区别"><span class="nav-number">7.</span> <span class="nav-text">7、UID和PID区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、模拟产生点击事件"><span class="nav-number">8.</span> <span class="nav-text">8、模拟产生点击事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、如何判断activity是否已经被销毁"><span class="nav-number">9.</span> <span class="nav-text">9、如何判断activity是否已经被销毁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、Opus文件格式"><span class="nav-number">10.</span> <span class="nav-text">10、Opus文件格式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
