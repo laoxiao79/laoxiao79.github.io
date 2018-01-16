@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="小知识," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="常言说，“不积跬步，无以至千里；不积细流，无以成江海”；又道是，“积少成多，聚沙成塔”，“千尺楼台，起于累土”只有在数的积累后，才能会有量的飞跃，让我们从小事，从少做起。 继续总结本司机在工作过程中涉及到的一些小知识点或小的技巧，其中有代码片段，也有知识点，经验总结和分享。 1、关闭Log功能在日常调试程序时，我们经常使用到Log.v(),Log.i(),Log.w(),Log.v(),Log.e">
+<meta name="keywords" content="小知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小知识集锦【2】">
+<meta property="og:url" content="http://yoursite.com/2018/01/16/小知识集锦【2】/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="常言说，“不积跬步，无以至千里；不积细流，无以成江海”；又道是，“积少成多，聚沙成塔”，“千尺楼台，起于累土”只有在数的积累后，才能会有量的飞跃，让我们从小事，从少做起。 继续总结本司机在工作过程中涉及到的一些小知识点或小的技巧，其中有代码片段，也有知识点，经验总结和分享。 1、关闭Log功能在日常调试程序时，我们经常使用到Log.v(),Log.i(),Log.w(),Log.v(),Log.e">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-16T02:09:55.452Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小知识集锦【2】">
+<meta name="twitter:description" content="常言说，“不积跬步，无以至千里；不积细流，无以成江海”；又道是，“积少成多，聚沙成塔”，“千尺楼台，起于累土”只有在数的积累后，才能会有量的飞跃，让我们从小事，从少做起。 继续总结本司机在工作过程中涉及到的一些小知识点或小的技巧，其中有代码片段，也有知识点，经验总结和分享。 1、关闭Log功能在日常调试程序时，我们经常使用到Log.v(),Log.i(),Log.w(),Log.v(),Log.e">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/16/小知识集锦【2】/"/>
+
+
+
+
+
+  <title>小知识集锦【2】 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/16/小知识集锦【2】/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">小知识集锦【2】</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-16T10:01:54+08:00">
+                2018-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>常言说，<br>“不积跬步，无以至千里；不积细流，无以成江海”；<br>又道是，<br>“积少成多，聚沙成塔”，“千尺楼台，起于累土”<br>只有在数的积累后，才能会有量的飞跃，让我们从小事，从少做起。</strong></p>
+<p>继续总结本司机在工作过程中涉及到的一些小知识点或小的技巧，其中有代码片段，也有知识点，经验总结和分享。</p>
+<h2 id="1、关闭Log功能"><a href="#1、关闭Log功能" class="headerlink" title="1、关闭Log功能"></a>1、关闭Log功能</h2><p>在日常调试程序时，我们经常使用到Log.v(),Log.i(),Log.w(),Log.v(),Log.e()等函数来打Log，而在正式发布版本时，我们又希望将其关闭掉。可以通过修改proguard混淆文件来达到动态配置的目的。<br>添加assumenosideeffects即可。assumenosideeffects的官方解释：</p>
+<blockquote>
+<p>In the optimization step, ProGuard will then remove calls to such methods, if it can determine that the return values aren’t used.ProGuard will analyze your program code to find such methods automatically.It will not analyze library code, for which this option can therefore be useful.<br>In general, making assumptions can be dangerous; you can easily break the processed code. Only use this option if you know what you’re doing!</p>
+</blockquote>
+<p>方法如下所示，将其添加到proguard文件中即可。</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cpp" style="border-radius: 4px; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;">-assumenosideeffects <span class="hljs-class" style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px; word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">class</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">android</span>.<span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">util</span>.<span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">Log</span> {</span><br><span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">v</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">(…)</span></span>;<br>    <span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">i</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">(…)</span></span>;<br>    <span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">w</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">(…)</span></span>;<br>    <span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">d</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">(…)</span></span>;<br>   <span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">e</span><span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">(…)</span></span>;<br>}<br></code></pre></div>
+
+<h2 id="2、mavenCenter和JCenter"><a href="#2、mavenCenter和JCenter" class="headerlink" title="2、mavenCenter和JCenter"></a>2、mavenCenter和JCenter</h2><p>一般Gradle都是通过maven中央仓库和JCenter来获取构件的，这两者有何区别？<br>maven中央仓库（<a href="http://repo1.maven.org/maven2/）是由Sonatype公司提供的服务，它是Apache" target="_blank" rel="external">http://repo1.maven.org/maven2/）是由Sonatype公司提供的服务，它是Apache</a> Maven、SBT和其他构建系统的默认仓库，并能很容易被Apache Ant/Ivy、Gradle和其他工具所使用。开源组织例如Apache软件基金会、Eclipse基金会、JBoss和很多个人开源项目都将构件发布到maven中央仓库。<br>JCenter是Goovy Grape内的默认仓库，Gradle内建支持jcenter()仓库，项目库打包成aar文件类似jar，只是多了res，lib文件的包，上传到JCenter后，可以很方面的在本地调用库文件，相比于mavenCenter它的构件更多，性能也更好。但还是有些构件仅存在mavenCenter中，而在JCenter中没有。</p>
+<h2 id="3、Android中使用利用adb命令来修改文件"><a href="#3、Android中使用利用adb命令来修改文件" class="headerlink" title="3、Android中使用利用adb命令来修改文件"></a>3、Android中使用利用adb命令来修改文件</h2><p>由于某些原因，可能需要手机上的文件，如果手机root过，则很容易修改，方法如下（以修改/system/bin下面的文件为例）：</p>
+<p>（1）、首先获得root权限：adb root</p>
+<p>（2）、设置/system为可读写：adb remount</p>
+<p>（3）、将hosts文件复制到PC：adb pull /system/bin/xxx.so f://test/xxx.so</p>
+<p>（4）、修改PC机上文件，重新打包成yyy.so；</p>
+<p>（5）、将PC机上文件复制到手机：adb push f://test/yyy.so /system/etc/hosts</p>
+<h2 id="4、一些名词缩写含义"><a href="#4、一些名词缩写含义" class="headerlink" title="4、一些名词缩写含义"></a>4、一些名词缩写含义</h2><ul>
+<li>ISDN    Integrated Services Digital Network（数字网络综合服务）</li>
+<li>CLIR    Calling Line Identification Restriction（主叫线路识别限制）</li>
+<li>PLMN    Public Land Mobile Network（国际移动通讯电话网络网络）</li>
+<li>HPLMN    Home Public Land Mobile Network（国内移动通讯电话网络）</li>
+<li>MS    Mobile Station（移动电话）</li>
+<li>FM    Frequency Modulation（调频）</li>
+<li>IMSI    Internation Mobile Subscriber Identity（通用手机特定识别副）</li>
+<li>PIN    Personal Identification Number（pin码）</li>
+<li>MO    Mobile Originated（电话呼出）</li>
+<li>MT     Mobile Terminated（电话呼入）</li>
+<li>SIM    Subscriber Identigication Module（用户身份识别卡）</li>
+<li>STK    SIM tools KIT（STK）</li>
+<li>CSD     Circuit Switched Data（电路交换数据）</li>
+<li>GPRS    General Pachet Radip Service（通用分组无线服务技术）</li>
+<li>WAP    Wireless Aplication Protocol（无线应用协议）</li>
+<li>CB    Cell Broadcast（小区广播）</li>
+<li>APN    Access Point Name（存取）</li>
+<li>PDP    Packet Data Protocol（数据包协议）</li>
+<li>BAOC    Barring of All outgoing Calls supplementary service（禁止所有呼出）</li>
+<li>USSD    Unstructured(未组织的) Supplementary(附助的) Service Date（网络钱包）</li>
+<li>PSTN    Public Switched Telephone Network（座机、固定电话）</li>
+</ul>
+<h2 id="5、电子书一般都包含哪些格式的文件"><a href="#5、电子书一般都包含哪些格式的文件" class="headerlink" title="5、电子书一般都包含哪些格式的文件"></a>5、电子书一般都包含哪些格式的文件</h2><p>（1）、txt纯文本。<br>优点是体积小，适用于绝大多数设备。缺点是不支持图片、不支持封面、不支持超链接。</p>
+<p>（2）、chm。<br>比txt要好一些，可以分章节和加超链接，但是缺点是相对其它电子书格式，体积较大，并且依旧不支持很多东西。</p>
+<p>（3）、pdf。Adobe开发的格式，排版效果较好，适合用于复杂排版的电子刊物。缺点是在小屏上体验很差。</p>
+<p>（4）、mobi。<br>mobi能流行使用主要推手是Amazon，它和下面介绍的EPUB格式可以傻瓜式互转，它的发展很大程度上依靠Amazon。</p>
+<p>（5）、EPUB。<br>重点说一下，EPUB（Electronic Publication 的缩写，电子出版）是一种电子图书标准，由国际数字出版论坛提出；其中包括 3 种文件格式标准（文件的附文件名为 .epub），这个格式已取代了先前的 Open eBook 开放电子书标准。epub 格式对于复杂的排版，图表，公式等元素的兼容性比 mobi 格式好很多，在脚本，公式，矢量图形的支持方面也强过 mobi 格式，现阶段 epub 格式的优势体现在图文混排、图片嵌入字体等，未来可预测的优势是 epub 格式对于声音，影像等多媒体内容互动的支持上。</p>
+<p>（6）、azw, azw3。azw是 mobi 的另一种形式，也可以理解为 mobi 加了个壳。<br>azw3 的本质是 KF8，是随着 2011 年 Amazon 推出 Kindle Fire平板时一起推出的。它填补了 Mobi 对于复杂排版支持的缺陷，支持很多 HTML5和 CSS3 的语法，这就大大改善了原来 mobi 或 azw 内容排版上的一些缺陷，单纯从阅读排版的角度来讲，是不输 epub 格式的，azw3正逐渐取代 mobi 成为Amazon Kindle 电子书的主流格式。</p>
+<p>（7）、还有其它一些非主流的格式，如jar（比较老的格式），prc（palm上的电子书格式，也出现在Kindle等阅读器上），Djvu（一种高清扫描文件格式），Caj（特定格式特定阅读器才能打开），PDG（超星设计的电子书标准，用超星阅读器才能打开）就做过多介绍了，有兴趣的可以自己去搜索。</p>
+<h2 id="6、说点别的话题，关于理财"><a href="#6、说点别的话题，关于理财" class="headerlink" title="6、说点别的话题，关于理财"></a>6、说点别的话题，关于理财</h2><p>所谓理财，就是指将资金做出最明智的安排和运用，使金钱产生最高的效率和效用。<br>全球“股神”巴菲特曾有一句名言：如果一只股票你不打算持有10年，那么你最好连十分钟都不要拿。我国基金发展的历史同样证明了基金是长期理财的有效工具，而不是短期投机炒作的发财工具，基金只有长期持有，不错过收益率最高的交易日，才能获得可观收益。我们在投资基金之前都应该设置一个投资目标，如果达到目标收益率，可以赎回基金。不过，从整个市场行情来看，股票市场总体上处于一个上升的行情中，就可以考虑继续持有它。假若你投资的基金是为未来做准备，比如以后子女的教育或者养老的，你就没有必要在基金赚钱后卖了它，应选择继续持有。</p>
+<h2 id="7、什么是DTMF？"><a href="#7、什么是DTMF？" class="headerlink" title="7、什么是DTMF？"></a>7、什么是DTMF？</h2><p>DTMF（ Dual Tone Multi-Frequency ）：双音多频。用在通话过程中用户输入按键。<br>DTMF编解码器在编码时将击键或数字信息转换成双音信号并发送，解码时在收到的DTMF信号中检测击键或数字信息的存在性。<br>一个DTMF信号由两个频率的音频信号叠加构成。这两个音频信号的频率来自两组预分配的频率组：行频组或列频组。<br>每一对这样的音频信号唯一表示一个数字或符号。电话机中通常有16个按键，其中有10个数字键0～9和6个功能键*、#、A、B、C、D。<br>由于按照组合原理，一般应有8种不同的单音频信号。因此可采用的频率也有8种，故称之为多频，又因它采用从8种频率中任意抽出2种进行组合来进行编码，所以又称之为“8中取2”的编码技术。根据CCITT的建议，国际上采用的多种频率为687Hz、770Hz、852Hz、941Hz、1209Hz、1336Hz、1477Hz和1633Hz等8种。用这8种频率可形成16种不同的组合，从而代表16种不同的数字或功能键。</p>
+<h2 id="8、invalidate（）和postInvalidate（）区别"><a href="#8、invalidate（）和postInvalidate（）区别" class="headerlink" title="8、invalidate（）和postInvalidate（）区别"></a>8、invalidate（）和postInvalidate（）区别</h2><p>invalidate（）方法会导致整个View都无效，然后系统会立刻回调onDraw（）方法进行重绘，且该方法必须在主线程中调用。如果在子线程中调用，我们通常的做法是使用Thread+Handler发送消息的方式来调用，确保invalidate（）在主线程中执行。<br>而postInvalidate（）可以直接在子Thread中使用，它会延迟导致回调函数onDraw（）的执行，这就是两者的区别。需要注意的是，如果是在View中调用这两个方法那么会导致该View被绘制，而其它视图不会被绘制；如果是在ViewGroup中调用这两个方法那么会导致该ViewGroup下的所有子视图重绘。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/小知识/" rel="tag"># 小知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/06/面试知识点—HashMap和Hashtable的比较/" rel="next" title="面试知识点—HashMap和Hashtable的比较">
+                <i class="fa fa-chevron-left"></i> 面试知识点—HashMap和Hashtable的比较
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/16/知识点—多线程同步【3】之Exchanger/" rel="prev" title="知识点—多线程同步【3】之Exchanger">
+                知识点—多线程同步【3】之Exchanger <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、关闭Log功能"><span class="nav-number">1.</span> <span class="nav-text">1、关闭Log功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、mavenCenter和JCenter"><span class="nav-number">2.</span> <span class="nav-text">2、mavenCenter和JCenter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Android中使用利用adb命令来修改文件"><span class="nav-number">3.</span> <span class="nav-text">3、Android中使用利用adb命令来修改文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、一些名词缩写含义"><span class="nav-number">4.</span> <span class="nav-text">4、一些名词缩写含义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、电子书一般都包含哪些格式的文件"><span class="nav-number">5.</span> <span class="nav-text">5、电子书一般都包含哪些格式的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、说点别的话题，关于理财"><span class="nav-number">6.</span> <span class="nav-text">6、说点别的话题，关于理财</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、什么是DTMF？"><span class="nav-number">7.</span> <span class="nav-text">7、什么是DTMF？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、invalidate（）和postInvalidate（）区别"><span class="nav-number">8.</span> <span class="nav-text">8、invalidate（）和postInvalidate（）区别</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
