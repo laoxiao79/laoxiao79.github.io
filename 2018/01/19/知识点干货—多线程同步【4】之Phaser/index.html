@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="干货知识点," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本系列之前的标题是“面试知识点”，由于一些知识点并不都是面试时才用到，却是日常开发经常出现的，比如CyclicBarriar和Phaser，所以后续会将这个系列的标题改为“知识点干货”，希望能给大家带来更多优质的学习干货。 继续总结多线程同步常用的方法或者类，之前介绍了CountDownLatch，CyclicBarriar和Exchanger，这次介绍一个能同时替代CountDownLatch和">
+<meta name="keywords" content="干货知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知识点干货—多线程同步【4】之Phaser">
+<meta property="og:url" content="http://yoursite.com/2018/01/19/知识点干货—多线程同步【4】之Phaser/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="本系列之前的标题是“面试知识点”，由于一些知识点并不都是面试时才用到，却是日常开发经常出现的，比如CyclicBarriar和Phaser，所以后续会将这个系列的标题改为“知识点干货”，希望能给大家带来更多优质的学习干货。 继续总结多线程同步常用的方法或者类，之前介绍了CountDownLatch，CyclicBarriar和Exchanger，这次介绍一个能同时替代CountDownLatch和">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-19T12:29:56.850Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="知识点干货—多线程同步【4】之Phaser">
+<meta name="twitter:description" content="本系列之前的标题是“面试知识点”，由于一些知识点并不都是面试时才用到，却是日常开发经常出现的，比如CyclicBarriar和Phaser，所以后续会将这个系列的标题改为“知识点干货”，希望能给大家带来更多优质的学习干货。 继续总结多线程同步常用的方法或者类，之前介绍了CountDownLatch，CyclicBarriar和Exchanger，这次介绍一个能同时替代CountDownLatch和">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/19/知识点干货—多线程同步【4】之Phaser/"/>
+
+
+
+
+
+  <title>知识点干货—多线程同步【4】之Phaser | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/19/知识点干货—多线程同步【4】之Phaser/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">知识点干货—多线程同步【4】之Phaser</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-19T10:54:53+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本系列之前的标题是“面试知识点”，由于一些知识点并不都是面试时才用到，却是日常开发经常出现的，比如CyclicBarriar和Phaser，所以后续会将这个系列的标题改为“知识点干货”，希望能给大家带来更多优质的学习干货。</p>
+<p>继续总结多线程同步常用的方法或者类，之前介绍了CountDownLatch，CyclicBarriar和Exchanger，这次介绍一个能同时替代CountDownLatch和CyclicBarriar的新类。</p>
+<h3 id="Phaser–移相器"><a href="#Phaser–移相器" class="headerlink" title="Phaser–移相器"></a>Phaser–移相器</h3><p>Phaser的一个特别典型的应用场景是：它可以替代使用CountDownLatch和CyclicBarriar的任何场景。例如，在进行高并发多线程测试时，有时需要控制线程的启动时机，让它们能够同时启动，从而获得最大程度的并发，通常我们会使用CountDownLatch，这个完全可以使用Phaser进行替代。再如，我们需要某些任务在某一个阶段同时执行，再所有任务执行完成后， 再同时进行到下一个阶段继续执行，我们首先想到的是CyclicBarriar，而使用Phaser也可以完全代替CyclicBarriar。</p>
+<h2 id="1、Phaser的定义"><a href="#1、Phaser的定义" class="headerlink" title="1、Phaser的定义"></a>1、Phaser的定义</h2><p>Phaser是jdk1.7上新增的一个类，它是一个灵活的多线程同步工具，包含了CyclicBarrier和CountDownLatch的大部分功能，同时也具有一些它们不支持的特性。</p>
+<p>在使用它之前，需要了解两个概念，分别是phase和party。<br>phase就是阶段的意思，初值为0。当所有的线程执行任务时，它是分阶段的，每个阶段对应一个phase，当所有线程执行完本轮任务后，表示本阶段结束，进入到下一阶段，phase的值自动加1。<br>而party表示线程的个数，party=3表示Phaser对象当前管理着3个线程。通过方法可以<br>动态增parties计数，而这一点CyclicBarrier类是做不到的，它的线程数是在创建时设置好的。</p>
+<h2 id="2、常用方法"><a href="#2、常用方法" class="headerlink" title="2、常用方法"></a>2、常用方法</h2><p>Phaser对外提供的方法很多，我们只介绍几个重要的。</p>
+<h4 id="●-Phaser"><a href="#●-Phaser" class="headerlink" title="● Phaser()"></a>● Phaser()</h4><p>无参构造函数，创建一个Phaser对象。默认parties个数为0。后续可以通过register()、bulkRegister()方法来修改新的parties。在每个Phaser实例内部，会持有几个状态数据：终止状态、已经注册的parties个数、当前phase下已到达的parties个数、当前phase阶段数。</p>
+<h4 id="●-Phaser-int-parties"><a href="#●-Phaser-int-parties" class="headerlink" title="● Phaser(int parties)"></a>● Phaser(int parties)</h4><p>有参构造函数，一个Phaser对象，并初始一定数量的parties，相当于在初始化Phaser实例后，再regsiter此数量的parties。</p>
+<h4 id="●-arrive"><a href="#●-arrive" class="headerlink" title="● arrive()"></a>● arrive()</h4><p>一直阻塞，等待当前phase下其他parties到达。parties必须大于0，如果使用如果Phaser()创建实例，parties没有被register具体的值，调用此方法将会抛出异常。此方法同时返回当前phase周期数，如果Phaser实例已经终止，则返回负数。</p>
+<h4 id="●-awaitAdvance-int-phase"><a href="#●-awaitAdvance-int-phase" class="headerlink" title="● awaitAdvance(int phase)"></a>● awaitAdvance(int phase)</h4><p>阻塞方法，等待phase周期数下其他所有的parties都到达，参数指定了当前阻塞的phase周期阶段数。如果指定的phase与Phaser实例当前的phase不一致，会立即返回。可以这样来使用awaitAdvance(arrive())。</p>
+<h4 id="●-arriveAndAwaitAdvance"><a href="#●-arriveAndAwaitAdvance" class="headerlink" title="● arriveAndAwaitAdvance()"></a>● arriveAndAwaitAdvance()</h4><p>到达某个状态并且阻塞直到其他parties都到达，且advance。此方法等同于调用awaitAdvance(arrive())。</p>
+<h4 id="●-awaitAdvanceInterruptibly-int-phase"><a href="#●-awaitAdvanceInterruptibly-int-phase" class="headerlink" title="● awaitAdvanceInterruptibly(int phase)"></a>● awaitAdvanceInterruptibly(int phase)</h4><p>阻塞方法，同awaitAdvance，并且支持interrupted响应，参数指明是那个阶段。waiter线程可以被外部中断，在被中断时此方法立即返回，并抛出InterrutedException异常。</p>
+<h4 id="●-awaitAdvanceInterruptibly-int-phase-long-timeout-TimeUnit-unit"><a href="#●-awaitAdvanceInterruptibly-int-phase-long-timeout-TimeUnit-unit" class="headerlink" title="● awaitAdvanceInterruptibly(int phase,long timeout,TimeUnit unit)"></a>● awaitAdvanceInterruptibly(int phase,long timeout,TimeUnit unit)</h4><p>阻塞方法，同awaitAdvance，支持timeout类型的interrupted响应，参数指明是那个阶段。当当前线程阻塞等待timeout时长后，抛出TimeoutException异常。<br>如果你希望阻塞机制支持timeout、interrupted响应，可以使用类似的awaitAdvanceInterruptibly两种重载的方法。</p>
+<h4 id="●-onAdvance-int-phase-int-registeredParties"><a href="#●-onAdvance-int-phase-int-registeredParties" class="headerlink" title="● onAdvance(int phase,int registeredParties)"></a>● onAdvance(int phase,int registeredParties)</h4><p>这个方法很重要，是一个回调方法。当进入下一个phase时会回调到这个方法中进行处理。如果它返回true表示此Phaser应该终止（Phaser的状态设为termination），否则可以继续进行。phase参数表示当前周期数，registeredParties表示当前已经注册的parties个数。<br>大多情况下，开发者应该重写此方法，来实现自定义的advance回调处理机制。</p>
+<h4 id="●-register"><a href="#●-register" class="headerlink" title="● register()"></a>● register()</h4><p>注册一个party，每调用一次就会使Phaser实例内部Paties数量加1。如果此时onAdvance方法正在执行，此方法将会等待它执行完毕后才会返回。此方法返回当前的phase周期数，如果Phaser已经中断，将会返回负数。</p>
+<h4 id="●-bulkRegister-int-parties"><a href="#●-bulkRegister-int-parties" class="headerlink" title="● bulkRegister(int parties)"></a>● bulkRegister(int parties)</h4><p>进行批量注册多个parties，其它功能和register()相同。</p>
+<h4 id="●-getArrivedParties"><a href="#●-getArrivedParties" class="headerlink" title="● getArrivedParties()"></a>● getArrivedParties()</h4><p>获取到达的parties个数。</p>
+<h4 id="●-getPhase"><a href="#●-getPhase" class="headerlink" title="● getPhase()"></a>● getPhase()</h4><p>获取当前phase周期数，如果Phaser已经中断，则返回负值。</p>
+<h4 id="●-getRegisteredParties"><a href="#●-getRegisteredParties" class="headerlink" title="● getRegisteredParties()"></a>● getRegisteredParties()</h4><p>获取注册的parties个数。</p>
+<h4 id="●-getUnarrivedParties"><a href="#●-getUnarrivedParties" class="headerlink" title="● getUnarrivedParties()"></a>● getUnarrivedParties()</h4><p>获取还未到达的parties个数。</p>
+<h2 id="3、演示代码"><a href="#3、演示代码" class="headerlink" title="3、演示代码"></a>3、演示代码</h2><p>Phaser的使用场景很多，我们这里只举一个例子。</p>
+<div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cs" style="border-radius: 4px; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//创建时，指定参与的parties个数</span><br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> parties = <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">3</span>;<br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//也可以在创建时不指定parties，通过使用register或者bulkRegister随时注册</span><br>Phaser phaser = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> Phaser();<br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//主线程先注册一个party，因为register()执行一次只能创建一个party</span><br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//类似与CountDownLatch，在主线程中等待所有的parties到达后再解除阻塞</span><br>phaser.register();<br>ExecutorService executor = Executors.newFixedThreadPool(parties);<br><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">for</span>(<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> i = <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">0</span>; i &lt; parties; i++) {<br>  phaser.register();<span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//每创建一个线程，我们就注册一个party</span><br>  final <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> threadId = i;<br>  executor.execute(<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> Runnable() {<br>     @<span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">Override<br>     <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">void</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">run</span>(<span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"></span>) </span>{<br>        <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">try</span> {<br>           <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> i = <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">0</span>;<br>           <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//2的意思是最大周期</span><br>           <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">while</span> (i &lt; <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">2</span> &amp;&amp; !phaser.isTerminated()) {<br>              System.<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">out</span>.println(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“current threadId :”</span>+threadId+<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“，phase:”</span> + phaser.getPhase());<br>              <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//模拟每个线程进行的工作</span><br>              Thread.sleep(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">1000</span>);<br>              <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//等待同一周期内其它线程到来，然后进入新的周期，从而同步进行</span><br>              phaser.arriveAndAwaitAdvance();<br>              i++;<br>           }<br>        } <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">catch</span> (Exception e) {<br>           e.printStackTrace();<br>        }<br>        <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">finally</span> {<br>           phaser.arriveAndDeregister();<br>        }<br>     }<br>  });<br>}<br><span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//主线程到达，且注销自己，线程池中的线程可开始分周期进行执行</span><br>System.<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">out</span>.println(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“main thread arriveAndDeregister！”</span>);<br>phaser.arriveAndDeregister();<br></code></pre></div>
+
+<p>执行结果应该是如下这样的格式，</p>
+<blockquote>
+<p>main thread arriveAndDeregister！</p>
+<p>current threadId :0，phase:0</p>
+<p>current threadId :1，phase:0</p>
+<p>current threadId :2，phase:0</p>
+<p>current threadId :2，phase:1</p>
+<p>current threadId :0，phase:1</p>
+<p>current threadId :1，phase:1</p>
+</blockquote>
+<h2 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h2><p>综上，我们可以使用Phaser替代CountDownLatch。对于CountDownLatch而言，<br>它的两个重要的方法，await()方法和countDown()，在Phaser中，可以用awaitAdvance(int n)和arrive()分别来代替，前者会使线程进入等待状态，后者使计数器减一，当计数器为0时所有等待的线程开始执行。<br>用Phaser替代CyclicBarrier更简单，CyclicBarrier的await()方法可以直接用Phaser的arriveAndAwaitAdvance()方法替代。<br>所以，在使用CountDownLatch或者CyclicBarrier时，我们可以考虑使用Phaser来代替，效率会更高一些。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/干货知识点/" rel="tag"># 干货知识点</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/16/知识点—多线程同步【3】之Exchanger/" rel="next" title="知识点—多线程同步【3】之Exchanger">
+                <i class="fa fa-chevron-left"></i> 知识点—多线程同步【3】之Exchanger
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/19/知识点干货—Enumeration和Iterator的对比/" rel="prev" title="知识点干货—Enumeration和Iterator的对比">
+                知识点干货—Enumeration和Iterator的对比 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Phaser–移相器"><span class="nav-number">1.</span> <span class="nav-text">Phaser–移相器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Phaser的定义"><span class="nav-number"></span> <span class="nav-text">1、Phaser的定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、常用方法"><span class="nav-number"></span> <span class="nav-text">2、常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#●-Phaser"><span class="nav-number">0.1.</span> <span class="nav-text">● Phaser()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-Phaser-int-parties"><span class="nav-number">0.2.</span> <span class="nav-text">● Phaser(int parties)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-arrive"><span class="nav-number">0.3.</span> <span class="nav-text">● arrive()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-awaitAdvance-int-phase"><span class="nav-number">0.4.</span> <span class="nav-text">● awaitAdvance(int phase)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-arriveAndAwaitAdvance"><span class="nav-number">0.5.</span> <span class="nav-text">● arriveAndAwaitAdvance()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-awaitAdvanceInterruptibly-int-phase"><span class="nav-number">0.6.</span> <span class="nav-text">● awaitAdvanceInterruptibly(int phase)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-awaitAdvanceInterruptibly-int-phase-long-timeout-TimeUnit-unit"><span class="nav-number">0.7.</span> <span class="nav-text">● awaitAdvanceInterruptibly(int phase,long timeout,TimeUnit unit)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-onAdvance-int-phase-int-registeredParties"><span class="nav-number">0.8.</span> <span class="nav-text">● onAdvance(int phase,int registeredParties)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-register"><span class="nav-number">0.9.</span> <span class="nav-text">● register()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-bulkRegister-int-parties"><span class="nav-number">0.10.</span> <span class="nav-text">● bulkRegister(int parties)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-getArrivedParties"><span class="nav-number">0.11.</span> <span class="nav-text">● getArrivedParties()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-getPhase"><span class="nav-number">0.12.</span> <span class="nav-text">● getPhase()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-getRegisteredParties"><span class="nav-number">0.13.</span> <span class="nav-text">● getRegisteredParties()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#●-getUnarrivedParties"><span class="nav-number">0.14.</span> <span class="nav-text">● getUnarrivedParties()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、演示代码"><span class="nav-number"></span> <span class="nav-text">3、演示代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结"><span class="nav-number"></span> <span class="nav-text">4、总结</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
