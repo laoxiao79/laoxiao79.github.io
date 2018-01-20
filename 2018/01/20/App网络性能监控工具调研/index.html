@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="性能 经验 总结," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="App网络性能监控工具调研由于工作需要，之前想在我们的盒子上监控网络性能，于是对国内外针对app的网络性能能够进行监控的工具进行了调研，有付费的也有收费的。这里把之前调研的结果整理出来分享给大家。主要调研了如下三家。 1、听云官网：http://www.tingyun.com/ 简介：全景应用性能可视化。听云可以实现您的应用性能全方位可视化，从PC端、浏览器端、移动客户端到服务端，帮您监控定位崩溃">
+<meta name="keywords" content="性能 经验 总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="App网络性能监控工具调研">
+<meta property="og:url" content="http://yoursite.com/2018/01/20/App网络性能监控工具调研/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="App网络性能监控工具调研由于工作需要，之前想在我们的盒子上监控网络性能，于是对国内外针对app的网络性能能够进行监控的工具进行了调研，有付费的也有收费的。这里把之前调研的结果整理出来分享给大家。主要调研了如下三家。 1、听云官网：http://www.tingyun.com/ 简介：全景应用性能可视化。听云可以实现您的应用性能全方位可视化，从PC端、浏览器端、移动客户端到服务端，帮您监控定位崩溃">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xingnenggongjudiaoyan/1.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xingnenggongjudiaoyan/2.png?raw=true">
+<meta property="og:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xingnenggongjudiaoyan/3.png?raw=true">
+<meta property="og:updated_time" content="2018-01-20T02:02:32.520Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="App网络性能监控工具调研">
+<meta name="twitter:description" content="App网络性能监控工具调研由于工作需要，之前想在我们的盒子上监控网络性能，于是对国内外针对app的网络性能能够进行监控的工具进行了调研，有付费的也有收费的。这里把之前调研的结果整理出来分享给大家。主要调研了如下三家。 1、听云官网：http://www.tingyun.com/ 简介：全景应用性能可视化。听云可以实现您的应用性能全方位可视化，从PC端、浏览器端、移动客户端到服务端，帮您监控定位崩溃">
+<meta name="twitter:image" content="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xingnenggongjudiaoyan/1.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/20/App网络性能监控工具调研/"/>
+
+
+
+
+
+  <title>App网络性能监控工具调研 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/20/App网络性能监控工具调研/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">App网络性能监控工具调研</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-20T09:46:06+08:00">
+                2018-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>App网络性能监控工具调研<br>由于工作需要，之前想在我们的盒子上监控网络性能，于是对国内外针对app的网络性能能够进行监控的工具进行了调研，有付费的也有收费的。这里把之前调研的结果整理出来分享给大家。<br>主要调研了如下三家。</p>
+<h2 id="1、听云"><a href="#1、听云" class="headerlink" title="1、听云"></a>1、听云</h2><p>官网：<a href="http://www.tingyun.com/" target="_blank" rel="external">http://www.tingyun.com/</a></p>
+<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>全景应用性能可视化。<br>听云可以实现您的应用性能全方位可视化，从PC端、浏览器端、移动客户端到服务端，帮您监控定位崩溃、卡顿、交互过慢、第三方API调用失败、数据库性能下降、CDN质量差等多维复杂的性能问题。国内首家完整实现全栈溯源。<br>在复杂的应用环境下，可精确定位并判断网络、移动端、浏览器端、服务端性能问题根源，降低跨部门排障沟通成本，实现完整业务调用链跟踪。</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xingnenggongjudiaoyan/1.png?raw=true" alt=""></p>
+<p>收费情况：<br><a href="http://doc.tingyun.com/app/html/ruhekaitong.html" target="_blank" rel="external">http://doc.tingyun.com/app/html/ruhekaitong.html</a></p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xingnenggongjudiaoyan/2.png?raw=true" alt=""></p>
+<p>听云App Android SDK支持Android 2.3以上的系统，同时支持Ant、 Eclipse、Maven和Gradle（Android Studio）四种编译模式；iOS SDK支持iOS 6.0以上系统。并且支持CocoaPods。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p><strong>国内做网络性能监控比较成熟和专业一家公司，公司已经上市，并且和BAT这样的互联网公司有合作关系，产品应该比较靠谱，但是不足是需要收费。</strong></p>
+<h2 id="2、TalkingData"><a href="#2、TalkingData" class="headerlink" title="2、TalkingData"></a>2、TalkingData</h2><p>官网：<a href="https://www.talkingdata.com/" target="_blank" rel="external">https://www.talkingdata.com/</a></p>
+<p>####支持的功能：####<br>1、基础-渠道统计</p>
+<p>给应用的安装包打入特殊的渠道标记，用户安装并使用后，就可以在报表中分不同渠道来源单独查询相应的数据。<br>在您为应用商店、下载站等分发渠道提供应用安装包时，可以加入渠道标记；在进行特别的活动时也可加入特殊渠道标记便于单独分析效果。</p>
+<p>2、基础-错误报告</p>
+<p>收集应用的错误日志可帮助您来修正Bug、改善产品。报表中，我们除了提供错误次数的数据外，还提供错误的详细信息：错误发生时间，堆栈调用情况，并会对错误进行合理分类。</p>
+<p>3、高级-页面访问</p>
+<p>此功能用于帮助开发者统计应用中各个页面的访问次数和停留时长，并可以追踪用户从某个页面离开后所访问的其他页面，为产品优化提供依据。</p>
+<p>4、高级-自定义事件（含灵动分析）</p>
+<p>自定义事件用于追踪任何需要了解的用户行为，如：用户点击某功能按钮、填写某个输入框、触发了某个广告等。<br>灵动事件是一种无需预先埋点，随时可以按需配置即可实现的自定义事件追踪方式。在正确集成App Analytics SDK后，任何时候通过报表页面设置，就可以轻松实现自定义事件追踪。</p>
+<p> 5、高级-标准事件（应用内交易）</p>
+<p>用于商城类的应用。<br>注册接口用于记录用户在使用应用过程中的注册行为。建议在注册成功时调用此接口。</p>
+<p>6、高级-用户质量评估</p>
+<p>用户质量评估功能，依据设备信息校验、IP离散度分析和SDK中所采集的姿态数据分析等多种技术手段，从所覆盖的设备中甄别出异常设备。异常设备可以进一步区分为静默设备和其他异常设备。<br>静默设备，特指打开SDK中反作弊开关，但是采集到的姿态数据不符合正常的用户行为姿态分布的设备。这部分数据作为异常设备判断条件的一种，提高异常设备识别的精度。 </p>
+<p>7、高级-推送营销</p>
+<p>推送营销功能，为开发者提供利用数据进行精准推送的能力，结合分析平台提供用户分群、画像、预测等能力，对不同人群进行不同推送，实时分析数据，不断对比效果，优化营销活动，减少不必要的骚扰，提高转化效果。<br>TalkingData平台不仅提供了TalkingData推送通道，还可以与个推、极光等推送平台组合使用，借助分析能力实现实时精准化推送。如果应用中已经集成了这两家第三方推送能力，则可以使用这种方式快速实现精准推送。 </p>
+<p>8、高级-易认证</p>
+<p>易认证提供稳定的手机短信认证服务，简单集成，即可获得从认证码下发到安全验证的全部能力。我们提供多达10,000条/日免费认证短信量。 </p>
+<p>集成后的demo，数据如下所示:</p>
+<p><img src="https://github.com/laoxiao79/MarkdownPhotos/blob/master/xingnenggongjudiaoyan/3.png?raw=true" alt=""></p>
+<h3 id="总结：-1"><a href="#总结：-1" class="headerlink" title="总结："></a>总结：</h3><p><strong>在talkingdata中未找到性能监控方面的功能，只有数据分析，事件分析，渠道统计，崩溃统计，页面访问等的统计功能。<br>收费情况：常用功能免费。</strong></p>
+<h2 id="3、Firebase"><a href="#3、Firebase" class="headerlink" title="3、Firebase"></a>3、Firebase</h2><p>官网：<a href="https://firebase.google.cn/" target="_blank" rel="external">https://firebase.google.cn/</a></p>
+<p>提供的功能：</p>
+<h3 id="1、Analytics分析"><a href="#1、Analytics分析" class="headerlink" title="1、Analytics分析"></a>1、Analytics分析</h3><p>获取详细分析数据，以衡量并分析用户与您应用的互动情况。<br>在单个信息中心内分析用户归因和行为，以便对您的产品路线图做出明智的决定。从报告获取实时分析结果，或将您的原始事件数据导出到 Google BigQuery 以进行自定义分析。</p>
+<p>Google Analytics for Firebase 是一款免费的应用测量解决方案，该解决方案可以提供关于应用使用量和用户参与度的数据分析。Firebase 的核心是 Google Analytics for Firebase，一款免费并且没有任何限制的解决方案。 Analytics 跨越 Firebase 功能进行集成，并且可以无限制地向您提供多达 500 个不同的事件的报告，您可以利用 Firebase SDK 定义这些事件。 Google Analytics for Firebase 报告可帮助您清晰地了解您的用户的行为方式，让您可以针对应用营销和性能优化制定明智的决策。</p>
+<p>主要功能</p>
+<p>无限制报告Google Analytics for Firebase 可提供多达 500 种不同事件的无限制报告。目标设备细分可以基于设备数据、自定义事件或用户属性在 Firebase console 中定义自定义目标设备。 在锁定新功能或通知时，这些目标设备可以与其他 Firebase 功能结合使用。</p>
+<p> <a href="https://firebase.google.com/docs/analytics/" target="_blank" rel="external">https://firebase.google.com/docs/analytics/</a></p>
+<h3 id="2、Authentication身份验证"><a href="#2、Authentication身份验证" class="headerlink" title="2、Authentication身份验证"></a>2、Authentication身份验证</h3><p>对使用不同提供方的帐号登录的用户进行身份验证和管理，而无需服务器端代码以简单安全的方式管理您的用户。Firebase 身份验证提供了多种身份验证方法，包括电子邮件地址/密码、Google 或 Facebook 等第三方提供商，或直接使用您现有的帐号系统。构建您自己的界面，或者利用我们的开放源代码以及完全可自定义的界面。</p>
+<p>大多数应用都需要了解用户的身份。知道用户的身份可以让应用将用户数据安全地保存在云中并跨所有用户设备提供相同的个性化体验。Firebase Authentication 提供后端服务、易用 SDK 和现成 UI 库来向应用验证用户的身份。它支持使用密码、深受欢迎的联合用户身份提供商（如 Google、Facebook 和 Twitter）等方法进行身份验证。<br>Firebase Authentication 与其他 Firebase 服务紧密集成，充分利用了行业标准（如 OAuth 2.0 和 OpenID Connect），所以可与您的自定义后端轻松集成。</p>
+<p>主要功能</p>
+<p>您可以使用 FirebaseUI 作为一种完整访客身份验证解决方案，或使用 Firebase Authentication SDK 手动将一种或几种登录方法集成到您的应用中，让用户登录您的 Firebase 应用。</p>
+<p><a href="https://firebase.google.com/docs/auth/" target="_blank" rel="external">https://firebase.google.com/docs/auth/</a></p>
+<h3 id="3、Database实时数据库"><a href="#3、Database实时数据库" class="headerlink" title="3、Database实时数据库"></a>3、Database实时数据库</h3><p>按规模付费</p>
+<p>存储数据并在所有关联的客户端上实时同步</p>
+<p>利用我们的 NoSQL 云端数据库存储和同步数据。数据会跨所有客户端进行实时同步，无论您的应用是否处于离线状态。<br>Firebase 实时数据库是一种托管在云端的数据库。它会将数据存储为 JSON，并将其实时同步到每个关联的客户端。使用 Android、iOS 和 JavaScript SDK 构建跨平台应用时，所有客户端共享一个实时数据库实例并自动接收包含最新数据的更新。</p>
+<p>主要功能</p>
+<p>实时Firebase 实时数据库使用的不是常见的 HTTP 请求，而是使用数据同步。每当数据变化时，任何连接的设备都会以毫秒速度收到该更新数据。提供协同、沉浸式体验，无需考虑网络因素。离线Firebase 应用即使在离线状态仍会保持响应，因为 Firebase Realtime Database SDK 会将您的数据持久保留在磁盘上。一旦重新建立连接，客户端设备会立即接收错过的任何变化，以便与当前服务器状态保持同步。可从客户端设备访问Firebase 实时数据库可以直接从移动设备或网络浏览器访问，因此根本不需要应用服务器。安全和数据验证均通过 Firebase 实时数据库安全规则进行，这些表达式规则会在读取和写入数据时执行。</p>
+<p><a href="https://firebase.google.com/docs/database/" target="_blank" rel="external">https://firebase.google.com/docs/database/</a></p>
+<h3 id="4、Cloud-Storage"><a href="#4、Cloud-Storage" class="headerlink" title="4、Cloud Storage"></a>4、Cloud Storage</h3><p>按规模付费</p>
+<p>存储和检索由用户生成的内容（如图片、音频和视频），无需服务器端代码<br>Firebase 存储是专为需要存储和提供用户生成的内容（如照片或视频）的应用开发者而打造的。<br>无论网络质量如何，Firebase 存储都能为您的 Firebase 应用提供 Google 安全品质的文件上传和下载服务。您可以使用此功能存储图片、音频、视频或其他由用户生成的内容。Firebase 存储基于功能强大、使用简单且经济实惠的对象存储服务 Google 云端存储。</p>
+<p>主要功能</p>
+<p>稳健的操作性无论网络质量如何，Firebase 存储都能执行上传和下载操作。上传和下载非常稳健，这意味着这些操作会从之前停止的地方重新启动，从而为您的用户节省时间和带宽。可靠的安全性Firebase 存储与 Firebase 身份验证集成，从而为开发者提供简单直观的身份验证功能。您可以使用我们的声明式安全模型，根据文件名、大小、内容类型和其他元数据来确定是否允许访问。可扩展性高Firebase 存储由 Google 云端存储提供支持，当您的应用大受欢迎，数据呈爆发式增长时，Firebase 存储可提供 PB 级的容量规模。与 Snapchat 使用相同的基础架构，帮助您的应用从原型到正式版轻松成长。</p>
+<p><a href="https://firebase.google.com/docs/storage/" target="_blank" rel="external">https://firebase.google.com/docs/storage/</a></p>
+<h3 id="5、Hosting托管"><a href="#5、Hosting托管" class="headerlink" title="5、Hosting托管"></a>5、Hosting托管</h3><p>按规模付费</p>
+<p>使用安全的全球内容分发网络，在几秒内搞定网页应用和移动网页应用的部署</p>
+<p>Firebase Hosting 为您的网络应用提供快速安全的静态托管。</p>
+<p>Firebase Hosting 是为开发者提供的生产级网络内容托管。利用 Hosting，您仅需一条命令，即可快速简单地将网络应用和静态内容部署到全球内容交付网络 (CDN)。</p>
+<p>主要功能</p>
+<p>借助安全连接提供服务现代网络十分安全。 Firebase Hosting 中内置了零配置的 SSL，因此内容可以始终安全地进行交付。快速交付内容您上传的每个文件均缓存至全球的 CDN 边缘的 SSD 上。 无论您的用户身处何处，均可快速交付内容。快速部署通过使用 Firebase CLI，您的应用可在短短几秒钟内便可完成安装并正常运行。 利用命令行工具，您可以轻松将部署目标添加到构建进程中。一键式回滚快速部署固然十分有用，但能够撤消错误会更有用。 Firebase Hosting 使用一键式回滚提供完整的版本控制和管理。</p>
+<p><a href="https://firebase.google.com/docs/hosting/" target="_blank" rel="external">https://firebase.google.com/docs/hosting/</a></p>
+<h3 id="6、Cloud-Functions"><a href="#6、Cloud-Functions" class="headerlink" title="6、Cloud Functions"></a>6、Cloud Functions</h3><p>按规模付费</p>
+<p>为您的移动应用运行受管的后端代码，扩展并连接各项 Firebase 功能</p>
+<p>Cloud Functions for Firebase lets you automatically run backend code in response to events triggered by Firebase features and HTTPS requests. Your code is stored in Google’s cloud and runs in a managed environment. There’s no need to manage and scale your own servers.<br>Already using Cloud Functions on Google Cloud Platform? Learn more about how Firebase fits into the picture.</p>
+<p>Beta</p>
+<p>This is a Beta release of Google Cloud Functions. This API might be changed in backward-incompatible ways and is not subject to any SLA or deprecation policy.</p>
+<p><a href="https://firebase.google.com/docs/functions/" target="_blank" rel="external">https://firebase.google.com/docs/functions/</a></p>
+<h3 id="7、Test-Lab测试实验室"><a href="#7、Test-Lab测试实验室" class="headerlink" title="7、Test Lab测试实验室"></a>7、Test Lab测试实验室</h3><p>按规模付费</p>
+<p>针对各种各样的设备测试您的 Android 应用。</p>
+<p>在 Google 数据中心内托管的设备上测试您的应用。</p>
+<p>Firebase Android 测试实验室提供了用于测试 Android 应用的基于云的基础架构。只需一项操作，您就能在各种设备和设备配置中启动对您的应用的测试。在 Firebase 控制台的您的项目中会提供测试结果（包括日志、视频和屏幕截图）。即使您没有为自己的应用编写过任何测试代码，测试实验室也可以自动测试您的应用，以查找崩溃问题。</p>
+<p>主要功能</p>
+<p>在真实设备上测试使用测试实验室在 Google 数据中心内安装并运行的设备上测试您的应用。测试实验室可帮助您查找仅在特定设备配置（例如，运行特定 Android API 级别和特定语言区域设置的 Nexus 5）上出现的问题。即使您没有编写任何测试代码，也能运行应用测试您可以使用 Robo 测试查找应用的问题，因此，即使您没有编写应用测试代码，您仍可以测试自己的应用。Robo 测试会分析应用的用户界面的结构，然后通过自动模拟用户活动来探索该界面。如果您已为应用编写了 Instrumentation 测试代码，则测试实验室也可以运行这些测试。工作流集成测试实验室已与 Android Studio、Firebase 控制台和 gcloud 命令行集成。您还可以将测试实验室与持续集成 (CI) 系统配合使用。</p>
+<p><a href="https://firebase.google.com/docs/test-lab/" target="_blank" rel="external">https://firebase.google.com/docs/test-lab/</a></p>
+<h3 id="8、Crash-Reporting崩溃报告"><a href="#8、Crash-Reporting崩溃报告" class="headerlink" title="8、Crash Reporting崩溃报告"></a>8、Crash Reporting崩溃报告</h3><p>在应用崩溃或停止运行时获得可作为行动依据的洞察信息及全面的分析数据。<br>通过详细的错误报告和崩溃报告来诊断移动应用中的问题。您可以在”Firebase Crash”信息中心内按照错误和崩溃的出现频率与影响的严重程度对报告进行优先级排序，还可以在该信息中心内监控应用的总体运行状况以及跟踪用户流。您可以随时随地通过电子邮件通知获悉相关信息。</p>
+<p>综合性可操作信息，旨在帮助您诊断和修复应用中的问题。</p>
+<p>Crash Reporting 创建关于应用中错误的详细报告。错误按组划分为若干堆叠追踪类似的聚类，并按对用户的影响严重程度分类。除了自动生成报告外，您还可以记录自定义事件，以帮助捕获导致崩溃的步骤。<br>Crash Reporting 目前正处于测试版发布阶段，在此期间我们解决一些已知问题。</p>
+<p>主要功能<br>监控致命错误和非致命错误监控 iOS 中的致命错误以及 Android 中的致命和非致命错误。 报告按对用户影响的严重程度分类。收集您诊断问题所需的数据每份报告都含有全面堆叠追踪以及发生错误时的设备特性、性能数据和用户环境。 类似报告自动群集，更加容易识别相关的错误。集成 Analytics捕获的错误设为 Analytics 中的 app_exception 事件，以便您根据看到错误的用户过滤目标受众群体。免费而简单Crash Reporting 免费使用。您将 Firebase 添加至您的应用后，只需要几行代码就能够进行全面错误报告。</p>
+<p><a href="https://firebase.google.com/docs/crash/" target="_blank" rel="external">https://firebase.google.com/docs/crash/</a></p>
+<h3 id="9、Notifications"><a href="#9、Notifications" class="headerlink" title="9、Notifications"></a>9、Notifications</h3><p>管理通知广告系列，适时发送讯息以吸引合适的用户</p>
+<p>The Notifications composer 是一种支持为移动应用开发者发送具有针对性的用户通知的免费服务。<br>The Notifications composer （the Notifications composer）以 Firebase Cloud Messaging 和 FCM SDK 为基础构建，为寻求灵活的通知平台的开发者和组织提供一个选项，只需编写少量代码即可开始使用，并且还提供一个用于发送消息的图形控制台。通过使用 the Notifications composer 控制台 GUI，您可以重新吸引和保留用户群，促进应用发展并支持营销广告系列。</p>
+<p>主要功能</p>
+<p>the Notifications composer 与 Firebase Analytics 紧密集成，允许您通过自定义目标设备有针对性地发送通知。 您也可以为应用、版本以及语言锁定预定义的用户群。通过向目标客户群发送通知，您可以准确地与正确的用户目标设备联系，及时了解可用升级、新功能或其他 Google 新闻的更新信息。</p>
+<p>通知分析借助内置的通知分析收集和漏斗分析，分析再次投入的转化率。通用消息定位预定义的用户群中的目标客户端、自定义的分析目标设备、已订阅主题的客户端以及单个设备。灵活的消息安排立即递送通知（最多 2kb），或者在客户端本地时间的某个将来时间递送</p>
+<p><a href="https://firebase.google.com/docs/notifications/" target="_blank" rel="external">https://firebase.google.com/docs/notifications/</a></p>
+<h3 id="10、Remote-Config-远程配置"><a href="#10、Remote-Config-远程配置" class="headerlink" title="10、Remote Config 远程配置"></a>10、Remote Config 远程配置</h3><p>使用服务器端配置参数自定义应用行为和开展相关实验。</p>
+<p>自定义您的应用针对每个用户的呈现方式。改变外观和风格，逐步推出功能，运行 A/B 测试，向某些用户提供自定义的内容，或在不部署新版本的情况下进行其他更新，所有这些操作都可以在 Firebase 控制台中进行。监控您所做更改的影响，并在几分钟内进行调整。</p>
+<p>无需发布应用更新就能更改应用的行为和外观。</p>
+<p>Firebase 远程配置是一项云端服务，支持您更改应用的行为和外观，而无需用户下载应用更新。使用远程配置时，您可以创建应用内默认值，用于控制应用的行为和外观。之后，您便可以使用 Firebase 控制台为应用的所有用户或您的细分用户群重写应用内默认值。您的应用将可控制何时应用更新，经常检查有无更新，并应用这些更新，对性能的影响则微乎其微。<br>主要功能</p>
+<p>向应用的用户群快速发布更改您可以通过更改服务端参数值来更改应用的默认行为和外观。例如，您可以更改应用的布局或颜色主题以配合季节性促销，而无需发布应用更新。为细分用户群量身打造应用您可以使用远程配置按应用版本、Firebase Analytics 受众群体、语言等为应用的不同细分用户群提供不同的用户体验。运行 A/B 测试以改进您的应用您可以结合使用远程配置随机百分位定位和 Firebase Analytics，在不同的细分用户群中针对应用的改进之处进行 A/B 测试，以便能够先验证这些改进之处，然后再将其推向整个用户群。</p>
+<p><a href="https://firebase.google.com/docs/remote-config/" target="_blank" rel="external">https://firebase.google.com/docs/remote-config/</a></p>
+<h3 id="11、Dynamic-Links-动态链接"><a href="#11、Dynamic-Links-动态链接" class="headerlink" title="11、Dynamic Links 动态链接"></a>11、Dynamic Links 动态链接</h3><p>将用户导向至您应用中的适当位置，不管用户是否已安装您的应用。</p>
+<p>使用深层链接为 iOS、Android 和网页应用提供自定义的用户体验。您可以使用深层链接帮助移动网页促进原生应用的转化、用户间分享、社交和营销广告系列等。动态链接为您提供了归因工具，以便更好地了解您的移动用户增长情况。</p>
+<p>Firebase 动态链接可用于多种平台，无论用户是否已经安装了您的应用，这类链接都能按照您所需的方式工作。<br>通过动态链接，您的用户可以在他们打开您的链接的平台上获得最佳体验。如果用户在 iOS 或 Android 上打开一个动态链接，则可以直接转到您的原生应用中的链接内容。如果用户在桌面浏览器中打开相同的动态链接，则可以转到您网站上的同等内容。</p>
+<p>此外，无论应用是否已安装，动态链接都可以工作：如果用户在 iOS 或 Android 上打开一个动态链接，但还没有安装您的应用，则可以提示该用户安装您的应用；安装后，您的应用就会启动并可以访问该链接。</p>
+<p><a href="https://firebase.google.com/docs/dynamic-links/" target="_blank" rel="external">https://firebase.google.com/docs/dynamic-links/</a></p>
+<h3 id="12、AdMob"><a href="#12、AdMob" class="headerlink" title="12、AdMob"></a>12、AdMob</h3><p>展示来自数百万 Google 广告客户的广告，以巧妙方式利用您的应用获得更多收入。</p>
+<p>通过向全球受众展示有吸引力的广告来赚取收益。AdMob 具备各种功能，能够为您实施一流的获利策略并最大程度地提高每个用户带来的收入。它可以针对您的应用进行定制，其 API 可轻松集成丰富的广告格式。</p>
+<p>adMob by Google 是通过移动应用及针对性应用内广告获利的最简单方法。</p>
+<p>AdMob by Google 是一种移动广告平台，借助该平台您可从您的应用中获得可观的收入。将 AdMob 与 Google Analytics for Firebase 相结合，您不仅可得到更多的应用使用量数据，而且可以提升分析能力。无需更改现有 AdMob 配置，Firebase 便可与 AdMob 集成在一起。</p>
+<p><a href="https://firebase.google.com/docs/admob/" target="_blank" rel="external">https://firebase.google.com/docs/admob/</a></p>
+<h3 id="13、Cloud-Messaging-云消息传递"><a href="#13、Cloud-Messaging-云消息传递" class="headerlink" title="13、Cloud Messaging 云消息传递"></a>13、Cloud Messaging 云消息传递</h3><p>安全地在各类平台上收发消息。<br>跨各种平台（Android、iOS 和网页）免费向用户发送消息和通知。消息可以发送到单个设备、设备组、订阅了特定主题的用户或细分用户群。FCM 可以根据应用进行扩展，即使是规模最大的应用也能处理，每天可传送数千亿条消息。<br>Firebase 云信息传递 (FCM) 是一种跨平台消息传递解决方案，可供您免费、可靠地传递消息。</p>
+<p>使用 FCM，您可以通知客户端应用存在可同步的新电子邮件或其他数据。您可以发送通知消息以再次吸引用户并促进用户留存。在即时消息传递等使用情形中，一条消息可将最大 4KB 的有效负载传送至客户端应用。已经在使用 Google 云消息传递了？您可以详细了解适合您的各个选项。</p>
+<p>主要功能</p>
+<p>发送通知消息或数据消息发送向用户显示的通知消息。或者，发送数据消息并完全确定应用代码中会发生的情况。请参阅消息类型。通用消息定位使用以下三种方式中的任意一种将消息分发到客户端应用：分发至单一设备、分发至设备组或分发至订阅了主题的设备。从客户端应用发送消息通过 FCM 可靠而省电的连接通道，将确认消息、聊天信息及其他消息从设备发回至您的服务器。</p>
+<p><a href="https://firebase.google.com/docs/cloud-messaging/" target="_blank" rel="external">https://firebase.google.com/docs/cloud-messaging/</a></p>
+<h3 id="14、AdWords"><a href="#14、AdWords" class="headerlink" title="14、AdWords"></a>14、AdWords</h3><p>提升安装量、获得转化数据深入分析，并投放有针对性的广告系列来扩大用户群。<br>借助 Google 的影响力获得并留住用户。您可以在搜索网络、展示广告网络和视频中投放广告，还可以将广告定位到您在 Firebase Analytics 中定义的特定细分用户群。改进广告定位功能并优化广告系列的效果。</p>
+<p>通过在线广告吸引潜在客户。</p>
+<p>提升安装量、深入分析广告转化情况，并利用 Firebase Analytics 受众群体投放有针对性的广告系列来扩大用户群。将 Firebase 与 AdWords 关联后，您即可借助功能强大的工具，了解您的 AdWords 投资如何提升应用安装量和应用内操作量。结合使用 Firebase 和 AdWords，您可以将受众群体列表导出至 AdWords，并将 Firebase Analytics 中的事件导入到 AdWords。</p>
+<p>主要功能</p>
+<p>Firebase Analytics 受众群体细分您可以根据设备、数据、自定义事件或用户属性在 Firebase 控制台中自定义受众群体。将受众群体列表导出至 AdWords一个 Firebase 项目可以关联多个 AdWords 帐号，每个帐号都可以访问在 Firebase 中创建的受众群体。将 Firebase Analytics 中的事件导入 AdWords关联 Firebase 和 AdWords 后，您可以选择将哪些 Firebase Analytics 事件作为 AdWords 中的转化操作来跟踪。</p>
+<p><a href="https://firebase.google.com/docs/adwords/" target="_blank" rel="external">https://firebase.google.com/docs/adwords/</a></p>
+<h3 id="15、App-Indexing"><a href="#15、App-Indexing" class="headerlink" title="15、App Indexing"></a>15、App Indexing</h3><p>提升您应用的自然搜索流量。</p>
+<p>通过集成 Google 搜索，重新吸引用户使用他们已安装的应用。如果用户已装有您的应用并且搜索相关内容，则可以直接从搜索结果中启动该应用。如果用户还没有安装您的应用，则当他们搜索类似的应用时系统将显示一张安装卡片。</p>
+<p>Firebase App Indexing（其前身为 Google App Indexing）可将您的应用纳入 Google 搜索。 如果当用户搜索相关内容时已安装您的应用，则他们可以直接从搜索结果中启动您的应用。 如果用户还未安装应用，则将在搜索结果中显示安装卡片。添加 App Indexing 推广 Google 搜索内的应用结果类型，并提供查询自动填充功能。</p>
+<p>主要功能</p>
+<p>搜索结果App Indexing 在 Google 搜索上显示并推广应用结果，包括在应用安装时显示其图标。安装App Indexing 关联应用和网站，使网站卡旁边显示您应用的安装卡。自动填充Android App Indexing API 允许用户查看他们已访问的、作为建议结果显示在 Google 应用上的应用页面。点按即时卡App Indexing 为点按即时卡应用结果提供强大的动力，并为其用户显示您的 Android 应用。</p>
+<p><a href="https://firebase.google.com/docs/app-indexing/" target="_blank" rel="external">https://firebase.google.com/docs/app-indexing/</a></p>
+<h3 id="16、Performance-Monitoring性能监控"><a href="#16、Performance-Monitoring性能监控" class="headerlink" title="16、Performance Monitoring性能监控"></a>16、Performance Monitoring性能监控</h3><p>深入了解应用程序的性能问题</p>
+<p>You can use Firebase Performance Monitoring to monitor the performance characteristics of your app, including metrics for app start, and HTTP/S network requests made by your app.<br>性能监控模块的集成文档:</p>
+<p><a href="https://firebase.google.com/docs/perf-mon/get-started-android" target="_blank" rel="external">https://firebase.google.com/docs/perf-mon/get-started-android</a><br>目前只有测试版，<br><a href="https://console.firebase.google.com/project/fir-demo-project/performance/app/android:com.labpixies.flood/trends" target="_blank" rel="external">https://console.firebase.google.com/project/fir-demo-project/performance/app/android:com.labpixies.flood/trends</a></p>
+<p>集成文档，可以看到如下测试版字样的标志：<br><a href="https://firebase.google.com/docs/perf-mon/" target="_blank" rel="external">https://firebase.google.com/docs/perf-mon/</a><br>Performance Monitoring is currently in beta release.</p>
+<h3 id="17、Firebase-Invites-邀请"><a href="#17、Firebase-Invites-邀请" class="headerlink" title="17、Firebase Invites 邀请"></a>17、Firebase Invites 邀请</h3><p>可以让您的用户通过电子邮件或短信分享您的应用的方方面面，从引荐代码到收藏的内容。此开箱即用的解决方案与 Firebase Analytics 配合使用，因此您可以知道用户何时通过邀请打开或安装了应用。</p>
+<p>Firebase Invites 是用于发送个性化电子邮件和短信邀请， 载入用户和衡量邀请影响的跨平台解决方案。<br>口碑是让用户安装您的应用的最有效方法之一。 在一项对数千名智能手机用户的最新研究 中，研究人员发现，用户发现一个应用的首要原因是他们从好友或同事处听说过该应用。Firebase Invites 使您能够轻而易举地将应用用户转化为应用的最强大倡导者。</p>
+<p>Firebase Invites 基于 Firebase Dynamic Links 构建。 Dynamic Links 确保链接的收件人能够在自己的平台上对安装的应用享受最佳体验，Firebase Invites 则保证用户能够充分享受发送链接的最佳体验。<br>为何使用 Firebase Invites？</p>
+<p>多信息分享更加容易Firebase Invites 简化了用户通过短信和电子邮件向好友发送内容的操作，保证引用站点代码、食谱条目和其他分享内容均会随邀请一起传递，无需进行任何剪切粘贴操作。多信息分享更易实现Firebase Invites 代您处理邀请流程，使您能够直接提交用户体验，不会占用应用其他部分的工程时间。邀请在安装进程完成后仍然有效因为 Firebase Invites 是基于 Dynamic Links 构建的，所以邀请在应用商店和 Play 商店安装进程结束后仍在工作，保证收件人无论是否安装您的应用都能收到引用站点代码或分享内容。</p>
+<h3 id="总结：-2"><a href="#总结：-2" class="headerlink" title="总结："></a>总结：</h3><p><strong>Firebase功能很强大，几乎涵盖了开发者需要关心的应用数据的所有方面，包括有基本和详细信息统计，身份认证，测试，崩溃收集，通知，消息推送，广告，性能监控等17+项Features。对于我们要重点关注的性能监控这一块，目前虽然只有Beta测试版本，但通过demo可以看到，监控的数据还是有一定价值的，包括自动测算应用启动时间，网络调用成功率，网络响应延迟，网络响应 MIME 类型，HTTP/S 网络请求（包括响应时间，响应负载的大小，请求负载的大小，成功率等数据），方法执行的效率情况，特定场景的监控，通过traces 可以知道这个场景的执行时间，以及执行的次数等数据。<br>经过使用多个demo及多台设备（4台设备，Huawei G750-T01和LGE Nexus 5X安装了最新版本的Google Play Service 11.0.2，SM-N9008S未安装，xiaomi4虽然安装了，但不是最新版本，只有前两个有统计数据）测试，发现目前唯一的不足是，测试机器需要安装最新版本的Google Play Service时，后台才能统计到performance monitoring的信息。这一条限制和在网上咨询得到的答案一致，如下所示。<br>位置在，<a href="https://www.youtube.com/watch?v=cMv96PWpFIg" target="_blank" rel="external">https://www.youtube.com/watch?v=cMv96PWpFIg</a><br>另外测试机不需要翻墙，但是在PC上浏览Firebase控制台信息时需要连接vpn。<br>以上是Firebase 的性能监控方面的调研情况。<br>收费情况：全部免费。</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/性能-经验-总结/" rel="tag"># 性能 经验 总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/20/读书项目排版引擎调研笔记/" rel="next" title="读书项目排版引擎调研笔记">
+                <i class="fa fa-chevron-left"></i> 读书项目排版引擎调研笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、听云"><span class="nav-number">1.</span> <span class="nav-text">1、听云</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介："><span class="nav-number">1.0.1.</span> <span class="nav-text">简介：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结："><span class="nav-number">1.1.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、TalkingData"><span class="nav-number">2.</span> <span class="nav-text">2、TalkingData</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结：-1"><span class="nav-number">2.1.</span> <span class="nav-text">总结：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、Firebase"><span class="nav-number">3.</span> <span class="nav-text">3、Firebase</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Analytics分析"><span class="nav-number">3.1.</span> <span class="nav-text">1、Analytics分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Authentication身份验证"><span class="nav-number">3.2.</span> <span class="nav-text">2、Authentication身份验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、Database实时数据库"><span class="nav-number">3.3.</span> <span class="nav-text">3、Database实时数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、Cloud-Storage"><span class="nav-number">3.4.</span> <span class="nav-text">4、Cloud Storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、Hosting托管"><span class="nav-number">3.5.</span> <span class="nav-text">5、Hosting托管</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、Cloud-Functions"><span class="nav-number">3.6.</span> <span class="nav-text">6、Cloud Functions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、Test-Lab测试实验室"><span class="nav-number">3.7.</span> <span class="nav-text">7、Test Lab测试实验室</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、Crash-Reporting崩溃报告"><span class="nav-number">3.8.</span> <span class="nav-text">8、Crash Reporting崩溃报告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、Notifications"><span class="nav-number">3.9.</span> <span class="nav-text">9、Notifications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、Remote-Config-远程配置"><span class="nav-number">3.10.</span> <span class="nav-text">10、Remote Config 远程配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、Dynamic-Links-动态链接"><span class="nav-number">3.11.</span> <span class="nav-text">11、Dynamic Links 动态链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12、AdMob"><span class="nav-number">3.12.</span> <span class="nav-text">12、AdMob</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13、Cloud-Messaging-云消息传递"><span class="nav-number">3.13.</span> <span class="nav-text">13、Cloud Messaging 云消息传递</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14、AdWords"><span class="nav-number">3.14.</span> <span class="nav-text">14、AdWords</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15、App-Indexing"><span class="nav-number">3.15.</span> <span class="nav-text">15、App Indexing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16、Performance-Monitoring性能监控"><span class="nav-number">3.16.</span> <span class="nav-text">16、Performance Monitoring性能监控</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17、Firebase-Invites-邀请"><span class="nav-number">3.17.</span> <span class="nav-text">17、Firebase Invites 邀请</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结：-2"><span class="nav-number">3.18.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
