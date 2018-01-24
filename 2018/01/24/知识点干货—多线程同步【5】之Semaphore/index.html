@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="干货知识点," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="老子说过，“天下大事必做于细，天下难事必做于易”。人要想有所作为，首先得从细微之处入手，从简单的事情做起。中国前国家队足球教练米卢也曾经说过：“态度决定一切。”，“态度决定一切，细节决定成败”确实是至理名言，在生活中、工作中，学习中，为人处事，都应该端正态度，注重细节，从小事做起，从身边做起。我们只有树立正确的态度，做好了细节，并且坚持下来，才容易成功。 继续总结多线程同步常用的方法或者类，之前介">
+<meta name="keywords" content="干货知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知识点干货—多线程同步【5】之Semaphore">
+<meta property="og:url" content="http://yoursite.com/2018/01/24/知识点干货—多线程同步【5】之Semaphore/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="老子说过，“天下大事必做于细，天下难事必做于易”。人要想有所作为，首先得从细微之处入手，从简单的事情做起。中国前国家队足球教练米卢也曾经说过：“态度决定一切。”，“态度决定一切，细节决定成败”确实是至理名言，在生活中、工作中，学习中，为人处事，都应该端正态度，注重细节，从小事做起，从身边做起。我们只有树立正确的态度，做好了细节，并且坚持下来，才容易成功。 继续总结多线程同步常用的方法或者类，之前介">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-24T12:36:45.593Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="知识点干货—多线程同步【5】之Semaphore">
+<meta name="twitter:description" content="老子说过，“天下大事必做于细，天下难事必做于易”。人要想有所作为，首先得从细微之处入手，从简单的事情做起。中国前国家队足球教练米卢也曾经说过：“态度决定一切。”，“态度决定一切，细节决定成败”确实是至理名言，在生活中、工作中，学习中，为人处事，都应该端正态度，注重细节，从小事做起，从身边做起。我们只有树立正确的态度，做好了细节，并且坚持下来，才容易成功。 继续总结多线程同步常用的方法或者类，之前介">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/24/知识点干货—多线程同步【5】之Semaphore/"/>
+
+
+
+
+
+  <title>知识点干货—多线程同步【5】之Semaphore | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/24/知识点干货—多线程同步【5】之Semaphore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">知识点干货—多线程同步【5】之Semaphore</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-24T20:17:47+08:00">
+                2018-01-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>老子说过，“天下大事必做于细，天下难事必做于易”。人要想有所作为，首先得从细微之处入手，从简单的事情做起。中国前国家队足球教练米卢也曾经说过：“态度决定一切。”，“态度决定一切，细节决定成败”确实是至理名言，在生活中、工作中，学习中，为人处事，都应该端正态度，注重细节，从小事做起，从身边做起。我们只有树立正确的态度，做好了细节，并且坚持下来，才容易成功。</strong></p>
+<p>继续总结多线程同步常用的方法或者类，之前介绍了CountDownLatch，CyclicBarriar和Exchanger和Phaser，这次介绍一个比较有名的类–Semaphore，大多数人看到它都不会陌生，但是要问怎么正确的使用它，很多人却回答不上来。</p>
+<p>Semaphore–信号量<br>Semaphore的一个特别典型的应用场景是：线程执行是需要耗费CPU的时间片的，并且占用CPU的资源，例如上下文切换，如果不对线程数量进行控制，CPU工作时同时并发的线程数量可能会非常多，这样就会导致每个线程运行起来非常的缓慢，严重影响到系统的执行效率，它的工作效率将大幅下降。因此，此时我们就可以用信号量来进行控制，从而让CPU能够发挥出最大的效率。</p>
+<h2 id="1、定义"><a href="#1、定义" class="headerlink" title="1、定义"></a>1、定义</h2><p>Semaphore中文翻译为信号量，它用来控制同时访问特定资源的线程数量，通过协调各个线程，以保证合理的使用公共资源。在创建Semaphore时会设置令牌，这里的令牌就可以看做允许访问特定资源的线程数量，通过设置它来控制线程数量，这个令牌可能是1，也可能是大于1的任意数字。哪个线程拿到(acquire)了令牌，它就可以去执行了，如果没有令牌则需要等待。 线程执行完毕，一定要归还(release)令牌，否则令牌会被用光，别的线程就无法获得令牌而只能永久等待。</p>
+<p>可以这样形象的来理解，<br>Semaphore对应的功能就类似于公司只有一个厕所，而厕所里仅仅有3个茅坑，如果这时候有10个人都要想上厕所，那么显而易见同时只能有3个人能够占用这些茅坑，其他7个人只能在厕所门口等待，当有人从厕所出来后，才能再进入一个人。</p>
+<h2 id="2、常用方法"><a href="#2、常用方法" class="headerlink" title="2、常用方法"></a>2、常用方法</h2><p>Semaphore的方法比较多， 我们只介绍一些最常用的方法，有兴趣想深入学习的可以去找相关资料再深入学习。</p>
+<p>  ● Semaphore(int permits)<br>新建一个Semaphore对象，参数permits是初始化设置许可的数量，即令牌的数量。它表示最多允许permits个线程执行acquire()与release()之间的代码。</p>
+<p>  ● Semaphore(int permits,  boolean fair)<br>新建一个Semaphore对象，参数permits是初始化设置许可的数量，即令牌的数量。参数fair表明创建的Semaphore对象是公平信号量（fair为true）还是非公平信号量（fair为false）。所谓公平信号量表明获得锁的顺序与线程启动的顺序有关，启动早的线程优先获得令牌，但并不代表100%的能够获得信号量，仅仅是在概率上能够优先获得。而非公平信号量就是和公平无关的，线程无论谁先启动，这个参数都无效。</p>
+<p>  ● acquire(int permits)<br>每调用一次该方法，则消耗permits个许可。</p>
+<p>  ● acquire()<br>每调用一次该方法，则消耗一个许可。</p>
+<p>  ● release()<br>每调用一次该方法，相当于许可加1。</p>
+<p>  ● release(int permits)<br>每调用一次该方法，相当于加上permits个许可。在实际开发中，acquire()与release()成对出现，以保证每个线程用时消耗，用完释放。</p>
+<p>  ● acquireUninterruptibly()<br>使得等待进入acquile()方法的线程不允许被中断。</p>
+<p>  ● acquireUninterruptibly(int permits)<br>使得等待进入acquile()方法的线程不允许被中断，且获得锁后，将消耗permits个许可。</p>
+<p>  ● availablePermits()<br>返回此Semaphore对象当前可用的许可数，此方法通常用于调试，因为许可的数量有可能在实时改变，并不是固定的数量。</p>
+<p>  ● drainPermits()<br>返回此Semaphore对象当前可用的许可数，并将可用许可清零。</p>
+<h2 id="3、演示代码"><a href="#3、演示代码" class="headerlink" title="3、演示代码"></a>3、演示代码</h2><div class="output_wrapper" id="output_wrapper_id" style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;"><pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code class="hljs cs" style="margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; color: rgb(169, 183, 198); overflow-x: auto; padding: 0.5em; background: rgb(40, 43, 46); display: block !important; word-wrap: normal !important; word-break: normal !important; white-space: pre !important; overflow: auto !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">class</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">TestSemaphore</span> {<br>   <span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">static</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">void</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">main</span>(<span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">String[] args</span>) </span>{<br>      <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">// 线程池</span><br>      ExecutorService exec = Executors.newCachedThreadPool();<br>      <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">// 只能3个茅坑同时使用</span><br>      final Semaphore semp = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> Semaphore(<span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">3</span>);<br>      <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">// 模拟10个人同时访问厕所</span><br>      <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">for</span> (<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> index = <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">0</span>; index &lt; <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">10</span>; index++) {<br>         final <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">int</span> NO = index;<br>         Runnable run = <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">new</span> Runnable() {<br>            <span class="hljs-function" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"><span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">public</span> <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">void</span> <span class="hljs-title" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(165, 218, 45); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">run</span>(<span class="hljs-params" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(255, 152, 35); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;"></span>) </span>{<br>               <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">try</span> {<br>                  <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">// 获取空余的茅坑</span><br>                  semp.acquire();<br>                  System.<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">out</span>.println(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“get a noun: “</span> + NO);<br>                  Thread.sleep((<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">long</span>) (Math.random() * <span class="hljs-number" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(174, 135, 250); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">10000</span>));<br>                  <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">//使用完后，释放茅坑</span><br>                  semp.release();<br>                  System.<span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">out</span>.println(<span class="hljs-string" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(238, 220, 112); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">“release,availablePermits : “</span>+semp.availablePermits());<br>               } <span class="hljs-keyword" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(248, 35, 117); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">catch</span> (InterruptedException e) {<br>                  e.printStackTrace();<br>               }<br>            }<br>         };<br>         exec.execute(run);<br>      }<br>      <span class="hljs-comment" style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(128, 128, 128); word-wrap: inherit !important; word-break: inherit !important; white-space: inherit !important;">// 线程池退出</span><br>      exec.shutdown();<br>   }<br>}<br></code></pre></div>
+
+<p>执行结果如下：</p>
+<blockquote>
+<p>get a noun: 0</p>
+<p>get a noun: 2</p>
+<p>get a noun: 1</p>
+<p>release,availablePermits : 0</p>
+<p>get a noun: 9</p>
+<p>release,availablePermits : 1</p>
+<p>get a noun: 8</p>
+<p>release,availablePermits : 1</p>
+<p>get a noun: 6</p>
+<p>release,availablePermits : 1</p>
+<p>get a noun: 4</p>
+<p>release,availablePermits : 1</p>
+<p>get a noun: 3</p>
+<p>release,availablePermits : 1</p>
+<p>get a noun: 5</p>
+<p>release,availablePermits : 1</p>
+<p>get a noun: 7</p>
+<p>release,availablePermits : 1</p>
+</blockquote>
+<h2 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h2><p>说实话，本司机开发了十几年程序了，Semaphore使用的情况还真的是很少，可以说几乎没有，但是这也不妨碍我们学习它，对它进行了解，说不定哪天就遇到了使用它的场景，到时我们能够立即想到用它来解决就OK了。另一方面学习它也扩展了我们的知识面，不至于在别人谈论时，我们还不知道它是一个什么东东。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/干货知识点/" rel="tag"># 干货知识点</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/20/App网络性能监控工具调研/" rel="next" title="App网络性能监控工具调研">
+                <i class="fa fa-chevron-left"></i> App网络性能监控工具调研
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/24/知识点干货—关于equals方法，Hashcode方法和两个对象的比较/" rel="prev" title="知识点干货—关于equals方法，Hashcode方法和两个对象的比较">
+                知识点干货—关于equals方法，Hashcode方法和两个对象的比较 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、定义"><span class="nav-number">1.</span> <span class="nav-text">1、定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、常用方法"><span class="nav-number">2.</span> <span class="nav-text">2、常用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、演示代码"><span class="nav-number">3.</span> <span class="nav-text">3、演示代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结"><span class="nav-number">4.</span> <span class="nav-text">4、总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
