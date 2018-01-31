@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="经验总结," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="“水至清则无鱼，人至察则无徒”蕴含了做人的道理，它告诉我们水如果太清了，鱼就无法生存；对别人要求太严格了，就没有伙伴或朋友。所以，我们在为人处事方面如果不是原则性的问题，就不要太较真，那样显得我们太个色，会失去很多朋友或同伴。偶尔“难得糊涂”一次也不错。 今天把我之前反汇编so库或bin文件过程中总结的一些经验分享给大家，其中有些是我总结的，有些是我的同事总结的，我一起做了个汇总，分享出来，希望对">
+<meta name="keywords" content="经验总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反汇编知识点总结">
+<meta property="og:url" content="http://yoursite.com/2018/01/31/反汇编知识点总结/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="“水至清则无鱼，人至察则无徒”蕴含了做人的道理，它告诉我们水如果太清了，鱼就无法生存；对别人要求太严格了，就没有伙伴或朋友。所以，我们在为人处事方面如果不是原则性的问题，就不要太较真，那样显得我们太个色，会失去很多朋友或同伴。偶尔“难得糊涂”一次也不错。 今天把我之前反汇编so库或bin文件过程中总结的一些经验分享给大家，其中有些是我总结的，有些是我的同事总结的，我一起做了个汇总，分享出来，希望对">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-31T04:04:19.708Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="反汇编知识点总结">
+<meta name="twitter:description" content="“水至清则无鱼，人至察则无徒”蕴含了做人的道理，它告诉我们水如果太清了，鱼就无法生存；对别人要求太严格了，就没有伙伴或朋友。所以，我们在为人处事方面如果不是原则性的问题，就不要太较真，那样显得我们太个色，会失去很多朋友或同伴。偶尔“难得糊涂”一次也不错。 今天把我之前反汇编so库或bin文件过程中总结的一些经验分享给大家，其中有些是我总结的，有些是我的同事总结的，我一起做了个汇总，分享出来，希望对">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/01/31/反汇编知识点总结/"/>
+
+
+
+
+
+  <title>反汇编知识点总结 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/31/反汇编知识点总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">反汇编知识点总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-31T10:01:36+08:00">
+                2018-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>“水至清则无鱼，人至察则无徒”蕴含了做人的道理，它告诉我们水如果太清了，鱼就无法生存；对别人要求太严格了，就没有伙伴或朋友。所以，我们在为人处事方面如果不是原则性的问题，就不要太较真，那样显得我们太个色，会失去很多朋友或同伴。偶尔“难得糊涂”一次也不错。</strong></p>
+<p>今天把我之前反汇编so库或bin文件过程中总结的一些经验分享给大家，其中有些是我总结的，有些是我的同事总结的，我一起做了个汇总，分享出来，希望对那些使用IDA反汇编底层库或二进制可执行文件的同事起到一个帮助作用。现在这些知识多少有些模糊了，但对当时的我们来说，可以说句句是干货，每个点都是经过真枪实弹的检验，在实际战场上总结出来的，对于反汇编人员应该是比较有帮助的。</p>
+<h2 id="1、类似LDR-R2-R1-0xC-指令表示调用寄存器R1代表的类的size-函数；"><a href="#1、类似LDR-R2-R1-0xC-指令表示调用寄存器R1代表的类的size-函数；" class="headerlink" title="1、类似LDR     R2, [R1,#-0xC]指令表示调用寄存器R1代表的类的size()函数；"></a>1、类似LDR     R2, [R1,#-0xC]指令表示调用寄存器R1代表的类的size()函数；</h2><p>如果之后还带 CMP     R2, #1，表示是将结果和0做比较。</p>
+<h2 id="2、调用函数时。"><a href="#2、调用函数时。" class="headerlink" title="2、调用函数时。"></a>2、调用函数时。</h2><p>如果函数调用之前的R0值为一个类变量，则代表调用的是一个类成员函数。<br>例如，</p>
+<pre><code>MOV     R0, R7
+BL      _ZN7android7String87toUpperEv ; android::String8::toUpper(void)
+</code></pre><p>表示调用String8的toUpper成员函数。</p>
+<h2 id="3、R0-R1-R2-R3在C语言中中一般作为参数传递给函数，但在C-中例外，R0有可能是类本身，参数从R1开始算起；R0还有可能为调用函数的返回值做准备，R1表示类本身，"><a href="#3、R0-R1-R2-R3在C语言中中一般作为参数传递给函数，但在C-中例外，R0有可能是类本身，参数从R1开始算起；R0还有可能为调用函数的返回值做准备，R1表示类本身，" class="headerlink" title="3、R0,R1,R2,R3在C语言中中一般作为参数传递给函数，但在C++中例外，R0有可能是类本身，参数从R1开始算起；R0还有可能为调用函数的返回值做准备，R1表示类本身，"></a>3、R0,R1,R2,R3在C语言中中一般作为参数传递给函数，但在C++中例外，R0有可能是类本身，参数从R1开始算起；R0还有可能为调用函数的返回值做准备，R1表示类本身，</h2><p>例如，</p>
+<pre><code>.text:00010B74                 ADD     R4, SP, #0xC0   ; 局部变量，用来保存返回值
+.text:00010B78                 MOV     R1, R7          ; R7 = const Parcel&amp; data
+.text:00010B7C                 ADD     R5, R5, #0x1C   ; 类成员变量stMemory ServieMem2;
+.text:00010B80                 MOV     R0, R4
+.text:00010B84                 BL      _ZNK7android6Parcel12readString16Ev ; `android::Parcel::readString16(void)
+</code></pre><p>即是调用data（R1）的readString16函数放到局部变量SP+#0xC0（R0）指向的位置.</p>
+<h2 id="4、注意SUBS和其他指令的结合使用。"><a href="#4、注意SUBS和其他指令的结合使用。" class="headerlink" title="4、注意SUBS和其他指令的结合使用。"></a>4、注意SUBS和其他指令的结合使用。</h2><p>例如</p>
+<pre><code>SUBS    R9, R9, #1
+BCS     loc_12448      
+</code></pre><p>SUBS表示R9=R9-1后是否是设置了carry标志位，当R9小于0时，才会设置此标志位，所以当R9&lt;0时，才会执行BCS指令。</p>
+<h2 id="5、当寄存器中存放值为String8时，当它与1比较时，"><a href="#5、当寄存器中存放值为String8时，当它与1比较时，" class="headerlink" title="5、当寄存器中存放值为String8时，当它与1比较时，"></a>5、当寄存器中存放值为String8时，当它与1比较时，</h2><p>如， CMP R1，1 转换为c，则表示R1与0比较。</p>
+<h2 id="6、确认函数是否为类成员函数"><a href="#6、确认函数是否为类成员函数" class="headerlink" title="6、确认函数是否为类成员函数"></a>6、确认函数是否为类成员函数</h2><p>如果把类本身作为参数，做为R0并传递给调用的函数，则该调用函数一定是类成员函数。否则调用函数就是一个全局函数。</p>
+<h2 id="7、-类的成员偏移"><a href="#7、-类的成员偏移" class="headerlink" title="7、 类的成员偏移"></a>7、 类的成员偏移</h2><p>假如R4为类本身，则R4+4为类的this指针，R4+8…之后则为类的成员函数</p>
+<h2 id="8、函数调用"><a href="#8、函数调用" class="headerlink" title="8、函数调用"></a>8、函数调用</h2><p>如果调用函数为虚函数，会利用到LR，PC指针，并通过寄存器移位操作来完成。<br>如下所示：</p>
+<pre><code>LDR LR，PC
+LDR PC，[R4,-0xC]
+</code></pre><p>如果调用函数为内联函数，并且为系统自带，会直接通过寄存器移位操作来完成，而不会通过LR，PC指针。如果调用自己写的内联函数，可能会直接将反汇编代码添加到调用该函数处。<br>如String16有个内联函数size(),R5中存放的为一个String16类型的变量：</p>
+<pre><code>LDR R3,[R5,-0xC]  -&gt;  R5.size();
+</code></pre><p>如果调用函数为其他函数，就会直接出现调用函数的名称，不会通过偏移来实现。</p>
+<h2 id="9、LDR-R3-R5-0xC"><a href="#9、LDR-R3-R5-0xC" class="headerlink" title="9、LDR R3,[R5,-0xC]"></a>9、LDR R3,[R5,-0xC]</h2><p>如果在遇到寄存器偏移-0xC的时候，可以考虑是不是调用的是寄存器存放变量的size()函数;（在很多时候偏移-0xC，调用的为size(),length()等情况，其中size()更多）</p>
+<h2 id="10、在反汇编时，会出现一个start的函数，其实它就是main函数开始的地方。"><a href="#10、在反汇编时，会出现一个start的函数，其实它就是main函数开始的地方。" class="headerlink" title="10、在反汇编时，会出现一个start的函数，其实它就是main函数开始的地方。"></a>10、在反汇编时，会出现一个start的函数，其实它就是main函数开始的地方。</h2><h2 id="11、当一个寄存器中存放一个很长16进制数时，如LDR-R5，-0xFFFFDBA8，这时应想到这应该是一个字符串。"><a href="#11、当一个寄存器中存放一个很长16进制数时，如LDR-R5，-0xFFFFDBA8，这时应想到这应该是一个字符串。" class="headerlink" title="11、当一个寄存器中存放一个很长16进制数时，如LDR R5，=0xFFFFDBA8，这时应想到这应该是一个字符串。"></a>11、当一个寄存器中存放一个很长16进制数时，如LDR R5，=0xFFFFDBA8，这时应想到这应该是一个字符串。</h2><p>在IDA中可以通过View-&gt; Open subviews-&gt;Strings(快捷键为Shift+F12)来打开Strings窗口<br>计算字符串所在地址公式： address = 函数基地址（_GLOBAL_OFFSET<em>TABLE</em>) - 16进制数的反（～0xFFFFDBA8）通过计算出的地址，在Strings窗口中的Address列，查找比较，如果有一样的值，则列子R5中存放的就是找到行中String项</p>
+<h2 id="12、在一个反汇编函数中，如果在函数结束的最后会给R0赋值，则代表函数有返回值，且返回值为赋值给R0的数据的类型。否则函数为一个void类型函数，无返回值。"><a href="#12、在一个反汇编函数中，如果在函数结束的最后会给R0赋值，则代表函数有返回值，且返回值为赋值给R0的数据的类型。否则函数为一个void类型函数，无返回值。" class="headerlink" title="12、在一个反汇编函数中，如果在函数结束的最后会给R0赋值，则代表函数有返回值，且返回值为赋值给R0的数据的类型。否则函数为一个void类型函数，无返回值。"></a>12、在一个反汇编函数中，如果在函数结束的最后会给R0赋值，则代表函数有返回值，且返回值为赋值给R0的数据的类型。否则函数为一个void类型函数，无返回值。</h2><h2 id="13、-如果反汇编中出现了-Znwj-operator-new-int-的行，则肯定在这地方new了一个对象。"><a href="#13、-如果反汇编中出现了-Znwj-operator-new-int-的行，则肯定在这地方new了一个对象。" class="headerlink" title="13、 如果反汇编中出现了_Znwj   ;operator new(int)的行，则肯定在这地方new了一个对象。"></a>13、 如果反汇编中出现了_Znwj   ;operator new(int)的行，则肯定在这地方new了一个对象。</h2><h2 id="14、-sp指针的定义和释放情况"><a href="#14、-sp指针的定义和释放情况" class="headerlink" title="14、 sp指针的定义和释放情况"></a>14、 sp指针的定义和释放情况</h2><p>(1) 定义sp<ibinder>变量ibinder;自动最后会调用一次decStrong;<br>(2)如果ibinder = NULL;自动生成判断是否为空，如果为空，则调用一次android::RefBase::decStrong(void const*)<br>(3)如果定义一个sp<ibinder> ibinder1 = ibinder;调用一次incStrong,释放一次decStrong;<br>(4)如果调用函数，参数为sp<ibinder>，则在该处自动复制了一份sp<ibinder>,所以在调用函数之后会调用一次decStrong<br>(5)如果调用函数，参数为sp<ibinder>的引用，即传的还是原来sp<ibinder>,并没有再复制一份，所以在这并不会（4）一样调用decStrong;</ibinder></ibinder></ibinder></ibinder></ibinder></ibinder></p>
+<h2 id="15、-定义一个结构体作为一个局部变量时，需考虑存储这个结构体的基地址。偏移范围内的值，是这个结构体中的成员。"><a href="#15、-定义一个结构体作为一个局部变量时，需考虑存储这个结构体的基地址。偏移范围内的值，是这个结构体中的成员。" class="headerlink" title="15、 定义一个结构体作为一个局部变量时，需考虑存储这个结构体的基地址。偏移范围内的值，是这个结构体中的成员。"></a>15、 定义一个结构体作为一个局部变量时，需考虑存储这个结构体的基地址。偏移范围内的值，是这个结构体中的成员。</h2><h2 id="16、-假如类中有一个Vector-mVector成员，如果R4指向类，R4-0x50指向mVector"><a href="#16、-假如类中有一个Vector-mVector成员，如果R4指向类，R4-0x50指向mVector" class="headerlink" title="16、 假如类中有一个Vector mVector成员，如果R4指向类，R4+0x50指向mVector;"></a>16、 假如类中有一个Vector<dsvector> mVector成员，如果R4指向类，R4+0x50指向mVector;</dsvector></h2><p>R4+0x54指向mVector中存放的DSVector所在内存块的首个元素的地址。<br>R4+0x58为mVector函数中的size()函数，即mVector.size();</p>
+<h2 id="17、如果给一个寄存器传了一个非常大的数值并最终作为一个参数，这时应考虑该数是不是宏定义的一个数值或几个宏定义值的和"><a href="#17、如果给一个寄存器传了一个非常大的数值并最终作为一个参数，这时应考虑该数是不是宏定义的一个数值或几个宏定义值的和" class="headerlink" title="17、如果给一个寄存器传了一个非常大的数值并最终作为一个参数，这时应考虑该数是不是宏定义的一个数值或几个宏定义值的和"></a>17、如果给一个寄存器传了一个非常大的数值并最终作为一个参数，这时应考虑该数是不是宏定义的一个数值或几个宏定义值的和</h2><p>如：调用waitpid时，给第三个参数传了一个40000002；<br>此时调用waitpid(pid,NULL,<strong>WALL|WUNTRACED);//其中</strong>WALL宏定义为40000000，WUNTRACED宏定义为2；</p>
+<h2 id="18、如果出现循环，而操作数为基地值加上index个指定值-index指定值-的时候，则可能为Vector-n-的操作或一个容器中逐个元素的操作，其中指定值为元素的大小，也就是出现了MLA-R1-R1-R2-R3-（即R1-R1R2-R3）-应考虑是不是有可能为类似数组一样的for循环操作。"><a href="#18、如果出现循环，而操作数为基地值加上index个指定值-index指定值-的时候，则可能为Vector-n-的操作或一个容器中逐个元素的操作，其中指定值为元素的大小，也就是出现了MLA-R1-R1-R2-R3-（即R1-R1R2-R3）-应考虑是不是有可能为类似数组一样的for循环操作。" class="headerlink" title="18、如果出现循环，而操作数为基地值加上index个指定值(index指定值)的时候，则可能为Vector[n]的操作或一个容器中逐个元素的操作，其中指定值为元素的大小，也就是出现了MLA R1,R1,R2,R3,（即R1 = R1R2+R3）,应考虑是不是有可能为类似数组一样的for循环操作。"></a>18、如果出现循环，而操作数为基地值加上index个指定值(index<em>指定值)的时候，则可能为Vector[n]的操作或一个容器中逐个元素的操作，其中指定值为元素的大小，也就是出现了MLA R1,R1,R2,R3,（即R1 = R1</em>R2+R3）,应考虑是不是有可能为类似数组一样的for循环操作。</h2><h2 id="19、TST-AND两种与的区别。"><a href="#19、TST-AND两种与的区别。" class="headerlink" title="19、TST AND两种与的区别。"></a>19、TST AND两种与的区别。</h2><pre><code>TST: TST R12,#0xA  -&gt; (R12&amp;0xA) == 0 （此处在&amp;值旁必须加上括号）
+AND: ANDS R12,#0xA -&gt; R12&amp;0xA
+</code></pre><p>两个都是与，但是加个” ==  0”判断，会使用TST，不加则会使用ANDS</p>
+<h2 id="20、当寄存器存储一个字符串的偏移值时，则寄存器实际存储的为该字符串偏移值位置的数据。"><a href="#20、当寄存器存储一个字符串的偏移值时，则寄存器实际存储的为该字符串偏移值位置的数据。" class="headerlink" title="20、当寄存器存储一个字符串的偏移值时，则寄存器实际存储的为该字符串偏移值位置的数据。"></a>20、当寄存器存储一个字符串的偏移值时，则寄存器实际存储的为该字符串偏移值位置的数据。</h2><p>如下情况， ##<br>    LDR R9，=(aSecloader+8 - 0x14DA8) //其中 aSecloader为“secloader”<br>从而可以得知寄存器R9中存放的数据为 “r”,即aSecloader第8位的值。</p>
+<h2 id="21、当定义一个char-buf-44-0-时，会自动调用memset函数对buf进行清空操作。"><a href="#21、当定义一个char-buf-44-0-时，会自动调用memset函数对buf进行清空操作。" class="headerlink" title="21、当定义一个char buf[44] ={0}时，会自动调用memset函数对buf进行清空操作。"></a>21、当定义一个char buf[44] ={0}时，会自动调用memset函数对buf进行清空操作。</h2><h2 id="22、对于char-buf-100-给指定位置赋值使用的是STRB，而不是STR"><a href="#22、对于char-buf-100-给指定位置赋值使用的是STRB，而不是STR" class="headerlink" title="22、对于char buf[100],给指定位置赋值使用的是STRB，而不是STR"></a>22、对于char buf[100],给指定位置赋值使用的是STRB，而不是STR</h2><h2 id="23、在类中，定义了一个成员变量，假定R4存放类本身，该成员变量是R4-0x3C，且该成员变量的大小占20位。从而-R4-0x3C代表该成员变量，而在R4偏移0x3C-0x50之间的值时，是调用成员变量的属性或函数。"><a href="#23、在类中，定义了一个成员变量，假定R4存放类本身，该成员变量是R4-0x3C，且该成员变量的大小占20位。从而-R4-0x3C代表该成员变量，而在R4偏移0x3C-0x50之间的值时，是调用成员变量的属性或函数。" class="headerlink" title="23、在类中，定义了一个成员变量，假定R4存放类本身，该成员变量是R4+0x3C，且该成员变量的大小占20位。从而,R4+0x3C代表该成员变量，而在R4偏移0x3C~0x50之间的值时，是调用成员变量的属性或函数。"></a>23、在类中，定义了一个成员变量，假定R4存放类本身，该成员变量是R4+0x3C，且该成员变量的大小占20位。从而,R4+0x3C代表该成员变量，而在R4偏移0x3C~0x50之间的值时，是调用成员变量的属性或函数。</h2><h2 id="24、在涉及到char-的操作的时候，一定需注意："><a href="#24、在涉及到char-的操作的时候，一定需注意：" class="headerlink" title="24、在涉及到char*的操作的时候，一定需注意："></a>24、在涉及到char*的操作的时候，一定需注意：</h2><pre><code>ADD R5，R4，#5  最终得到的还是一个char指针
+LDR R5，[R4,#5] 最终得到的char的字符
+</code></pre><h2 id="25、判断条件的处理"><a href="#25、判断条件的处理" class="headerlink" title="25、判断条件的处理"></a>25、判断条件的处理</h2><pre><code>LE,LT,GT,GE 属于带符号数比较大小.
+CS/HS,CC/LO,HI,LS 属于无符号数比较大小,即为带unsigned类型的数的比较
+</code></pre><p>以上是反汇编的一个经验总结，目的是通过反汇编将其转换成C/C++代码。其中会涉及到C/C++的知识，汇编指令等，如果没有做过这方面的工作，看起来可能和天书一样，不过没关系，大家可以收藏，没准哪天会需要呢，哈哈。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/经验总结/" rel="tag"># 经验总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/24/知识点干货—关于equals方法，Hashcode方法和两个对象的比较/" rel="next" title="知识点干货—关于equals方法，Hashcode方法和两个对象的比较">
+                <i class="fa fa-chevron-left"></i> 知识点干货—关于equals方法，Hashcode方法和两个对象的比较
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/31/罗马帝国史/" rel="prev" title="罗马帝国史">
+                罗马帝国史 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、类似LDR-R2-R1-0xC-指令表示调用寄存器R1代表的类的size-函数；"><span class="nav-number">1.</span> <span class="nav-text">1、类似LDR     R2, [R1,#-0xC]指令表示调用寄存器R1代表的类的size()函数；</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、调用函数时。"><span class="nav-number">2.</span> <span class="nav-text">2、调用函数时。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、R0-R1-R2-R3在C语言中中一般作为参数传递给函数，但在C-中例外，R0有可能是类本身，参数从R1开始算起；R0还有可能为调用函数的返回值做准备，R1表示类本身，"><span class="nav-number">3.</span> <span class="nav-text">3、R0,R1,R2,R3在C语言中中一般作为参数传递给函数，但在C++中例外，R0有可能是类本身，参数从R1开始算起；R0还有可能为调用函数的返回值做准备，R1表示类本身，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、注意SUBS和其他指令的结合使用。"><span class="nav-number">4.</span> <span class="nav-text">4、注意SUBS和其他指令的结合使用。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、当寄存器中存放值为String8时，当它与1比较时，"><span class="nav-number">5.</span> <span class="nav-text">5、当寄存器中存放值为String8时，当它与1比较时，</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、确认函数是否为类成员函数"><span class="nav-number">6.</span> <span class="nav-text">6、确认函数是否为类成员函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7、-类的成员偏移"><span class="nav-number">7.</span> <span class="nav-text">7、 类的成员偏移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8、函数调用"><span class="nav-number">8.</span> <span class="nav-text">8、函数调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9、LDR-R3-R5-0xC"><span class="nav-number">9.</span> <span class="nav-text">9、LDR R3,[R5,-0xC]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10、在反汇编时，会出现一个start的函数，其实它就是main函数开始的地方。"><span class="nav-number">10.</span> <span class="nav-text">10、在反汇编时，会出现一个start的函数，其实它就是main函数开始的地方。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11、当一个寄存器中存放一个很长16进制数时，如LDR-R5，-0xFFFFDBA8，这时应想到这应该是一个字符串。"><span class="nav-number">11.</span> <span class="nav-text">11、当一个寄存器中存放一个很长16进制数时，如LDR R5，=0xFFFFDBA8，这时应想到这应该是一个字符串。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12、在一个反汇编函数中，如果在函数结束的最后会给R0赋值，则代表函数有返回值，且返回值为赋值给R0的数据的类型。否则函数为一个void类型函数，无返回值。"><span class="nav-number">12.</span> <span class="nav-text">12、在一个反汇编函数中，如果在函数结束的最后会给R0赋值，则代表函数有返回值，且返回值为赋值给R0的数据的类型。否则函数为一个void类型函数，无返回值。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13、-如果反汇编中出现了-Znwj-operator-new-int-的行，则肯定在这地方new了一个对象。"><span class="nav-number">13.</span> <span class="nav-text">13、 如果反汇编中出现了_Znwj   ;operator new(int)的行，则肯定在这地方new了一个对象。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14、-sp指针的定义和释放情况"><span class="nav-number">14.</span> <span class="nav-text">14、 sp指针的定义和释放情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15、-定义一个结构体作为一个局部变量时，需考虑存储这个结构体的基地址。偏移范围内的值，是这个结构体中的成员。"><span class="nav-number">15.</span> <span class="nav-text">15、 定义一个结构体作为一个局部变量时，需考虑存储这个结构体的基地址。偏移范围内的值，是这个结构体中的成员。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16、-假如类中有一个Vector-mVector成员，如果R4指向类，R4-0x50指向mVector"><span class="nav-number">16.</span> <span class="nav-text">16、 假如类中有一个Vector mVector成员，如果R4指向类，R4+0x50指向mVector;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17、如果给一个寄存器传了一个非常大的数值并最终作为一个参数，这时应考虑该数是不是宏定义的一个数值或几个宏定义值的和"><span class="nav-number">17.</span> <span class="nav-text">17、如果给一个寄存器传了一个非常大的数值并最终作为一个参数，这时应考虑该数是不是宏定义的一个数值或几个宏定义值的和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18、如果出现循环，而操作数为基地值加上index个指定值-index指定值-的时候，则可能为Vector-n-的操作或一个容器中逐个元素的操作，其中指定值为元素的大小，也就是出现了MLA-R1-R1-R2-R3-（即R1-R1R2-R3）-应考虑是不是有可能为类似数组一样的for循环操作。"><span class="nav-number">18.</span> <span class="nav-text">18、如果出现循环，而操作数为基地值加上index个指定值(index指定值)的时候，则可能为Vector[n]的操作或一个容器中逐个元素的操作，其中指定值为元素的大小，也就是出现了MLA R1,R1,R2,R3,（即R1 = R1R2+R3）,应考虑是不是有可能为类似数组一样的for循环操作。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19、TST-AND两种与的区别。"><span class="nav-number">19.</span> <span class="nav-text">19、TST AND两种与的区别。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20、当寄存器存储一个字符串的偏移值时，则寄存器实际存储的为该字符串偏移值位置的数据。"><span class="nav-number">20.</span> <span class="nav-text">20、当寄存器存储一个字符串的偏移值时，则寄存器实际存储的为该字符串偏移值位置的数据。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21、当定义一个char-buf-44-0-时，会自动调用memset函数对buf进行清空操作。"><span class="nav-number">21.</span> <span class="nav-text">21、当定义一个char buf[44] ={0}时，会自动调用memset函数对buf进行清空操作。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22、对于char-buf-100-给指定位置赋值使用的是STRB，而不是STR"><span class="nav-number">22.</span> <span class="nav-text">22、对于char buf[100],给指定位置赋值使用的是STRB，而不是STR</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23、在类中，定义了一个成员变量，假定R4存放类本身，该成员变量是R4-0x3C，且该成员变量的大小占20位。从而-R4-0x3C代表该成员变量，而在R4偏移0x3C-0x50之间的值时，是调用成员变量的属性或函数。"><span class="nav-number">23.</span> <span class="nav-text">23、在类中，定义了一个成员变量，假定R4存放类本身，该成员变量是R4+0x3C，且该成员变量的大小占20位。从而,R4+0x3C代表该成员变量，而在R4偏移0x3C~0x50之间的值时，是调用成员变量的属性或函数。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24、在涉及到char-的操作的时候，一定需注意："><span class="nav-number">24.</span> <span class="nav-text">24、在涉及到char*的操作的时候，一定需注意：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25、判断条件的处理"><span class="nav-number">25.</span> <span class="nav-text">25、判断条件的处理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
