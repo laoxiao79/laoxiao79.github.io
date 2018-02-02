@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="经验 总结," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="农历腊月初二，也是冬至后的第四个九天，俗称“四九”。冬至这一天开始数九，这就是人们所说的“提冬数九”。数上9天是一九，再数9天是二九……数到“九九”就算“九”尽了，“九尽杨花开”，那时天就暖了。《九九歌》是这样唱的：一九二九不出手；三九四九河上走；五九六九沿河望柳；七九开河，八九雁来；九九加一九，耕牛遍地走。 最近对网上开源的阅读器项目进行了调研，重点是github上的开源项目，对star比较多的">
+<meta name="keywords" content="经验 总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阅读引擎开源项目调研总结">
+<meta property="og:url" content="http://yoursite.com/2018/02/01/阅读引擎开源项目调研总结/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="农历腊月初二，也是冬至后的第四个九天，俗称“四九”。冬至这一天开始数九，这就是人们所说的“提冬数九”。数上9天是一九，再数9天是二九……数到“九九”就算“九”尽了，“九尽杨花开”，那时天就暖了。《九九歌》是这样唱的：一九二九不出手；三九四九河上走；五九六九沿河望柳；七九开河，八九雁来；九九加一九，耕牛遍地走。 最近对网上开源的阅读器项目进行了调研，重点是github上的开源项目，对star比较多的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-01T12:45:05.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阅读引擎开源项目调研总结">
+<meta name="twitter:description" content="农历腊月初二，也是冬至后的第四个九天，俗称“四九”。冬至这一天开始数九，这就是人们所说的“提冬数九”。数上9天是一九，再数9天是二九……数到“九九”就算“九”尽了，“九尽杨花开”，那时天就暖了。《九九歌》是这样唱的：一九二九不出手；三九四九河上走；五九六九沿河望柳；七九开河，八九雁来；九九加一九，耕牛遍地走。 最近对网上开源的阅读器项目进行了调研，重点是github上的开源项目，对star比较多的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/01/阅读引擎开源项目调研总结/"/>
+
+
+
+
+
+  <title>阅读引擎开源项目调研总结 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/01/阅读引擎开源项目调研总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">阅读引擎开源项目调研总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T14:32:12+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/经验-总结/" itemprop="url" rel="index">
+                    <span itemprop="name">经验&总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>农历腊月初二，也是冬至后的第四个九天，俗称“四九”。冬至这一天开始数九，这就是人们所说的“提冬数九”。数上9天是一九，再数9天是二九……数到“九九”就算“九”尽了，“九尽杨花开”，那时天就暖了。《九九歌》是这样唱的：一九二九不出手；三九四九河上走；五九六九沿河望柳；七九开河，八九雁来；九九加一九，耕牛遍地走。</strong></p>
+<p>最近对网上开源的阅读器项目进行了调研，重点是github上的开源项目，对star比较多的项目一一下载下来进行了编译，运行，试用和总结，发现有做的非常好的，如FBReader，NovelReader等，也有根本就编译不通过，或者运行就挂掉的项目，我不太清楚这些项目为什么还会收获那么多star，也许是我的编译方法存在问题，但是给我的感觉这些项目对使用者来说不是很负责。以下是对调研过的项目做的总结，分成了三大块，推荐的，借鉴意义不大的，编译报错或存在运行问题的这三块。有需要的可以研究一下我总结的文档，也许会让你少走些弯路。如果总结有不当或者欠妥之处，还请见谅。此篇文章只是建议或者为你调研提供了一个方向，最好自己能够亲身都跑一下这些项目。</p>
+<h2 id="一、推荐的开源项目"><a href="#一、推荐的开源项目" class="headerlink" title="一、推荐的开源项目"></a>一、推荐的开源项目</h2><p>主要是对针对排版引擎有参考意义的项目。</p>
+<h3 id="1、FBReader"><a href="#1、FBReader" class="headerlink" title="1、FBReader"></a>1、FBReader</h3><p>————— 官方demo，比较有借鉴价值。编译通过，运行较正常 。<br>推荐参考指数：<em>*</em></p>
+<p>工程：<br>FBReader-Android-2-master（ android studio工程，可以替代FBReaderJ）</p>
+<p>地址：<a href="https://github.com/geometer/FBReader-Android-2" target="_blank" rel="external">https://github.com/geometer/FBReader-Android-2</a></p>
+<p>简介：<br>FBReaderJ是老的eclispe工程，地址：<a href="https://github.com/geometer/FBReaderJ" target="_blank" rel="external">https://github.com/geometer/FBReaderJ</a><br>FBReaderJ中有的FBReader-Android-2-master基本都有，可以代替FBReaderJ 使用，并且FBReader-Android-2-master是一个Android studio工程。</p>
+<p>jni涉及到的一些native工程 ：<br>（1）、linebreak ：<br>Liblinebreak is an implementation of the line breaking algorithm as described in Unicode 6.0.0 Standard Annex 14, Revision 26. It breaks lines that contain Unicode characters. It is designed to be used in a generic text renderer. FBReader is one real-world example, and you may also check some simple sample code, like showbreak and breaktext.<br>应该是用来换行排版使用的<br>（2）、Expat ：<br>Expat是一个用C语言开发的、用来解析XML文档的开发库，它最初是开源的、Mozilla项目下的一个XML解析器。<br>（3）、DeflatingDecompressor ：<br>应该是进行压缩的。<br>（4）、NativeFormats<br>用来对不同格式进行兼容处理的,应该包括，<br>css，doc，fb2，html，xhtml, oeb，pdb ，rtf ，txt等格式。 </p>
+<p>功能介绍：<br>功能非常强大，想的到想不到的设置在这里都有，后续会对其排版引擎专门总结。</p>
+<h3 id="2、FBReader-AS"><a href="#2、FBReader-AS" class="headerlink" title="2、FBReader_AS"></a>2、FBReader_AS</h3><p>—————adolfAn重构的FBReader工程，有编译错误，解决后运行正常。<br>推荐参考指数：<strong>*</strong></p>
+<p>工程：FBReader_AS-master</p>
+<p>地址：<a href="https://github.com/adolfAn/FBReader_AS" target="_blank" rel="external">https://github.com/adolfAn/FBReader_AS</a> </p>
+<p>简介：<br>1、基于Android_Studio开发的FBReader2.5.10版本；<br>2、基于FBReader开发的小说阅读器网站：<a href="http://www.duoduoxiaoshuo.com/" target="_blank" rel="external">http://www.duoduoxiaoshuo.com/</a> ；<br>3、更多请关注国内最大FBReaderQQ开发群：321171877；</p>
+<p>功能介绍：<br>可以参考内容较多，对官方FBReader结构进行了调整，重点研究对象。<br>1、双列视图；<br>2、本地搜索（重点参考）；<br>3、支持txt,epub,pdf需要安装插件；<br>4、和其它功能和官方的相同；</p>
+<h3 id="3、FBReaderJBook"><a href="#3、FBReaderJBook" class="headerlink" title="3、FBReaderJBook"></a>3、FBReaderJBook</h3><p>————— 在FBReader基础上二次开发的工程<br>工程：FBReaderJBook-master</p>
+<p>推荐参考指数：*</p>
+<p>地址：<a href="https://github.com/zzyyppqq/FBReaderJBook" target="_blank" rel="external">https://github.com/zzyyppqq/FBReaderJBook</a></p>
+<p>简介：<br>FBReaderJBook Android电子书阅读</p>
+<p>功能介绍：<br>对FBReader进行了扩展，只有如下功能可以参考，其它被删除。<br>1、本地书柜；<br>2、在线书库；<br>3、本书目录；<br>4、我的书签；<br>5、内容查找；<br>6、支持txt,epub,pdf需要安装插件；<br>容易崩溃，打开图书失败后，无法再打开文件。</p>
+<h3 id="4、BookReader-master"><a href="#4、BookReader-master" class="headerlink" title="4、BookReader-master"></a>4、BookReader-master</h3><p>————— 编译通过，能正常运行<br>工程：BookReader-master</p>
+<p>推荐参考指数：<em>*</em> </p>
+<p>地址：<a href="https://github.com/JustWayward/BookReader" target="_blank" rel="external">https://github.com/JustWayward/BookReader</a></p>
+<p>简介：<br>BookReader 任阅<br>“任阅” 网络小说阅读器，实现追书推荐收藏、书籍/标签检索、模拟翻书的翻页效果、缓存书籍、日夜间模式、书签、txt/pdf/epub书籍阅读、字体/主题/亮度设置、Wifi传书等功能~ <a href="https://github.com/smuyyh" target="_blank" rel="external">https://github.com/smuyyh</a></p>
+<p>功能介绍：<br>1、仿真翻页（重点参考），滑动覆盖翻页，无动画；<br>2、缓存策略；按章节下载<br>3、书签（重点参考）；<br>4、目录；<br>5、主页面；<br>6、Wifi传书（重点参考）；<br>7、扫描本地书籍；<br>8、支持txt,epub,</p>
+<h3 id="5、PageTurner-master"><a href="#5、PageTurner-master" class="headerlink" title="5、PageTurner-master"></a>5、PageTurner-master</h3><p>————— 编译通过，能正常运行<br>工程：PageTurner-master</p>
+<p>推荐参考指数：<em>*</em></p>
+<p>地址：<a href="https://github.com/NightWhistler/PageTurner" target="_blank" rel="external">https://github.com/NightWhistler/PageTurner</a> </p>
+<p>简介：<br>Android e-book reader with cloud synchronization <a href="http://pageturner-reader.org" target="_blank" rel="external">http://pageturner-reader.org</a><br>2年以上没有再维护更新<br>应用做的有点粗糙，老外的项目</p>
+<p>功能介绍：<br>1、支持ePub格式文件；<br>2、添加标签和展示；<br>3、书内关键字搜索和搜索内容展示；<br>4、文字搜索，分享，选择所有，复制功能；<br>5、文字翻译功能；<br>6、搜索rom中的ePub文件；<br>7、搜索书名；<br>8、自动滚动，以及时间和样式设置（从上到下，时间进度条两种）<br>9、支持多国语言；<br>10、切换字体；<br>11、水平，垂直外边距；<br>12、行距；<br>13、文字，背景颜色；<br>14、滑动翻页；<br>15、其他</p>
+<h3 id="6、NovelReader-master"><a href="#6、NovelReader-master" class="headerlink" title="6、NovelReader-master"></a>6、NovelReader-master</h3><p>————— 解决部分错误后编译通过，重点推荐项目，如果项目中只需要支持txt，则这个项目非常适合<br>工程：NovelReader-master</p>
+<p>推荐参考指数：<strong>*</strong></p>
+<p>地址：<a href="https://github.com/newbiechen1024/NovelReader" target="_blank" rel="external">https://github.com/newbiechen1024/NovelReader</a> </p>
+<p>简介：<br>仿照”任阅”的追书、看书的小说阅读器。重写”任阅”的代码，优化代码逻辑和代码结构，降低内存使用率。重写小说阅读器，支持网络阅读、本地阅读(支持分章，虚拟分章)。支持仿真翻页、上下滚动翻页等翻页效果。支持小说断点续传功能。优化用户使用体验。</p>
+<p>相对于原作增加的功能与改进:<br>重写代码逻辑，优化代码结构，降低内存使用率<br>采用 sql 数据库对数据进行存储。 (原作者是采用ACache类将数据修改成文本存储)<br>增加书本的断点续传功能 (仅支持单任务下载)<br>支持小说更新提示。<br>重写小说阅读器,仿掌阅设计。提供的功能如下<br>支持翻页动画:仿真翻页、覆盖翻页、上下滚动翻页等翻页效果。<br>支持页面定制:亮度调节、背景调节、字体大小调节<br>支持全屏模式(含有虚拟按键的手机)、音量键翻页<br>支持页面进度显示、页面切换、上下章切换。<br>支持在线章节阅读、本地书籍查找。<br>支持本地书籍加载到页面(支持本地书籍分章、加载速度快、耗费内存少) </p>
+<p>采用了以下开源框架：<br>butterknife ==&gt; View注入<br>rxandroid<br>rxjava<br>greenDAO ==&gt; 数据库<br>retrofit ==&gt; 网络<br>Glide ==&gt; 图片加载<br>retrolambda ==&gt; 在AndroidStudio3.0以下版本支持Lambda<br>treader ==&gt; 小说阅读页面的切换动画及整体架构都来自这个项目。<br>AndroidTagGroup ==&gt; 标签效果 </p>
+<p>功能介绍：<br>1、翻页效果（仿真（重点参考，和BookReader-master是不同的仿真翻页效果）、覆盖（重点参考）、滚动（上下滚动，重点参考）、无（重点参考））、<br>2、设置字号（重点参考）；<br>3、亮度调节，<br>4、背景设置，<br>5、夜间模式，<br>6、目录；（左侧抽拉式菜单）<br>7、扫描本地文件和智能导入（重点参考）；<br>8、下载列表（重点参考）；<br>9、书本的断点续传功能 (仅支持单任务下载)；<br>10、只支持txt格式；<br>11、上下章节快速切换；<br>12、采用 sql 数据库对数据进行存储 ；<br>13、支持小说更新提示；</p>
+<h3 id="7、MaterialHome"><a href="#7、MaterialHome" class="headerlink" title="7、MaterialHome"></a>7、MaterialHome</h3><p>————— 图书展示类App，没有设置，只有单一阅读<br>工程：MaterialHome-master</p>
+<p>推荐参考指数：*</p>
+<p>地址：<a href="https://github.com/hymanme/MaterialHome" target="_blank" rel="external">https://github.com/hymanme/MaterialHome</a></p>
+<p>简介：<br>一个基于 Material Design 风格设计的图书展示类App，豆瓣图书，在线电子书。<br>虽然叫 Material Home，但是实质是一款图书展示类 app，目前正处于逐步完善阶段，也期望感兴趣的朋友一起来完善“她”。目前图书接口来源于豆瓣图书 api,特此感谢豆瓣提供的免费接口。本 app 采用的是 MD 设计风格以及一些友好的交互动画，使用了一些最新的热门技术。</p>
+<p>功能介绍：<br>滑动翻页阅读，material设计，抽屉菜单</p>
+<h3 id="8、light-novel-library-Wenku8-Android"><a href="#8、light-novel-library-Wenku8-Android" class="headerlink" title="8、light-novel-library_Wenku8_Android"></a>8、light-novel-library_Wenku8_Android</h3><p>————— 编译通过，运行正常<br>工程：LightNovelLibrary</p>
+<p>推荐参考指数：**</p>
+<p>地址：<a href="https://github.com/MewX/light-novel-library_Wenku8_Android" target="_blank" rel="external">https://github.com/MewX/light-novel-library_Wenku8_Android</a></p>
+<p>简介：<br>light-novel-library_Wenku8_Android-master    轻小说文库已不再维护。<br>[NOT MAINTAINED]轻小说文库(Wenku8)安卓版第三方公益App，Material Design风格、无广告、不盈利的轻小说阅读器(light novel reader)。 P.S. 下一代阅读器—— Project PRPR！已在设计中！欢迎关注以及建议！已获取一份wenku8数据，考虑小范围维护</p>
+<p>功能介绍：<br>1、需要登录然后在pc端收藏书籍后，才能使用；<br>2、导入本地字体（重点参考）；<br>3、导入本地背景图片；<br>4、翻页效果；<br>5、设置行距，段落间距，段落边距；</p>
+<h3 id="9、treader"><a href="#9、treader" class="headerlink" title="9、treader"></a>9、treader</h3><p>————— 编译通过，运行也正常<br>工程：treader-master</p>
+<p>推荐参考指数：<em>*</em></p>
+<p>地址：<a href="https://github.com/PeachBlossom/treader" target="_blank" rel="external">https://github.com/PeachBlossom/treader</a></p>
+<p>简介：<br>如风小说阅读器，添加书签、目录跳转、（仿真、覆盖、滑动、无）翻页动画效果、日夜间模式、本地txt书籍阅读、字体/字体大小/主题/亮度设置 </p>
+<p>功能介绍：<br>1、翻页效果–仿真（有bug），覆盖，滑动（重点看下），无页<br>2、设置字体（重点参考）<br>3、字号大小，屏幕亮度，背景图片<br>4、目录和添加书签（新页面打开形式，可以参考）；<br>5、仅支持txt格式；<br>6、demo读书页面可以参考；</p>
+<h3 id="10、Jreader"><a href="#10、Jreader" class="headerlink" title="10、Jreader"></a>10、Jreader</h3><p>————— 编译通过<br>工程：Jreader-master </p>
+<p>推荐参考指数：**</p>
+<p>地址：<a href="https://github.com/Focfa/Jreader" target="_blank" rel="external">https://github.com/Focfa/Jreader</a> </p>
+<p>简介：<br>一款仿掌阅iReader的电子书阅读器 apk：<a href="https://github.com/Focfa/Jreader/blob/master/Jreader.apk" target="_blank" rel="external">https://github.com/Focfa/Jreader/blob/master/Jreader.apk</a><br>该阅读器实现了本地书架、从SD卡导入电子书 、语音朗读功能。阅读时具有仿真翻页、自动记录阅读进度、可设置字体大小、设置阅读亮度、设置书签、夜间日间模式切换及具有进度调整功能。</p>
+<p>功能介绍：<br>1、语音朗读（重点参考）；<br>2、亮度，字体；<br>3、添加，跳转书签，显示目录（新页面打开形式，可以参考）；<br>4、跳转到具体某页；<br>5、仿真翻页效果；</p>
+<h3 id="11、HwTxtReader"><a href="#11、HwTxtReader" class="headerlink" title="11、HwTxtReader"></a>11、HwTxtReader</h3><p>—————  编译通过<br>工程：HwTxtReader-master </p>
+<p>推荐参考指数：*</p>
+<p>地址：<a href="https://github.com/bifan-wei/HwTxtReader" target="_blank" rel="external">https://github.com/bifan-wei/HwTxtReader</a>  </p>
+<p>简介：<br>轻量级Txt阅读器 、txt播放组件、txt文件加载控件、TxtReaderView。你可以通过该库快速实现加载播放txt文件，支持常见的阅读器设置操作。</p>
+<p>功能介绍：<br>1.字体设置与调节。包括大小、颜色、是否加粗。<br>2.页面风格设置，夜间模式等。<br>3.进度跳转与当前进度获取。<br>4.章节获取与章节跳转。<br>5.可以滑盖翻页与平移翻页切换。<br>6.可以进行长按滑动选择文字。<br>7.数字与英文字符显示特点颜色。<br>8、仅支持txt;</p>
+<p>总体效果不是不太好，bug较多。</p>
+<h3 id="12、FriendBook"><a href="#12、FriendBook" class="headerlink" title="12、FriendBook"></a>12、FriendBook</h3><p>————— 编译通过<br>工程：FriendBook-master </p>
+<p>推荐参考指数：<em>**</em></p>
+<p>地址：<a href="https://github.com/z-chu/FriendBook" target="_blank" rel="external">https://github.com/z-chu/FriendBook</a></p>
+<p>简介：<br>FriendBook-master 友书<br>“友书” 小说阅读app</p>
+<p>功能介绍：<br>有一定参考价值<br>1、翻页（仿真，覆盖都可以参考），设置模式等；<br>2、阅读页面（框架可以重点参考）；<br>3、目录（抽屉式菜单目录可以参考）；<br>4、翻页滑动效果（重点参考）；<br>5、亮度调节（重点参考）；<br>6、书籍编辑页面（重点参考）；</p>
+<h3 id="13、FolioReader-Android"><a href="#13、FolioReader-Android" class="headerlink" title="13、FolioReader-Android"></a>13、FolioReader-Android</h3><p>————— 编译通过<br>工程：FolioReader-Android-master</p>
+<p>推荐参考指数：**</p>
+<p>地址：<a href="https://github.com/FolioReader/FolioReader-Android" target="_blank" rel="external">https://github.com/FolioReader/FolioReader-Android</a> </p>
+<p>简介：<br>A Java ePub reader and parser framework for Android.</p>
+<p>功能介绍：<br>1、老外的项目（epub格式文件可以参考）；<br>2、语音朗读（重点参考）；</p>
+<h3 id="14、epub3reader"><a href="#14、epub3reader" class="headerlink" title="14、epub3reader"></a>14、epub3reader</h3><p>————— 编译通过<br>工程：EPUB3Reader_studio </p>
+<p>推荐参考指数：**</p>
+<p>地址：<a href="https://github.com/pettarin/epub3reader" target="_blank" rel="external">https://github.com/pettarin/epub3reader</a></p>
+<p>简介：<br>EPUB3Reader Android App</p>
+<p>功能介绍：<br>可以打开epub格式文件</p>
+<h3 id="15、android-pdfview"><a href="#15、android-pdfview" class="headerlink" title="15、android-pdfview"></a>15、android-pdfview</h3><p>—————  编译通过，可以借鉴打开pdf格式文件<br>工程：android-pdfview-master</p>
+<p>推荐参考指数：**</p>
+<p>地址：<a href="https://github.com/JoanZapata/android-pdfview" target="_blank" rel="external">https://github.com/JoanZapata/android-pdfview</a></p>
+<p>简介：<br>android-pdfview-master<br>[DEPRECATED] A fast PDF reader component for Android development <a href="http://joanzapata.com/android-pdfview/" target="_blank" rel="external">http://joanzapata.com/android-pdfview/</a></p>
+<p>功能介绍：<br>pdf格式文件可以参考，但没有各种设置项 </p>
+<h3 id="16、Android-MuPDF"><a href="#16、Android-MuPDF" class="headerlink" title="16、Android-MuPDF"></a>16、Android-MuPDF</h3><p>—————  编译通过，可以借鉴打开pdf格式文件<br>工程：Android-MuPDF-master_studio</p>
+<p>推荐参考指数：**  </p>
+<p>地址：<a href="https://github.com/joniks/Android-MuPDF" target="_blank" rel="external">https://github.com/joniks/Android-MuPDF</a></p>
+<p>简介：<br>Android-MuPDF-master_studio<br>已经2年以上不再更新，重新将其从eclipse导入studio项目，编译通过，并且提供了demo程序可用。</p>
+<p>功能介绍：<br>MuPDF usage for magazine reading  </p>
+<h2 id="二、个人感觉对于排版引擎借鉴意义不大的项目："><a href="#二、个人感觉对于排版引擎借鉴意义不大的项目：" class="headerlink" title="二、个人感觉对于排版引擎借鉴意义不大的项目："></a>二、个人感觉对于排版引擎借鉴意义不大的项目：</h2><h3 id="1、simplereader-master"><a href="#1、simplereader-master" class="headerlink" title="1、simplereader-master"></a>1、simplereader-master</h3><p>——————————– 编译通过，react native方式实现<br>simplereader –使用react native实现<br>参考”任阅” 网络小说阅读器,一款小说阅读器<br>项目基于ReactNative + Redux的框架开发。项目中的API均来自追书神器，纯属共享学习之用，不得用于商业！！<br>地址：<a href="https://github.com/jsntjinjin/simplereader" target="_blank" rel="external">https://github.com/jsntjinjin/simplereader</a><br>功能：翻页效果</p>
+<h3 id="2、CloudReader"><a href="#2、CloudReader" class="headerlink" title="2、CloudReader"></a>2、CloudReader</h3><p>——————————–编译通过，正常运行<br>云阅：一款基于网易云音乐UI，使用Gank.Io及豆瓣api开发的符合Google Material Design的Android客户端。项目采取的是MVVM-DataBinding架构开发，现主要包括：干货区、电影区和书籍区三个子模块。DIY网易云音乐原来是如此Cool~<br><a href="https://github.com/youlookwhat/CloudReader" target="_blank" rel="external">https://github.com/youlookwhat/CloudReader</a><br><a href="https://fir.im/cloudreader" target="_blank" rel="external">https://fir.im/cloudreader</a><br>功能：只有书籍列表，没有阅读相关的功能</p>
+<h3 id="3、FastReader"><a href="#3、FastReader" class="headerlink" title="3、FastReader"></a>3、FastReader</h3><p>——————————– 功能很少，参考意义不是很大<br>FastReader-master 快读<br>一款移动端电子阅读器<br><a href="https://github.com/CodingBingo/FastReader" target="_blank" rel="external">https://github.com/CodingBingo/FastReader</a><br>功能：导入本地txt文本 </p>
+<h3 id="4、Reader"><a href="#4、Reader" class="headerlink" title="4、Reader"></a>4、Reader</h3><p>——————————–  编译通过，比较简单，参考意义不大<br>Reader-master<br>Android小说阅读器实现，分页显示逻辑实现，滑动翻页，仿真翻页效果实现<br><a href="https://github.com/nspduanlei/Reader" target="_blank" rel="external">https://github.com/nspduanlei/Reader</a></p>
+<h3 id="5、ebook"><a href="#5、ebook" class="headerlink" title="5、ebook"></a>5、ebook</h3><p>——————————–  编译通过，问题太多，没有什么参考意义<br>使用赛贝尔曲线的电子书，可以随意翻卷<br><a href="https://github.com/watermelon/ebook" target="_blank" rel="external">https://github.com/watermelon/ebook</a> </p>
+<h3 id="6、RedReader"><a href="#6、RedReader" class="headerlink" title="6、RedReader"></a>6、RedReader</h3><p>——————————–  编译通过，Reddit client （新闻网站名）红迪网 客户端<br>RedReader-master<br>An unofficial open source Reddit client for Android.<br><a href="https://github.com/QuantumBadger/RedReader" target="_blank" rel="external">https://github.com/QuantumBadger/RedReader</a> </p>
+<h3 id="7、LNReader-Android"><a href="#7、LNReader-Android" class="headerlink" title="7、LNReader-Android"></a>7、LNReader-Android</h3><p>——————————–  编译通过，国外的项目，参考意义不大<br>Light novel reader for android test project collab<br><a href="https://github.com/calvinaquino/LNReader-Android" target="_blank" rel="external">https://github.com/calvinaquino/LNReader-Android</a> </p>
+<h2 id="三、存在编译或者运行问题的项目"><a href="#三、存在编译或者运行问题的项目" class="headerlink" title="三、存在编译或者运行问题的项目"></a>三、存在编译或者运行问题的项目</h2><h3 id="1、FBreader"><a href="#1、FBreader" class="headerlink" title="1、FBreader"></a>1、FBreader</h3><p>——————————– 缺少文件无法在studio编译通过<br>FBreader-master_other_studio<br>仿ireader阅读器<br><a href="https://github.com/AlixMing/FBreader" target="_blank" rel="external">https://github.com/AlixMing/FBreader</a> </p>
+<h3 id="2、IReader"><a href="#2、IReader" class="headerlink" title="2、IReader"></a>2、IReader</h3><p>——————————–  编译通过，无法运行，导入txt后程序崩溃<br>简阅 — 一个简约的本地txt阅读器。<br><a href="https://github.com/YuanWenHai/IReader" target="_blank" rel="external">https://github.com/YuanWenHai/IReader</a></p>
+<h3 id="3、MuPDFViewer"><a href="#3、MuPDFViewer" class="headerlink" title="3、MuPDFViewer"></a>3、MuPDFViewer</h3><p>——————————–  无法编译通过，缺少文件mupdf/fitz.h<br>MuPDFViewer_stuio<br>基于MuPDF的Android PDF阅读器。<br><a href="https://github.com/liumeng1201/MuPDFViewer" target="_blank" rel="external">https://github.com/liumeng1201/MuPDFViewer</a> </p>
+<h3 id="4、EpubRead"><a href="#4、EpubRead" class="headerlink" title="4、EpubRead"></a>4、EpubRead</h3><p>——————————–  编译通过，运行异常<br>EpubRead-master<br>Android平台下的epub阅读器，修改背景，查看目录等<br><a href="https://github.com/Jiangzqts/EpubRead" target="_blank" rel="external">https://github.com/Jiangzqts/EpubRead</a> </p>
+<h3 id="5、coolreader"><a href="#5、coolreader" class="headerlink" title="5、coolreader"></a>5、coolreader</h3><p>——————————– 编译无法通过<br>coolreader-master_studio<br>点酷听书，让你不再总是疲劳看书了，真人发音准确非常，还有海量电子书等你来看哦。 <a href="http://www.ejiakt.com" target="_blank" rel="external">http://www.ejiakt.com</a><br><a href="https://github.com/dotcool/coolreader" target="_blank" rel="external">https://github.com/dotcool/coolreader</a></p>
+<h3 id="6、android-reader"><a href="#6、android-reader" class="headerlink" title="6、android-reader"></a>6、android-reader</h3><p>——————————– 无法编译通过<br>android-reader-master_studio<br>public book reader for android<br><a href="https://github.com/ymcao/android-reader" target="_blank" rel="external">https://github.com/ymcao/android-reader</a></p>
+<p>报错：<br>fatal error: ‘dos/dos.h’ file not found </p>
+<h3 id="7、BookReader"><a href="#7、BookReader" class="headerlink" title="7、BookReader"></a>7、BookReader</h3><p>——————————–   编译通过,运行添加文件崩溃<br>BookReader-master_1 阅读<br>一款txt文本阅读器，基于Rxjava2+MVP 主要功能: 1.文档选择导入，文档扫描。 2.Txt文件阅读，支持背景，字体更换，亮度等属性调节 3.支持多种翻页模式 4.目录提取，书签添加<br><a href="https://github.com/ziktang/BookReader" target="_blank" rel="external">https://github.com/ziktang/BookReader</a></p>
+<h3 id="8、news-android"><a href="#8、news-android" class="headerlink" title="8、news-android"></a>8、news-android</h3><p>——————————–  未编译通过，需要studio3.0以上的环境<br>news-android-master<br>iphone::newspaper: Android client for the Nextcloud news/feed reader app <a href="https://play.google.com/store/apps/de…" target="_blank" rel="external">https://play.google.com/store/apps/de…</a><br><a href="https://github.com/nextcloud/news-android" target="_blank" rel="external">https://github.com/nextcloud/news-android</a></p>
+<p>以上就是开源阅读项目调研的总结情况，如有错误或者问题还请指出，谢谢。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/经验-总结/" rel="tag"># 经验 总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/31/罗马帝国史/" rel="next" title="罗马帝国史">
+                <i class="fa fa-chevron-left"></i> 罗马帝国史
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/01/使用facebook和twitter进行分享经验总结/" rel="prev" title="使用facebook和twitter进行分享经验总结">
+                使用facebook和twitter进行分享经验总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、推荐的开源项目"><span class="nav-number">1.</span> <span class="nav-text">一、推荐的开源项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、FBReader"><span class="nav-number">1.1.</span> <span class="nav-text">1、FBReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、FBReader-AS"><span class="nav-number">1.2.</span> <span class="nav-text">2、FBReader_AS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、FBReaderJBook"><span class="nav-number">1.3.</span> <span class="nav-text">3、FBReaderJBook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、BookReader-master"><span class="nav-number">1.4.</span> <span class="nav-text">4、BookReader-master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、PageTurner-master"><span class="nav-number">1.5.</span> <span class="nav-text">5、PageTurner-master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、NovelReader-master"><span class="nav-number">1.6.</span> <span class="nav-text">6、NovelReader-master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、MaterialHome"><span class="nav-number">1.7.</span> <span class="nav-text">7、MaterialHome</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、light-novel-library-Wenku8-Android"><span class="nav-number">1.8.</span> <span class="nav-text">8、light-novel-library_Wenku8_Android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、treader"><span class="nav-number">1.9.</span> <span class="nav-text">9、treader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、Jreader"><span class="nav-number">1.10.</span> <span class="nav-text">10、Jreader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、HwTxtReader"><span class="nav-number">1.11.</span> <span class="nav-text">11、HwTxtReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12、FriendBook"><span class="nav-number">1.12.</span> <span class="nav-text">12、FriendBook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13、FolioReader-Android"><span class="nav-number">1.13.</span> <span class="nav-text">13、FolioReader-Android</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14、epub3reader"><span class="nav-number">1.14.</span> <span class="nav-text">14、epub3reader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15、android-pdfview"><span class="nav-number">1.15.</span> <span class="nav-text">15、android-pdfview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16、Android-MuPDF"><span class="nav-number">1.16.</span> <span class="nav-text">16、Android-MuPDF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、个人感觉对于排版引擎借鉴意义不大的项目："><span class="nav-number">2.</span> <span class="nav-text">二、个人感觉对于排版引擎借鉴意义不大的项目：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、simplereader-master"><span class="nav-number">2.1.</span> <span class="nav-text">1、simplereader-master</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、CloudReader"><span class="nav-number">2.2.</span> <span class="nav-text">2、CloudReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、FastReader"><span class="nav-number">2.3.</span> <span class="nav-text">3、FastReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、Reader"><span class="nav-number">2.4.</span> <span class="nav-text">4、Reader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、ebook"><span class="nav-number">2.5.</span> <span class="nav-text">5、ebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、RedReader"><span class="nav-number">2.6.</span> <span class="nav-text">6、RedReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、LNReader-Android"><span class="nav-number">2.7.</span> <span class="nav-text">7、LNReader-Android</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、存在编译或者运行问题的项目"><span class="nav-number">3.</span> <span class="nav-text">三、存在编译或者运行问题的项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、FBreader"><span class="nav-number">3.1.</span> <span class="nav-text">1、FBreader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、IReader"><span class="nav-number">3.2.</span> <span class="nav-text">2、IReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、MuPDFViewer"><span class="nav-number">3.3.</span> <span class="nav-text">3、MuPDFViewer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、EpubRead"><span class="nav-number">3.4.</span> <span class="nav-text">4、EpubRead</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、coolreader"><span class="nav-number">3.5.</span> <span class="nav-text">5、coolreader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、android-reader"><span class="nav-number">3.6.</span> <span class="nav-text">6、android-reader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、BookReader"><span class="nav-number">3.7.</span> <span class="nav-text">7、BookReader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、news-android"><span class="nav-number">3.8.</span> <span class="nav-text">8、news-android</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
