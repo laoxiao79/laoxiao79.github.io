@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="经验 总结," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="“三十年河东，三十年河西”是一句民间谚语，它的来源是：从前黄河河道不固定，经常会改道（历史上无数次发生）。某个地方原来在河的东面，若干年后，因黄河水流改道，这个地方会变为在河的西面。这句话比喻人事的盛衰兴替，变化无常，有时候会向反面转变，难以预料。又道是“世事无常，瞬息万变”，也有人说“在这个世上，最不缺少的就是变化”。对于正在经历这种不断变化的或者处于变化旋涡中的人，也许变化过后是雨后彩虹，也许">
+<meta name="keywords" content="经验 总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FBReader阅读引擎支持的功能">
+<meta property="og:url" content="http://yoursite.com/2018/02/06/FBReader阅读引擎支持的功能/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="“三十年河东，三十年河西”是一句民间谚语，它的来源是：从前黄河河道不固定，经常会改道（历史上无数次发生）。某个地方原来在河的东面，若干年后，因黄河水流改道，这个地方会变为在河的西面。这句话比喻人事的盛衰兴替，变化无常，有时候会向反面转变，难以预料。又道是“世事无常，瞬息万变”，也有人说“在这个世上，最不缺少的就是变化”。对于正在经历这种不断变化的或者处于变化旋涡中的人，也许变化过后是雨后彩虹，也许">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-06T05:48:42.816Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FBReader阅读引擎支持的功能">
+<meta name="twitter:description" content="“三十年河东，三十年河西”是一句民间谚语，它的来源是：从前黄河河道不固定，经常会改道（历史上无数次发生）。某个地方原来在河的东面，若干年后，因黄河水流改道，这个地方会变为在河的西面。这句话比喻人事的盛衰兴替，变化无常，有时候会向反面转变，难以预料。又道是“世事无常，瞬息万变”，也有人说“在这个世上，最不缺少的就是变化”。对于正在经历这种不断变化的或者处于变化旋涡中的人，也许变化过后是雨后彩虹，也许">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/06/FBReader阅读引擎支持的功能/"/>
+
+
+
+
+
+  <title>FBReader阅读引擎支持的功能 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/06/FBReader阅读引擎支持的功能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">FBReader阅读引擎支持的功能</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T13:22:30+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/经验-总结-阅读引擎/" itemprop="url" rel="index">
+                    <span itemprop="name">经验&总结 阅读引擎</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>“三十年河东，三十年河西”是一句民间谚语，它的来源是：从前黄河河道不固定，经常会改道（历史上无数次发生）。某个地方原来在河的东面，若干年后，因黄河水流改道，这个地方会变为在河的西面。这句话比喻人事的盛衰兴替，变化无常，有时候会向反面转变，难以预料。又道是“世事无常，瞬息万变”，也有人说“在这个世上，最不缺少的就是变化”。对于正在经历这种不断变化的或者处于变化旋涡中的人，也许变化过后是雨后彩虹，也许迎接的是更大的暴风雨，前途未知，但我们应该相信这句话，“一般特别勤奋的人，运气都不会太差的”。让我们保持平常心，拥抱变化，“车到山前必有路”，“塞翁失马，焉知非福”，一切变化都会有其解决方案，也许看似很糟糕的事情在多年之后回头看时，却可能是一件好事也说不定。</strong></p>
+<p>最近对FBReader的阅读引擎支持的功能进行了总结，便于进行修改或扩展，对刚从事阅读引擎工作相关工作的同学可能会有一些学习和借鉴作用，这里分享出来给大家。</p>
+<p>FBReader阅读引擎支持的功能很多，总结如下所示。</p>
+<h3 id="1、支持并测试过的格式有txt-epub-doc-html-pdf-需要下载插件支持-；"><a href="#1、支持并测试过的格式有txt-epub-doc-html-pdf-需要下载插件支持-；" class="headerlink" title="1、支持并测试过的格式有txt,epub,doc,html,pdf(需要下载插件支持)；"></a>1、支持并测试过的格式有txt,epub,doc,html,pdf(需要下载插件支持)；</h3><p>代码看到的应该有css，doc，fb2，html，xhtml, oeb，pdb ，rtf ，txt，需要装插件的格式有CBR和CBZ，DjVu,PDF等这些。</p>
+<h3 id="2、夜间模式和白天模式的切换；"><a href="#2、夜间模式和白天模式的切换；" class="headerlink" title="2、夜间模式和白天模式的切换；"></a>2、夜间模式和白天模式的切换；</h3><h3 id="3、书签功能"><a href="#3、书签功能" class="headerlink" title="3、书签功能"></a>3、书签功能</h3><p>（1）、添加书签；<br>（2）、打开书签；<br>（3）、编辑书签：能够单独编辑某个标签的文字内容，选中的样式，进行删除。<br>（4）、可能同时查看所有图书的书签；<br>（5）、对所有图书的书签进行关键字搜索；</p>
+<h3 id="4、支持脚注。"><a href="#4、支持脚注。" class="headerlink" title="4、支持脚注。"></a>4、支持脚注。</h3><p>脚注内容显示有当前读书的进度，格式以”当前页/总页“这样的方式显示；当前时间；剩余点亮百分比。</p>
+<h3 id="5、全文内容查找。"><a href="#5、全文内容查找。" class="headerlink" title="5、全文内容查找。"></a>5、全文内容查找。</h3><p>针对输入的关键字进行全文内容查找。</p>
+<h3 id="6、侧边亮度调节功能。"><a href="#6、侧边亮度调节功能。" class="headerlink" title="6、侧边亮度调节功能。"></a>6、侧边亮度调节功能。</h3><p>可以上下滑动当前页的最左侧来调节屏幕的亮度。</p>
+<h3 id="7、书籍分享"><a href="#7、书籍分享" class="headerlink" title="7、书籍分享"></a>7、书籍分享</h3><p>通过系统安装的应用可以分享书籍</p>
+<h3 id="8、屏幕方向"><a href="#8、屏幕方向" class="headerlink" title="8、屏幕方向"></a>8、屏幕方向</h3><p>可以按系统，感知设备方向，竖直，水平，竖直反置，水平反置等6种方式来设置阅读界面的屏幕方向。</p>
+<h3 id="9、书籍信息"><a href="#9、书籍信息" class="headerlink" title="9、书籍信息"></a>9、书籍信息</h3><p>（1）、可以查看书名，书籍对应的语言，书籍所在路径或位置。<br>（2）、还可以对书籍的信息进行编辑，包括书名，作者，标签，语言（书籍对应的语言）<br>，编码（可以设置不同的编码，手动修改后会导致文件乱码）。<br>（3）、重新加载功能，可以恢复书籍的默认信息，将编辑保存的信息恢复成默认值。</p>
+<h3 id="10、快速翻看"><a href="#10、快速翻看" class="headerlink" title="10、快速翻看"></a>10、快速翻看</h3><p>可以通过操作滚动条快速切换到某一页，显示格式为“当前页/总页”。</p>
+<h3 id="11、插件安装功能"><a href="#11、插件安装功能" class="headerlink" title="11、插件安装功能"></a>11、插件安装功能</h3><p>支持符合FBReader要求的插件进行集成和安装，包括有书架，语音朗读，PDF格式，DjVu格式，CBR和CBZ格式</p>
+<h3 id="12、设置语言"><a href="#12、设置语言" class="headerlink" title="12、设置语言"></a>12、设置语言</h3><p>设置当前界面的语言。</p>
+<h3 id="13、文件夹设定。"><a href="#13、文件夹设定。" class="headerlink" title="13、文件夹设定。"></a>13、文件夹设定。</h3><p>包括设置在哪搜索book，在哪存储下载的book，上哪找字体，在哪存储临时文件等都可以设置和选择目录。</p>
+<h3 id="14、同步。"><a href="#14、同步。" class="headerlink" title="14、同步。"></a>14、同步。</h3><p>主要是和后台同步一些信息。包括帮助文档，是否允许同步，如果允许，可以设置是否上传文件到服务器，同步当前book的位置到后台，改变当前阅读的book，同步bookmark到后台。</p>
+<h3 id="15、呈现方式"><a href="#15、呈现方式" class="headerlink" title="15、呈现方式"></a>15、呈现方式</h3><p>（1）、界面语言。可以设置界面菜单多国语言。<br>（2）、屏幕方向。可以按系统，感知设备方向，竖直，水平，竖直反置，水平反置等6种方式来设置 。<br>（3）、双列视图。水平方向手持设备时使用双列显示文字 ，还是始终将文字一列显示 。<br>（4）、屏幕亮度调整。是否允许通过在屏幕左侧上下滑动手指来调整屏幕亮度，或者禁用屏幕亮度调整。<br>（5）、禁止屏幕睡眠。四个选项可以选择其一：总是，当电量大于百分之25 ，当电量大于百分之50 ，从不。<br>（6）、显示状态栏 。阅读模式下显示状态栏，或者阅读模式下隐藏状态栏。<br>（7）、阅读时禁用系统按键发亮 。禁用设备系统按键发亮 (对某些设备无效) ，或者不要尝试禁用系统按键发亮。</p>
+<h3 id="16、文字"><a href="#16、文字" class="headerlink" title="16、文字"></a>16、文字</h3><p>（1）、字体属性。可以设置是否允许抗锯齿 ，是否允许间距微调 ，是否允许色彩抖动 ，是否允许字体微调等4个选项。<br>（2）、字体。可以设置字体，包括预置的和拷贝到/mnt/sdcard/Fonts目录下的。<br>（3）、字体大小。可以设置字体大小，是个区间值。<br>（4）、字型。包括是正常 ，还是加粗 ，倾斜 ，还是加粗并倾斜 。<br>（5）、行间距。区间值0.5-3.0，这个我们可以重置感兴趣的值。<br>（6）、对齐。对齐方式包括左 ，右 ，居中 ，对齐 四种。<br>（7）、自动断字。是否允许自动断字 。<br>（8）、更多样式。</p>
+<p><strong><strong><strong>**</strong></strong></strong>以下这个是重点<strong><strong>*</strong></strong></p>
+<p>可以对多种样式进行设置，这些样式包括34种，具体如下，<br>（1）、连续段落<br>（2）、EPub Paragraph<br>（3）、书名<br>（4）、章节标题<br>（5）、副标题<br>（6）、标题 1<br>（7）、标题 2<br>（8）、标题 3<br>（9）、标题 4<br>（10）、标题 5<br>（11）、标题 6<br>（12）、摘要<br>（13）、题词<br>（14）、作者<br>（15）、诗标题<br>（16）、节<br>（17）、韵文<br>（18）、举例<br>（19）、内部超链接<br>（20）、外部链接<br>（21）、脚注<br>（22）、倾斜<br>（23）、重点<br>（24）、加粗<br>（25）、固定<br>（26）、定义<br>（27）、定义描述<br>（28）、预置格式文本<br>（29）、编码<br>（30）、删除线<br>（31）、上标<br>（32）、下标<br>（33）、图像<br>（34）、日期<br>可以分别对以上34种样式进行14种设置值的修改，这14种设置值包括，<br>（1）、字体<br>（2）、字体大小<br>（3）、加粗<br>（4）、倾斜<br>（5）、Text decoration<br>（6）、允许断字<br>（7）、对齐<br>（8）、行间距<br>（9）、段前距<br>（10）、段后距<br>（11）、左缩进<br>（12）、右缩进<br>（13）、首行缩进<br>（14）、Vertical alignment.<br>其中段前距 ，段后距 ，左缩进，右缩进，首行缩进，Vertical alignment 支持的格式有类似，20px, 10pt, 0.8em, 1ex, 120%，5种格式。</p>
+<h3 id="17、Pop-ups"><a href="#17、Pop-ups" class="headerlink" title="17、Pop-ups"></a>17、Pop-ups</h3><p>设置弹出框的属性，包括文字大小，多长时间间隔等。</p>
+<h3 id="18、CSS"><a href="#18、CSS" class="headerlink" title="18、CSS"></a>18、CSS</h3><p>设置包括<br>Font family字体。Use font family defined in CSS 或者忽略。<br>字体大小。使用CSS中定义的字体大小 或者忽略。<br>文字排列 。使用CSS中定义的文字排列 或者忽略。<br>Margins边距 。Apply margins defined in CSS 或者忽略。</p>
+<h3 id="19、颜色-amp-墙纸"><a href="#19、颜色-amp-墙纸" class="headerlink" title="19、颜色&amp;墙纸"></a>19、颜色&amp;墙纸</h3><p>可以设置背景的颜色或者预置图片文件，或者自定义的图片。<br>还可以设置，普通文字 ，链接文字 ，已访问过的链接文字 ，Search results ，搜索结果背景 ，Footer (old style) ，Footer background ，Footer text ，Footer line ，选择背景色 ，选择的文本 等的背景颜色。</p>
+<h3 id="20、边距"><a href="#20、边距" class="headerlink" title="20、边距"></a>20、边距</h3><p>可以设置左边距 ，右边距 ，顶边距 ，底边距 ，列间距 。</p>
+<h3 id="21、滚动条"><a href="#21、滚动条" class="headerlink" title="21、滚动条"></a>21、滚动条</h3><p>（1）、滚动条设置 。包括隐藏 ，垂直滚动 ，垂直进度方式 ，水平页脚方式 ，Horizontal footer (old style) 等方式。<br>（2）、页脚高度 。<br>（3）、Footer (old style) colour。页脚样式<br>（4）、Footer background colour。 页脚背景色。<br>（5）、Footer text colour。页脚文本色<br>（6）、Footer line colour。 页脚间隔行颜色<br>（7）、显示内容目录标志 。在页脚栏显示内容目录标志 或者不在页脚栏显示内容目录标志 。<br>（8）、Maximum number of TOC marks to display。<br>（9）、Show reading progress 。<br>（10）、显示时间 。页脚处显示时间 或者不在页脚处显示时间<br>（11）、显示电量百分比 。在页脚显示电量百分比 或者不在。<br>（12）、字体。设置页脚字体。</p>
+<h3 id="22、翻阅操作"><a href="#22、翻阅操作" class="headerlink" title="22、翻阅操作"></a>22、翻阅操作</h3><p>（1）、触滑屏幕翻阅 。包括，手指拍触屏幕翻页 ，手指触滑翻页 和触滑或者拍触以翻页 可以选择。<br>（2）、连续拍触动作设定。连续拍触屏幕两次显示对话框/菜单 或者忽略连续拍触动作<br>（3）、音量键滚动 。<br>（4）、用音量键来翻动 。<br>（5）、动画效果 。包括，无动画效果的滚屏 ，翻卷动画 ，滑动动画 ，Slide animation (old style) ，移动动画 等5种，<br>（6）、动画速度<br>（7）、横屏翻阅 。</p>
+<h3 id="23、Dictionary-amp-translator字典和翻译"><a href="#23、Dictionary-amp-translator字典和翻译" class="headerlink" title="23、Dictionary &amp; translator字典和翻译"></a>23、Dictionary &amp; translator字典和翻译</h3><p>（1）、Look up single word in<br>（2）、Translate phrases via<br>（3）、导航键访问词句设定<br>（4）、长按动作设定</p>
+<h3 id="24、图像设定"><a href="#24、图像设定" class="headerlink" title="24、图像设定"></a>24、图像设定</h3><p>（1）、长按动作设定。包括，长按不做任何事 ，长按选择图像 和长按打开图像 。<br>（2）、图像适合屏幕。包括无 ，只有封面 和所有 。<br>（3）、图像显示时的背景颜色<br>（4）、Match background intensity 。Adjust image colour to background 或者Do not adjust image colour 。</p>
+<p>以上是FBReader引擎支持的所有功能，还有一些感觉不属于引擎功能范围的，如取消菜单设置，每日小提示设置，关于等相关的功能没有做整理。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/经验-总结/" rel="tag"># 经验 总结</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/01/使用facebook和twitter进行分享经验总结/" rel="next" title="使用facebook和twitter进行分享经验总结">
+                <i class="fa fa-chevron-left"></i> 使用facebook和twitter进行分享经验总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/06/知识点干货—多线程同步【6】之synchronized/" rel="prev" title="知识点干货—多线程同步【6】之synchronized">
+                知识点干货—多线程同步【6】之synchronized <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、支持并测试过的格式有txt-epub-doc-html-pdf-需要下载插件支持-；"><span class="nav-number">1.</span> <span class="nav-text">1、支持并测试过的格式有txt,epub,doc,html,pdf(需要下载插件支持)；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、夜间模式和白天模式的切换；"><span class="nav-number">2.</span> <span class="nav-text">2、夜间模式和白天模式的切换；</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、书签功能"><span class="nav-number">3.</span> <span class="nav-text">3、书签功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、支持脚注。"><span class="nav-number">4.</span> <span class="nav-text">4、支持脚注。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、全文内容查找。"><span class="nav-number">5.</span> <span class="nav-text">5、全文内容查找。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、侧边亮度调节功能。"><span class="nav-number">6.</span> <span class="nav-text">6、侧边亮度调节功能。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、书籍分享"><span class="nav-number">7.</span> <span class="nav-text">7、书籍分享</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8、屏幕方向"><span class="nav-number">8.</span> <span class="nav-text">8、屏幕方向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9、书籍信息"><span class="nav-number">9.</span> <span class="nav-text">9、书籍信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10、快速翻看"><span class="nav-number">10.</span> <span class="nav-text">10、快速翻看</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11、插件安装功能"><span class="nav-number">11.</span> <span class="nav-text">11、插件安装功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12、设置语言"><span class="nav-number">12.</span> <span class="nav-text">12、设置语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13、文件夹设定。"><span class="nav-number">13.</span> <span class="nav-text">13、文件夹设定。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14、同步。"><span class="nav-number">14.</span> <span class="nav-text">14、同步。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15、呈现方式"><span class="nav-number">15.</span> <span class="nav-text">15、呈现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16、文字"><span class="nav-number">16.</span> <span class="nav-text">16、文字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17、Pop-ups"><span class="nav-number">17.</span> <span class="nav-text">17、Pop-ups</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18、CSS"><span class="nav-number">18.</span> <span class="nav-text">18、CSS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19、颜色-amp-墙纸"><span class="nav-number">19.</span> <span class="nav-text">19、颜色&墙纸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20、边距"><span class="nav-number">20.</span> <span class="nav-text">20、边距</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21、滚动条"><span class="nav-number">21.</span> <span class="nav-text">21、滚动条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22、翻阅操作"><span class="nav-number">22.</span> <span class="nav-text">22、翻阅操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23、Dictionary-amp-translator字典和翻译"><span class="nav-number">23.</span> <span class="nav-text">23、Dictionary & translator字典和翻译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24、图像设定"><span class="nav-number">24.</span> <span class="nav-text">24、图像设定</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
