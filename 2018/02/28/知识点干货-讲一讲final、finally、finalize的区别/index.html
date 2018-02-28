@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="干货知识点," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="“横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。”这首诗来自于宋朝苏轼《题西林壁》，它的意思是，庐山从正面看，它是一道道连绵起伏的山岭；从侧面看，它是一座巍然耸立的险峰，而从远处、近处、高处、低处看，庐山又呈现各种不同的样子。我们之所以认不清庐山真正的面目，是因为人身处在庐山之中。诗的意思是指同一个事物在不同的角度和不同的时间看是不一样的，指出我们在看待或者观察问题时应当客观全面">
+<meta name="keywords" content="干货知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知识点干货--讲一讲final、finally、finalize的区别">
+<meta property="og:url" content="http://yoursite.com/2018/02/28/知识点干货-讲一讲final、finally、finalize的区别/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="“横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。”这首诗来自于宋朝苏轼《题西林壁》，它的意思是，庐山从正面看，它是一道道连绵起伏的山岭；从侧面看，它是一座巍然耸立的险峰，而从远处、近处、高处、低处看，庐山又呈现各种不同的样子。我们之所以认不清庐山真正的面目，是因为人身处在庐山之中。诗的意思是指同一个事物在不同的角度和不同的时间看是不一样的，指出我们在看待或者观察问题时应当客观全面">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-28T13:04:57.465Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="知识点干货--讲一讲final、finally、finalize的区别">
+<meta name="twitter:description" content="“横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。”这首诗来自于宋朝苏轼《题西林壁》，它的意思是，庐山从正面看，它是一道道连绵起伏的山岭；从侧面看，它是一座巍然耸立的险峰，而从远处、近处、高处、低处看，庐山又呈现各种不同的样子。我们之所以认不清庐山真正的面目，是因为人身处在庐山之中。诗的意思是指同一个事物在不同的角度和不同的时间看是不一样的，指出我们在看待或者观察问题时应当客观全面">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/28/知识点干货-讲一讲final、finally、finalize的区别/"/>
+
+
+
+
+
+  <title>知识点干货--讲一讲final、finally、finalize的区别 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/28/知识点干货-讲一讲final、finally、finalize的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">知识点干货--讲一讲final、finally、finalize的区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T20:46:16+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/干货知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">干货知识点</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>“横看成岭侧成峰，远近高低各不同。不识庐山真面目，只缘身在此山中。”</strong><br><strong>这首诗来自于宋朝苏轼《题西林壁》，它的意思是，庐山从正面看，它是一道道连绵起伏的山岭；从侧面看，它是一座巍然耸立的险峰，而从远处、近处、高处、低处看，庐山又呈现各种不同的样子。</strong><br><strong>我们之所以认不清庐山真正的面目，是因为人身处在庐山之中。诗的意思是指同一个事物在不同的角度和不同的时间看是不一样的，指出我们在看待或者观察问题时应当客观全面，如果主观片面的看问题，就会得出不正确的结论。</strong></p>
+<p>final、finally、finalize这三个关键字长得很像，对于Android初学者或者Java初学者来说容易混淆，有时分不清楚该怎样正确的使用它们，并且它们也经常是某些公司面试基础知识中的重点，所以我们有必要来专项学习一下它。今天我就来总结一下它们的定义，使用场景，区别等，争取把它们所有相关的知识点都一次性讲明白，使大家都能够很好的掌握它们。</p>
+<h2 id="1、关于final"><a href="#1、关于final" class="headerlink" title="1、关于final"></a>1、关于final</h2><p>final是Java中的一个修饰关键字，它可以用来修改类，方法和变量。<br>（1）、如果用它来修饰类，即类被声明为final，意味着这个类不能再派生出新的子类，不能作为父类被继承。例如，String、StringBuilder、StringBuffer、Math等类。它和abstract（抽象）是互斥的，用abstract修饰的类是必须要继承才能实例化对象的，因此一个类不能既被声明为 abstract，又被声明为final。<br>（2）、而用final修饰变量或方法时，可以保证变量或方法在使用中不被改变。<br>被final修饰的变量必须在声明时给定初值，而在以后的使用中只能读取，不可修改，场景包括形参，局部变量，成员变量等情况。如果修饰的是基本数据类型，则初始化之后变量的值不能被改变；如果修饰的变量是引用类型，那么它只能指向初始化时指向的那个对象，不能再指向别的对象，但是对象当中的内容是允许改变的。<br>（3）、被final修饰的方法也同样只能使用，不能被重载，但是子类可以使用或调用父类中final修饰的方法。<br>（4）、final有一个特殊的使用场景。<br>当方法内部声明的类或者方法内定义的匿名内部类，访问该方法内定义的局部变量时，该变量必须要用final修饰。因为当内部类或内部匿名类访问方法的局部变量时，相当于扩大了局部变量的作用域，如果局部变量不用 final 修饰，我们就可以在内部类中随意修改该局部变量值，而在该局部变量的作用域范围之外是可以看到这些修改后的值，这样将会出现安全问题，所以必须用final修饰，不允许内部类或内部匿名类修改变量的值。而方法内部类或内部匿名类在访问该方法所在的类的成员变量时，却可以不用final修饰。</p>
+<p>如下所示，</p>
+<pre><code>public class TestFinal {
+    String str1 = &quot;no need final&quot;;
+    //匿名内部类
+    public void testAnonyClass() {
+        final String str2 = &quot;need final&quot;;
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(50);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println(str1);
+                System.out.println(str2);
+
+            }
+        }).start();
+    }
+
+    public void testInnerClass(){
+        final String str3 = &quot;also need final&quot;;
+        //方法内部定义的内部类
+        class innerClass{
+            public void method1(){
+                System.out.println(str1);
+                System.out.println(str3);
+            }
+        }
+    }
+}
+</code></pre><p>如上所示str2在方法testAnonyClass中的匿名类中访问，它需要声明为final类型才可以，str3在方法testInnerClass中的内部类innerClass中访问，也同样需要声明为final。这两个方法中的内部类或内部匿名类在访问方法所在的类中的成员变量str1时，str1不需要声明为final。</p>
+<h2 id="2、关于finally"><a href="#2、关于finally" class="headerlink" title="2、关于finally"></a>2、关于finally</h2><p>finally也是Java中的一个保留字，用在异常处理时，提供 finally代码块来执行最后的清除操作。<br>我们在写一段可能抛出异常的代码段时，如果我们希望捕获这个代码段中抛出的异常，那我们一般这样来写，</p>
+<pre><code>try {
+    //调用方法，期间可能抛出异常
+    //....
+} catch (Exception e) {
+    e.printStackTrace();
+} finally {
+    //可以进行一些清理
+    //....
+}
+</code></pre><p>如果抛出一个异常，那么相匹配的 catch 子句就会执行，然后最终控制会进入 finally代码块。<br>finally语句不会被执行的唯一情况是：先执行了用于终止程序的System.exit()方法，这个时候不会走到finally语句中，或者如果在执行过程中突然断电了，这时所有进程都会终止，也不会执行finally语句。</p>
+<p>大家看一下如下demo，猜一猜打印的结果是什么？</p>
+<pre><code>public class TestFinally{
+    public int testFinally(){
+        try{
+            System.out.println(&quot;-----try-----&quot;);
+            return 1;
+        }finally{
+            System.out.println(&quot;-----finally-----&quot;);
+            return 2 ;
+        }
+    }
+    public static void main(String[]args){
+        TestFinally te= new TestFinally();
+        int t = te.testFinally();
+        System.out.println(t);
+      }
+}
+</code></pre><p>这里有两个return，按正常逻辑在try中调用return后，方法就返回了，但是因为下面有finally语句，并且其中也有一个return，所以最终应该返回finally语句中return对应的结果。<br>以上程序运行结果如下所示，<br>—–try—–<br>—–finally—–<br>2<br>如果注释掉finally语句中return，返回结果如下所示，<br>—–try—–<br>—–finally—–<br>1<br>可见finally中的语句永远都是要执行的。</p>
+<h2 id="3、关于finalize"><a href="#3、关于finalize" class="headerlink" title="3、关于finalize"></a>3、关于finalize</h2><p>finalize是Java中的一个方法名，它在Object类中定义，因此所有的类都继承了它。finalize() 方法的作用是在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。垃圾收集器在确定这个对象没有被引用时将调用此对象的finalize()方法，或者说finalize() 方法是在垃圾收集器删除对象之前对这个对象调用的。子类可以覆盖finalize() 方法从而整理自己定义的各类资源，或者执行资源清理工作。</p>
+<p>使用场景，当销毁一个对象时，需要执行一些额外操作。例如，如果一个对象创建了一些非Java 资源，如文件句柄，window 字符字体或者数据库cursor等，这时你在这个对象被销毁前，要保证这些资源被安全释放。那如何保证呢？Java提供了一种收尾（finalization）机制，可以通过重写finalize() 方法来实现这种机制，在这种机制或者finalize() 方法中，可以将对象在进行垃圾回收前释放之前创建的其它资源。<br>在finalize ( )方法中，你要指定这个对象被撤消前必须执行的操作。系统的垃圾回收会周期性地运行，将由JVM的垃圾回收机制来控制，它会检查此对象是不是不再被运行状态引用或间接地引用。如果没有被引用，将会释放此对象，对应的inalize( ) 方法就会执行。</p>
+<p>finalize()方法定义如下所示：</p>
+<pre><code>protected void finalize( )
+{
+// finalization code here
+}
+</code></pre><p>但是，finalize( )并不确保一个对象超出了它的作用域时就会执行，也就是说你不可能知道何时，甚至是否finalize( ) 被调用，因为这完全取决于系统的垃圾回收机制。所以，释放对象所创建的资源最好使用其它方法来实现，而不能仅仅依靠finalize( ) 来完成程序的资源释放工作。</p>
+<p>finalize()在什么场景使用呢?<br>有三种情况</p>
+<blockquote>
+<p>（1）、对象没有了直接和间接引用，垃圾回收器(garbage colector)决定回收某对象时，比如运行System.gc()的时候。</p>
+<p>（2）、程序退出时为对象调用一次finalize方法。</p>
+<p>（3）、显式的调用finalize方法。`</p>
+</blockquote>
+<h2 id="4、总结"><a href="#4、总结" class="headerlink" title="4、总结"></a>4、总结</h2><p>由以上介绍，我们应该对final、finally、finalize有所了解了。对于它们的使用，还需要我们在工作中多摸索和多实践，这样才会理解的更加深刻，运用起来才会得心应手，才不会对它们产生混淆。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/干货知识点/" rel="tag"># 干货知识点</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/28/知识点干货-聊一聊Android中Service与Thread的区别/" rel="next" title="知识点干货--聊一聊Android中Service与Thread的区别">
+                <i class="fa fa-chevron-left"></i> 知识点干货--聊一聊Android中Service与Thread的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/FBReader工程结构解析/" rel="prev" title="FBReader工程结构解析">
+                FBReader工程结构解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、关于final"><span class="nav-number">1.</span> <span class="nav-text">1、关于final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、关于finally"><span class="nav-number">2.</span> <span class="nav-text">2、关于finally</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、关于finalize"><span class="nav-number">3.</span> <span class="nav-text">3、关于finalize</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、总结"><span class="nav-number">4.</span> <span class="nav-text">4、总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

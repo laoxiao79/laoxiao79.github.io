@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="干货知识点," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="古语说得好：“一寸光阴一寸金，寸金难买寸光阴。”一寸光阴和一寸长的黄金一样昂贵，而一寸长的黄金却难以买到一寸光阴。比喻时间十分宝贵。此语句出自唐朝王贞白的《白鹿洞二首》，“读书不觉已春深， 一寸光阴一寸金。不是道人来引笑， 周情孔思正追寻。”警示我们一寸光阴一寸金， 寸金难买寸光阴。我们应珍惜时光，而不可虚度年华。又道是“少壮不努力，老大徒伤悲”，告诉我们不要虚度青春，古往今来，有许许多多人，当他">
+<meta name="keywords" content="干货知识点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知识点干货--聊一聊Android中Service与Thread的区别">
+<meta property="og:url" content="http://yoursite.com/2018/02/28/知识点干货-聊一聊Android中Service与Thread的区别/index.html">
+<meta property="og:site_name" content="老肖的博客">
+<meta property="og:description" content="古语说得好：“一寸光阴一寸金，寸金难买寸光阴。”一寸光阴和一寸长的黄金一样昂贵，而一寸长的黄金却难以买到一寸光阴。比喻时间十分宝贵。此语句出自唐朝王贞白的《白鹿洞二首》，“读书不觉已春深， 一寸光阴一寸金。不是道人来引笑， 周情孔思正追寻。”警示我们一寸光阴一寸金， 寸金难买寸光阴。我们应珍惜时光，而不可虚度年华。又道是“少壮不努力，老大徒伤悲”，告诉我们不要虚度青春，古往今来，有许许多多人，当他">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-28T12:58:09.281Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="知识点干货--聊一聊Android中Service与Thread的区别">
+<meta name="twitter:description" content="古语说得好：“一寸光阴一寸金，寸金难买寸光阴。”一寸光阴和一寸长的黄金一样昂贵，而一寸长的黄金却难以买到一寸光阴。比喻时间十分宝贵。此语句出自唐朝王贞白的《白鹿洞二首》，“读书不觉已春深， 一寸光阴一寸金。不是道人来引笑， 周情孔思正追寻。”警示我们一寸光阴一寸金， 寸金难买寸光阴。我们应珍惜时光，而不可虚度年华。又道是“少壮不努力，老大徒伤悲”，告诉我们不要虚度青春，古往今来，有许许多多人，当他">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'laoxiao79'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/02/28/知识点干货-聊一聊Android中Service与Thread的区别/"/>
+
+
+
+
+
+  <title>知识点干货--聊一聊Android中Service与Thread的区别 | 老肖的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">老肖的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">宝剑锋从磨砺出，梅花香自苦寒来！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/28/知识点干货-聊一聊Android中Service与Thread的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jason Xiao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="老肖的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">知识点干货--聊一聊Android中Service与Thread的区别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T20:43:42+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/干货知识点/" itemprop="url" rel="index">
+                    <span itemprop="name">干货知识点</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>古语说得好：“一寸光阴一寸金，寸金难买寸光阴。”一寸光阴和一寸长的黄金一样昂贵，而一寸长的黄金却难以买到一寸光阴。比喻时间十分宝贵。此语句出自唐朝王贞白的《白鹿洞二首》，“读书不觉已春深， 一寸光阴一寸金。不是道人来引笑， 周情孔思正追寻。”警示我们一寸光阴一寸金， 寸金难买寸光阴。我们应珍惜时光，而不可虚度年华。</strong><br><strong>又道是“少壮不努力，老大徒伤悲”，告诉我们不要虚度青春，古往今来，有许许多多人，当他们到了白发苍苍的年纪，读到这首诗的时候，都会为之深深震撼，所以它才会被广为传诵，并且流传到今天。大教育家孔子也曾经指出：“四十五十而无闻焉，斯亦不足畏也已。”他的意思是说，如果人到了40岁，顶多50岁，还没在社会上做成点事，他一辈子也就差不多是这样了。也正因为如此，民族英雄岳飞在他的名作《满江红》里运用了这格言来表达他对人生的态度：“三十功名尘与土，八千里路云和月。莫等闲、白了少年头，空悲切。”他更以自己短暂而光辉的一生，给予后人有力的鼓舞和鞭策。</strong><br><strong>所以大家都应该珍惜时间，不要枉度青春。</strong></p>
+<p>对于Android初学者来说，常常分不清什么时候使用Service，什么时候使用Thread，能用Thread解决问题时，往往会启动一个Service来干活；而需要使用Service才能更好的解决问题时，还在坚持使用Thread，导致出现很多影响性能，以及程序执行效率的问题。今天我们就聊一聊Service与Thread到底是什么，区别在哪，使用场景等问题，使不熟悉它们的同学能够更好的掌握这个知识点，避免以后错误的使用。大家准备好，老司机要开车了，有晕车的没有？如果有请准备好晕车药，车速可能会快一些，还有些颠簸，扶好坐好，我们开车了。</p>
+<p>其实二者没有半毛钱的关系 。</p>
+<h2 id="1、Service是什么？"><a href="#1、Service是什么？" class="headerlink" title="1、Service是什么？"></a>1、Service是什么？</h2><h3 id="（1）、定义"><a href="#（1）、定义" class="headerlink" title="（1）、定义"></a>（1）、定义</h3><p>Service 是Android的四大组件之一。当它定义的时候，如果在AndroidManifest.xml中注册时，未指定android:process属性，那它就是一个Local Service，对应的 Service和应用程序运行于一个进程中，这个进程的名称使用应用的包名来表示，如，包名为“xxx.xxx.xxx”，则进程名称也是“xxx.xxx.xxx”，并且运行在main 线程（或者叫主线程，UI线程，我们本文统一叫main线程）中。如：onCreate，onStart 这些函数在被系统调用的时候都是在 main 线程上运行的。如果在AndroidManifest.xml中未指定android:process属性，比如，定义android:process=”:xxxService”这样设置后，那它就是一个Remote Service，它运行于一个独立的进程中，进程名称为“包名:xxxService”，并且它对应的 Service 也是运行在这个独立进程的 main 线程上。也就是说无论是Local Service或者Remote Service，它始终是运行在main线程上的。<br>这里有个知识点，就是android:process属性，在定义Remote Service时，往往有两种方式，<br>一种是例如这样，android:process=”:xxxService”，那它的进程名将是“包名:xxxService”。<br>还有一种是这样定义，android:process=”yyy.yyy,yyy.yyyService”，也就是进程名随意写，但是必须是小写字母，一般我们这样定义，“包名.yyyService”。<br>那这两种定义有什么区别呢？<br>前者包含一个冒号，并且以当前包名打头，表示这个新的进程对于这个应用来说是私有的，其他应用应该是无法访问或者和它进行交互的。而后者这个服务进程将运行在全局进程中，对于所有应用是开放的，这将允许在其它应用中可以通过一些手段来访问它提供的功能。这就是二者的区别，所以一般如果不对外提供服务，并且为了安全性更好一些，建议使用带冒号的方式。</p>
+<h3 id="（2）、Service生命周期"><a href="#（2）、Service生命周期" class="headerlink" title="（2）、Service生命周期"></a>（2）、Service生命周期</h3><p>Service作为Android的四大组件之一，和Activity相同，是有生命周期的，它一般被看成运行于后台，没有界面的“Activity”。<br>它的生命周期包含如下方法，<br>  ● onCreate<br>创建服务<br>  ● onStart（或onStartCommand）<br>开始服务<br>  ● onDestroy<br>销毁服务<br>  ● onBind<br>绑定服务<br>  ● onUnbind<br>解绑服务</p>
+<p>启动或者绑定服务对应的方法有，<br>  ● startService()<br>启动服务<br>使用startService方式启动服务。<br>如果一个Service被某个Activity 使用 startService 方法启动，那么不管是否有Activity使用bindService绑定或unbindService解除绑定到该Service，该Service都在后台运行，但它依旧运行于main线程。如果这个Service被startService方法多次启动，那么onCreate方法只会调用一次，onStart将会被调用多次（对应调用startService的次数），并且系统只会创建Service的一个实例。该Service将会一直在后台运行，即使启动它的Activity已经退出，它直到某个activity调用stopService，或自身调用的stopSelf方法才会结束服务。当然如果系统资源不足，android系统也可能结束服务。</p>
+<p>  ● bindService()<br>绑定服务<br>使用bindService方式启动服务。<br>如果一个Service被某个Activity 调用 bindService 方法绑定启动，不管调用 bindService 调用几次，onCreate方法都只会调用一次，同时onStart方法不会被调用。当连接建立之后，Service将会一直运行，除非调用unbindService 方法断开连接或者之前调用bindService 的 Context 不存在了（如Activity被finish的时候），系统才会自动停止Service，对应onDestroy将被调用。</p>
+<p>还有一中复杂用法，就是同时使用startService和bindService方式启动服务。如果一个Service又被启动又被绑定，则该Service将会一直在后台运行。并且不管如何调用，onCreate始终只会调用一次，对应startService调用多少次，Service的onStart便会调用多少次。调用unbindService将不会停止Service，而必须由外界的activity调用 stopService 或 Service自身调用stopSelf 来停止服务。</p>
+<p>另外，还有停止服务和解除绑定服务的方法，<br>  ● stopService()<br>关闭服务</p>
+<p>  ● unbindService()<br>解绑服务</p>
+<h2 id="2、Thread是什么？"><a href="#2、Thread是什么？" class="headerlink" title="2、Thread是什么？"></a>2、Thread是什么？</h2><h3 id="（1）、定义-1"><a href="#（1）、定义-1" class="headerlink" title="（1）、定义"></a>（1）、定义</h3><p>Thread 是程序执行的最小单元，它是分配CPU的基本单位。可以用 Thread 来执行一些异步的操作。而Thread分为main线程和子线程。我们通常做的费时操作都会放到子线程中，而和UI刷新的功能都放到了main线程中。</p>
+<h3 id="（2）、Thread生命周期"><a href="#（2）、Thread生命周期" class="headerlink" title="（2）、Thread生命周期"></a>（2）、Thread生命周期</h3><p>线程是一个动态执行的过程，它也有一个从产生到死亡的过程。</p>
+<p>它的生命周期有五种状态：<br>  ● 新建（new Thread）<br>当创建Thread类的一个实例时，此线程进入新建状态或未启动状态。<br>例如：Thread  thread=new Thread();</p>
+<p>  ● 就绪（runnable）<br>线程已经被启动，正在等待被分配给CPU时间片，也就是说此时线程正在就绪队列中排队等候得到CPU资源。<br>例如：thread.start();</p>
+<p>  ● 运行（running）<br>线程获得CPU资源正在执行任务，正在运行run()方法，此时除非此线程自动放弃CPU资源或者有优先级更高的线程进入，否则线程将一直运行到结束。</p>
+<p>  ● 死亡（dead）<br>当线程执行完毕或被其它线程杀死，线程就进入死亡状态，这时线程不可能再进入就绪状态等待执行。<br>自然终止：正常运行run()方法后终止<br>异常终止：调用stop()方法让一个线程终止运行</p>
+<p>  ● 堵塞（blocked）<br>由于某种原因导致正在运行的线程让出CPU并暂停自己的执行，即进入堵塞状态。<br>正在睡眠：用sleep(long t) 方法可使线程进入睡眠方式。一个睡眠着的线程在指定的时间过去可进入就绪状态。<br>正在等待：调用wait()方法。（在此状态下，调用motify()方法线程会回到就绪状态）<br>被另一个线程所阻塞：调用suspend()方法。（在此状态下，调用resume()方法恢复）</p>
+<p>常用的方法有：<br>  ● void run()<br>创建该类的子类时必须实现此方法。</p>
+<p>  ● void start()<br>启动线程</p>
+<p>  ● static void sleep(long t)<br>释放CPU的执行权t秒，但不释放锁。</p>
+<p>  ● final void wait()<br>释放CPU的执行权，释放锁</p>
+<p>  ● static void yied()<br>可以对当前线程进行临时暂停（让线程将资源释放出来）</p>
+<h2 id="3、使用场景"><a href="#3、使用场景" class="headerlink" title="3、使用场景"></a>3、使用场景</h2><p>由以上定义可见，两者并没有什么关系。先说一下为什么会有Service这个组件，为什么会有它和Thread自身缺点有关系，因为只使用Thread无法解决问题。我们知道他们两个都是在后台执行任务，都没有界面。<br>我们在使用Thread启动一个子线程来干一些费时的操作时，这个子线程一般是由Activity来启动执行的（假如说没有Service组件），而Thread子线程 的运行是独立于 Activity 的，那么当一个 Activity 被 finish 之后，如果你没有主动停止 Thread 或者 Thread 里的 run 方法没有执行完毕的话，Thread 并不会结束，它会一直执行下去。因此这里会出现一个问题：当 Activity 被 finish 之后，你不再持有该 Thread 的引用，你就无法对其进行控制。<br>另一方面，你也没有办法在不同的 Activity 中对同一Thread 进行控制。<br>举个例子：如果你的 Thread 需要不停地过一段时间就要连接服务器一次做某种同步，该 Thread 需要在 Activity 退出后也在运行。这个时候你就没有办法在您启动的 Activity 里面控制之前Activity创建的 Thread，这样这个子线程就相当于一个“野线程”了，你无法对其进行状态监听和控制。<br>那这个时候Service的价值和意义就体现出来了，你可以创建并启动一个 Service ，在 Service 里面就可以一直创建，运行并控制该 Thread了，不用担心Service退出之后无法再控制Thread，因为Service会一直运行在后台，它没有Activity的界面，不会“显式”的退出。这样便解决了上面使用Thread存在的问题。<br>由以上说明，你应该清楚了他们的各自职责，以及使用场景了。</p>
+<h2 id="4、注意事项"><a href="#4、注意事项" class="headerlink" title="4、注意事项"></a>4、注意事项</h2><p>在使用Service时也有很多坑需要我们留意。<br>（1）、在调用 bindService 绑定到Service的时候，应当保证退出时调用 unbindService 解除绑定，这是一个好的习惯，有始有终。尽管 Activity 被 finish 的时候绑定会自动解除，并且Service会自动停止；<br>（2）、应当注意使用 startService 启动服务之后，一定要使用 stopService停止服务，不管你是否使用bindService；<br>（3）、同时使用 startService 与 bindService 要注意到，Service 的终止，需要unbindService与stopService同时调用，才能终止 Service，不管 startService 与 bindService 的调用顺序，如果先调用 unbindService 此时服务不会自动终止，再调用 stopService 之后服务才会停止，如果先调用 stopService 此时服务也不会终止，而再调用 unbindService 或者之前调用 bindService 的 Context 不存在（如Activity 被 finish 的时候）后服务才会自动停止；<br>（4）、在 sdk 2.0 及其以后的版本中，对应的 onStart 已经被升级成了 onStartCommand，不过之前的 onStart 任然有效。这意味着，如果你开发的应用程序用的 sdk 为 2.0 及其以后的版本，那么你应当使用 onStartCommand 而不是onStart。<br>（5）、你也可以在 Service 里注册 BroadcastReceiver，在其他地方通过发送 broadcast 来控制它，这些是 Thread 做不到的。</p>
+<h2 id="5、总结"><a href="#5、总结" class="headerlink" title="5、总结"></a>5、总结</h2><p>由以上可见Service和Thread在各自领域都有不同的定义和生命周期，它们基本没有什么关系，但是在解决Android的一些问题时需要它们两个同时上阵，互相搭配才能解决。希望我们认清它们的使用方法，别再被混淆了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/uploads/wechat-qcode.jpg" alt="Jason Xiao wechat" style="width: 200px; max-width: 100%;"/>
+    <div>欢迎您扫一扫上面的微信公众号，订阅我的个人公众号！本公众号将以推送Android各种碎片化小知识或小技巧，以及整理Android面试知识点为主，也会不定期将开发老司机日常工作中踩过的坑，平时自学的一些知识总结出来进行分享。每天一点干货小知识把你的碎片时间充分利用起来。</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Jason Xiao 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Jason Xiao 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/干货知识点/" rel="tag"># 干货知识点</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/06/知识点干货—多线程同步【6】之synchronized/" rel="next" title="知识点干货—多线程同步【6】之synchronized">
+                <i class="fa fa-chevron-left"></i> 知识点干货—多线程同步【6】之synchronized
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/知识点干货-讲一讲final、finally、finalize的区别/" rel="prev" title="知识点干货--讲一讲final、finally、finalize的区别">
+                知识点干货--讲一讲final、finally、finalize的区别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/images/avatar.jpg"
+                alt="Jason Xiao" />
+            
+              <p class="site-author-name" itemprop="name">Jason Xiao</p>
+              <p class="site-description motion-element" itemprop="description">博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Service是什么？"><span class="nav-number">1.</span> <span class="nav-text">1、Service是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、定义"><span class="nav-number">1.1.</span> <span class="nav-text">（1）、定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、Service生命周期"><span class="nav-number">1.2.</span> <span class="nav-text">（2）、Service生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、Thread是什么？"><span class="nav-number">2.</span> <span class="nav-text">2、Thread是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、定义-1"><span class="nav-number">2.1.</span> <span class="nav-text">（1）、定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、Thread生命周期"><span class="nav-number">2.2.</span> <span class="nav-text">（2）、Thread生命周期</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、使用场景"><span class="nav-number">3.</span> <span class="nav-text">3、使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、注意事项"><span class="nav-number">4.</span> <span class="nav-text">4、注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、总结"><span class="nav-number">5.</span> <span class="nav-text">5、总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jason Xiao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
