@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="老肖的博客">
 <meta property="og:description" content="昨天是腊月23，俗称“小年”。民间有这样的说法，二十三糖瓜儿粘；二十四扫房子；二十五磨豆腐；二十六炖大肉；二十七宰公鸡；二十八把面发；二十九蒸馒头；三十晚上熬一宿，大年初一扭一扭！农历十二月二十三和二十四，是中国民间传统的祭灶日，又称“小年”。传说灶王爷原为平民张生，娶妻之后终日花天酒地，败尽家业沦落到上街行乞。一天，他乞讨到了前妻郭丁香家，羞愧难当，一头钻到灶锅底下烧死了。玉帝知道后，认为张生能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-01T12:45:59.991Z">
+<meta property="og:updated_time" content="2018-03-01T13:02:14.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FBReader工程结构解析">
 <meta name="twitter:description" content="昨天是腊月23，俗称“小年”。民间有这样的说法，二十三糖瓜儿粘；二十四扫房子；二十五磨豆腐；二十六炖大肉；二十七宰公鸡；二十八把面发；二十九蒸馒头；三十晚上熬一宿，大年初一扭一扭！农历十二月二十三和二十四，是中国民间传统的祭灶日，又称“小年”。传说灶王爷原为平民张生，娶妻之后终日花天酒地，败尽家业沦落到上街行乞。一天，他乞讨到了前妻郭丁香家，羞愧难当，一头钻到灶锅底下烧死了。玉帝知道后，认为张生能">
@@ -353,7 +353,7 @@
 
       
         <p><strong>昨天是腊月23，俗称“小年”。民间有这样的说法，二十三糖瓜儿粘；二十四扫房子；二十五磨豆腐；二十六炖大肉；二十七宰公鸡；二十八把面发；二十九蒸馒头；三十晚上熬一宿，大年初一扭一扭！</strong><br><strong>农历十二月二十三和二十四，是中国民间传统的祭灶日，又称“小年”。传说灶王爷原为平民张生，娶妻之后终日花天酒地，败尽家业沦落到上街行乞。一天，他乞讨到了前妻郭丁香家，羞愧难当，一头钻到灶锅底下烧死了。</strong><br><strong>玉帝知道后，认为张生能回心转意，还没坏到底，既然死在了锅底，就把他封为灶王，每年腊月二十三、二十四上天汇报，大年三十再回到灶底。老百姓觉得灶王一定要敬重，因为他要上天汇报。于是，民间就有了腊月二十三、二十四的祭灶“小年”，祈求来年平安和财运。</strong><br><strong>清朝的皇帝从雍正年间开始，每年腊月二十三在坤宁宫祀神，为了节省开支，皇帝顺便把灶王爷也拜了。以后王族、贝勒随之效仿，于腊月二十三祭灶，自此开始有了官民在不同日子过小年的分别。</strong><br><strong>在中国民间，小年有“官三民四船五”的传统，也就是说，官家的小年是腊月二十三，百姓家的是腊月二十四，而水上人家则是腊月二十五。</strong><br><strong>北方在南宋以前都是政治中心，受官气影响较重，因此小年多为腊月二十三；相反，南方远离政治中心，小年便为腊月二十四；而沿湖、海的居民，则保留了船家的传统，小年定在腊月二十五。</strong><br><strong>而南京地区是一个比较特殊的地区，这是因为在明代朱棣篡夺皇位后，实行了暴政。当时的百姓在永乐元年正月十五举行灯会，心里纷纷怀念朱允炆时代的宽政，场面赛过过年。因此在南京地区，元宵成了小年。西南云贵川地区和部分北方回民地区把正月初一作为大年夜，除夕就成了小年夜。</strong><br><strong>以上来源于百度百科。</strong></p>
-<p>在这里祝大家新春快乐，狗年大吉，十”犬”十美，狗年Go Go Go！ 因为最近在做阅读引擎相关的工作，所以总结的文档大都和阅读引擎有关。如果对此不敢兴趣的同学可以忽略掉。本文讲一下我之前分析FBReader时，对FBReader工程结构解析做的一个笔记总结。下面将分层次说明一下各个模块。</p>
+<p>（本文写于2017.2.9号，首次在公众号发表）马上要临近春节了，我们公司今天（2.9号）正式放假，本篇也是年前的最后一次推文。在这里提前祝大家新春快乐，狗年大吉，十”犬”十美，狗年Go Go Go！ 因为最近在做阅读引擎相关的工作，所以总结的文档大都和阅读引擎有关。如果对此不敢兴趣的同学可以忽略掉。本文讲一下我之前分析FBReader时，对FBReader工程结构解析做的一个笔记总结。下面将分层次说明一下各个模块。</p>
 <h2 id="1、依赖工程"><a href="#1、依赖工程" class="headerlink" title="1、依赖工程"></a>1、依赖工程</h2><h3 id="（1）、AmbilWarna："><a href="#（1）、AmbilWarna：" class="headerlink" title="（1）、AmbilWarna："></a>（1）、AmbilWarna：</h3><p>Android Color Picker application using AmbilWarna Color Picker Library<br>背景颜色选择器，用在设置背景颜色时，以及标签背景编辑时使用。<br>可以提取为一个模块。放到最后再提取，先整理主工程。</p>
 <p>移植遇到的坑比较多：<br>使用AmbilWarnaKotak和AmbilWarnaPrefWidgetView 的xml中的包名需要修改；<br>原来的为<br>yuku.ambilwarna.AmbilWarnaKotak<br>yuku.ambilwarna.widget.AmbilWarnaPrefWidgetView<br>修改后为，<br>com.thridapp.widget.AmbilWarnaKotak<br>com.thridapp.widget.AmbilWarnaPrefWidgetView  </p>
 <h3 id="（2）、android-filechooser："><a href="#（2）、android-filechooser：" class="headerlink" title="（2）、android-filechooser："></a>（2）、android-filechooser：</h3><p>文件选择器，用来进行文件选择。<br>org.geometerplus.android.util.FileChooserUtil 需要关注，其它好像用途不大，项目中其它文件基本没有在使用。<br>包名为：group.pals.android.lib.ui.filechooser<br>可以暂时保留。</p>
