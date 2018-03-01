@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android, LaoXiao79, Developer" />
+  <meta name="keywords" content="经验 总结," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。">
+<meta name="description" content="昨天是腊月23，俗称“小年”。民间有这样的说法，二十三糖瓜儿粘；二十四扫房子；二十五磨豆腐；二十六炖大肉；二十七宰公鸡；二十八把面发；二十九蒸馒头；三十晚上熬一宿，大年初一扭一扭！农历十二月二十三和二十四，是中国民间传统的祭灶日，又称“小年”。传说灶王爷原为平民张生，娶妻之后终日花天酒地，败尽家业沦落到上街行乞。一天，他乞讨到了前妻郭丁香家，羞愧难当，一头钻到灶锅底下烧死了。玉帝知道后，认为张生能">
+<meta name="keywords" content="经验 总结">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FBReader工程结构解析">
 <meta property="og:url" content="http://yoursite.com/2018/02/28/FBReader工程结构解析/index.html">
 <meta property="og:site_name" content="老肖的博客">
-<meta property="og:description" content="博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。">
+<meta property="og:description" content="昨天是腊月23，俗称“小年”。民间有这样的说法，二十三糖瓜儿粘；二十四扫房子；二十五磨豆腐；二十六炖大肉；二十七宰公鸡；二十八把面发；二十九蒸馒头；三十晚上熬一宿，大年初一扭一扭！农历十二月二十三和二十四，是中国民间传统的祭灶日，又称“小年”。传说灶王爷原为平民张生，娶妻之后终日花天酒地，败尽家业沦落到上街行乞。一天，他乞讨到了前妻郭丁香家，羞愧难当，一头钻到灶锅底下烧死了。玉帝知道后，认为张生能">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-28T12:49:59.162Z">
+<meta property="og:updated_time" content="2018-03-01T12:45:59.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="FBReader工程结构解析">
-<meta name="twitter:description" content="博主，一名北漂的安卓开发老司机，刚工作时使用VC++在PC上写了两年代码，之后做过Feature Phone的嵌入式手机开发以及项目管理，后来转行Android开发，乐于总结和分享，有十几年的项目开发经验，目前还奋战在开发一线。此博客记录工作过程中一些经验总结，希望这些总结给看到的同学带来帮助。">
+<meta name="twitter:description" content="昨天是腊月23，俗称“小年”。民间有这样的说法，二十三糖瓜儿粘；二十四扫房子；二十五磨豆腐；二十六炖大肉；二十七宰公鸡；二十八把面发；二十九蒸馒头；三十晚上熬一宿，大年初一扭一扭！农历十二月二十三和二十四，是中国民间传统的祭灶日，又称“小年”。传说灶王爷原为平民张生，娶妻之后终日花天酒地，败尽家业沦落到上街行乞。一天，他乞讨到了前妻郭丁香家，羞愧难当，一头钻到灶锅底下烧死了。玉帝知道后，认为张生能">
 
 
 
@@ -302,6 +303,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/经验-总结-阅读引擎/" itemprop="url" rel="index">
+                    <span itemprop="name">经验&总结 阅读引擎</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -329,7 +352,99 @@
       
 
       
-        
+        <p><strong>昨天是腊月23，俗称“小年”。民间有这样的说法，二十三糖瓜儿粘；二十四扫房子；二十五磨豆腐；二十六炖大肉；二十七宰公鸡；二十八把面发；二十九蒸馒头；三十晚上熬一宿，大年初一扭一扭！</strong><br><strong>农历十二月二十三和二十四，是中国民间传统的祭灶日，又称“小年”。传说灶王爷原为平民张生，娶妻之后终日花天酒地，败尽家业沦落到上街行乞。一天，他乞讨到了前妻郭丁香家，羞愧难当，一头钻到灶锅底下烧死了。</strong><br><strong>玉帝知道后，认为张生能回心转意，还没坏到底，既然死在了锅底，就把他封为灶王，每年腊月二十三、二十四上天汇报，大年三十再回到灶底。老百姓觉得灶王一定要敬重，因为他要上天汇报。于是，民间就有了腊月二十三、二十四的祭灶“小年”，祈求来年平安和财运。</strong><br><strong>清朝的皇帝从雍正年间开始，每年腊月二十三在坤宁宫祀神，为了节省开支，皇帝顺便把灶王爷也拜了。以后王族、贝勒随之效仿，于腊月二十三祭灶，自此开始有了官民在不同日子过小年的分别。</strong><br><strong>在中国民间，小年有“官三民四船五”的传统，也就是说，官家的小年是腊月二十三，百姓家的是腊月二十四，而水上人家则是腊月二十五。</strong><br><strong>北方在南宋以前都是政治中心，受官气影响较重，因此小年多为腊月二十三；相反，南方远离政治中心，小年便为腊月二十四；而沿湖、海的居民，则保留了船家的传统，小年定在腊月二十五。</strong><br><strong>而南京地区是一个比较特殊的地区，这是因为在明代朱棣篡夺皇位后，实行了暴政。当时的百姓在永乐元年正月十五举行灯会，心里纷纷怀念朱允炆时代的宽政，场面赛过过年。因此在南京地区，元宵成了小年。西南云贵川地区和部分北方回民地区把正月初一作为大年夜，除夕就成了小年夜。</strong><br><strong>以上来源于百度百科。</strong></p>
+<p>在这里祝大家新春快乐，狗年大吉，十”犬”十美，狗年Go Go Go！ 因为最近在做阅读引擎相关的工作，所以总结的文档大都和阅读引擎有关。如果对此不敢兴趣的同学可以忽略掉。本文讲一下我之前分析FBReader时，对FBReader工程结构解析做的一个笔记总结。下面将分层次说明一下各个模块。</p>
+<h2 id="1、依赖工程"><a href="#1、依赖工程" class="headerlink" title="1、依赖工程"></a>1、依赖工程</h2><h3 id="（1）、AmbilWarna："><a href="#（1）、AmbilWarna：" class="headerlink" title="（1）、AmbilWarna："></a>（1）、AmbilWarna：</h3><p>Android Color Picker application using AmbilWarna Color Picker Library<br>背景颜色选择器，用在设置背景颜色时，以及标签背景编辑时使用。<br>可以提取为一个模块。放到最后再提取，先整理主工程。</p>
+<p>移植遇到的坑比较多：<br>使用AmbilWarnaKotak和AmbilWarnaPrefWidgetView 的xml中的包名需要修改；<br>原来的为<br>yuku.ambilwarna.AmbilWarnaKotak<br>yuku.ambilwarna.widget.AmbilWarnaPrefWidgetView<br>修改后为，<br>com.thridapp.widget.AmbilWarnaKotak<br>com.thridapp.widget.AmbilWarnaPrefWidgetView  </p>
+<h3 id="（2）、android-filechooser："><a href="#（2）、android-filechooser：" class="headerlink" title="（2）、android-filechooser："></a>（2）、android-filechooser：</h3><p>文件选择器，用来进行文件选择。<br>org.geometerplus.android.util.FileChooserUtil 需要关注，其它好像用途不大，项目中其它文件基本没有在使用。<br>包名为：group.pals.android.lib.ui.filechooser<br>可以暂时保留。</p>
+<h3 id="（3）、drag-sort-listview"><a href="#（3）、drag-sort-listview" class="headerlink" title="（3）、drag-sort-listview:"></a>（3）、drag-sort-listview:</h3><p>拖动排序列表。<br>只有CatalogManagerActivity（目录管理界面）中使用了DragSortListView ，可以暂时忽略这个界面，RN端来实现。<br>所以此模块可以不用集成。</p>
+<p>包名为：com.mobeta.android.dslv<br>此模块可以删除。对应“在线书库” 中的“管理书库”菜单中的列表排序。CatalogManagerActivity 为对应的activity，可以将其删除。</p>
+<h3 id="（4）、superToasts："><a href="#（4）、superToasts：" class="headerlink" title="（4）、superToasts："></a>（4）、superToasts：</h3><p>特殊的toast控件，在工程中使用的地方较多。<br>可以提取为一个模块，注意其中无用的文件可以删除掉。<br>包名为：com.github.johnpersano.supertoasts<br>此工程可以暂时保留。</p>
+<h2 id="2、jar库"><a href="#2、jar库" class="headerlink" title="2、jar库"></a>2、jar库</h2><h3 id="（1）、httpmime-4-2-5-jar"><a href="#（1）、httpmime-4-2-5-jar" class="headerlink" title="（1）、httpmime-4.2.5.jar"></a>（1）、httpmime-4.2.5.jar</h3><p>HttpClient 是 Apache Jakarta Common 下的子项目，可以用来提供高效的、最新的、功能丰富的支持 HTTP 协议的客户端编程工具包，并且它支持 HTTP 协议最新的版本和建议。</p>
+<h3 id="（2）、json-simple-1-1-1-jar"><a href="#（2）、json-simple-1-1-1-jar" class="headerlink" title="（2）、json-simple-1.1.1.jar"></a>（2）、json-simple-1.1.1.jar</h3><p>JSON.simple是一个很简单的JSON处理，读取和写JSON数据的JAVA库，它完全兼容JSON的标准(RFC4627)。你可以用JSON.simple来编码或解码JSON文本。</p>
+<h3 id="（3）、LingvoIntegration-2-5-2-12-jar"><a href="#（3）、LingvoIntegration-2-5-2-12-jar" class="headerlink" title="（3）、LingvoIntegration_2.5.2.12.jar"></a>（3）、LingvoIntegration_2.5.2.12.jar</h3><p>语言集成包。应用是提供多语言服务的。</p>
+<h3 id="（4）、nanohttpd-2-0-5-jar"><a href="#（4）、nanohttpd-2-0-5-jar" class="headerlink" title="（4）、nanohttpd-2.0.5.jar"></a>（4）、nanohttpd-2.0.5.jar</h3><p>NanoHTTPD是专为嵌入在其他Java应用程序中使用的一个轻量级HTTP服务器,它只有一个Java文件。支持 GET, POST, PUT, HEAD 和 DELETE 请求，支持文件上传，占用内存很小。可轻松定制临时文件使用和线程模型。</p>
+<h3 id="（5）、open-dictionary-api-1-2-1-jar"><a href="#（5）、open-dictionary-api-1-2-1-jar" class="headerlink" title="（5）、open-dictionary-api-1.2.1.jar"></a>（5）、open-dictionary-api-1.2.1.jar</h3><p>The Open Dictionary API Alliance (ODAA) is an open community of dictionary publishers aiming to create new possibilities for millions of people using electronic dictionaries on their mobile devices all over the world.<br>打开词典API联盟（ODAA）是字典出版商旨在全世界范围内，创造一个为全世界数百万人在他们的移动设备上使用电子词典的新可能性。 </p>
+<h3 id="（6）、pdfparse-jar"><a href="#（6）、pdfparse-jar" class="headerlink" title="（6）、pdfparse.jar"></a>（6）、pdfparse.jar</h3><p>PdfParser, a standalone PHP library, provides various tools to extract data from a PDF file.<br>PdfParser，一个独立的PHP库，提供了各种工具，从PDF文件中提取数据。</p>
+<h2 id="3、jni"><a href="#3、jni" class="headerlink" title="3、jni"></a>3、jni</h2><p>注意，<br>原始编译选项为，APP_ABI := armeabi armeabi-v7a x86 mips arm64-v8a mips64 x86_64<br>如果有的手机无法正常运行，可以考虑是否少so文件。</p>
+<h3 id="（1）、linebreak-："><a href="#（1）、linebreak-：" class="headerlink" title="（1）、linebreak ："></a>（1）、linebreak ：</h3><p>Liblinebreak is an implementation of the line breaking algorithm as described in Unicode 6.0.0 Standard Annex 14, Revision 26. It breaks lines that contain Unicode characters. It is designed to be used in a generic text renderer. FBReader is one real-world example, and you may also check some simple sample code, like showbreak and breaktext.<br>应该是用来换行排版使用的<br>此库比较有用，在LineBreaker.java中进行调用，对应native层的LineBreaker.cpp，ZLTextParagraphCursor.java中会调用到。</p>
+<h3 id="（2）、Expat-："><a href="#（2）、Expat-：" class="headerlink" title="（2）、Expat ："></a>（2）、Expat ：</h3><p>Expat是一个用C语言开发的、用来解析XML文档的开发库，它最初是开源的、Mozilla项目下的一个XML解析器。<br>expat是使用C所写的XML解释器，采用流的方式来解析XML文件，并且基于事件通知型来调用分析到的数据，并不需要把所有XML文件全部加载到内存里，这样可以分析非常大的XML文件。由于expat库是由XML的主要负责人James Clark来实现的，因此它是符合W3C的XML标准的。 </p>
+<h3 id="（3）、DeflatingDecompressor-："><a href="#（3）、DeflatingDecompressor-：" class="headerlink" title="（3）、DeflatingDecompressor ："></a>（3）、DeflatingDecompressor ：</h3><p>应该是进行压缩的。<br>DeflatingDecompressor.java中进行调用，对应native层的DeflatingDecompressor.cpp文件。</p>
+<h3 id="（4）、NativeFormats"><a href="#（4）、NativeFormats" class="headerlink" title="（4）、NativeFormats"></a>（4）、NativeFormats</h3><p>用来对不同格式进行兼容处理的,应该包括，<br>css，doc，fb2，html，xhtml, oeb，pdb ，rtf ，txt等格式。<br>提供不同格式的文件以插件方式来支持。<br>在PluginCollection.java中调用，对应native的JavaPluginCollection.cpp文件。<br>PluginCollection 应该是插件管理器。</p>
+<h2 id="4、模块"><a href="#4、模块" class="headerlink" title="4、模块"></a>4、模块</h2><h3 id="（1）、zip-amse"><a href="#（1）、zip-amse" class="headerlink" title="（1）、zip-amse"></a>（1）、zip-amse</h3><p>包路径：org.amse.ys.zip<br>功能需要保留，但是包名要替换。注意涉及到底层DeflatingDecompressor 库。</p>
+<h3 id="（2）、util"><a href="#（2）、util" class="headerlink" title="（2）、util"></a>（2）、util</h3><p>包路径：org.fbreader.util<br>功能需要保留，但是包名要替换。</p>
+<h3 id="（3）、text-formats"><a href="#（3）、text-formats" class="headerlink" title="（3）、text-formats"></a>（3）、text-formats</h3><p>全部为jni代码，包括两部分，expat-2.0.1 和NativeFormats，应该是对文字字符进行格式化。<br>最终会编译成.so或者.a库，可以不用修改，但是对外提供的natvie接口名称需要修改。</p>
+<h3 id="（4）、resources"><a href="#（4）、resources" class="headerlink" title="（4）、resources"></a>（4）、resources</h3><p>包路径：assets.resources.application和assets.resources.zlibrary<br>多国语言字符串资源，放在assets目录下，可以只保留英文和简体中文。</p>
+<h3 id="（5）、common"><a href="#（5）、common" class="headerlink" title="（5）、common"></a>（5）、common</h3><p>涉及到的包路径：<br>com.paragon.dictionary.fbreader<br>org.fbreader<br>org.geometerplus<br>可以和主工程合到一起，包括assets目录下的文件。</p>
+<h3 id="（6）、api"><a href="#（6）、api" class="headerlink" title="（6）、api"></a>（6）、api</h3><p>涉及到的包路径：<br>api.src.main.java.org.geometerplus.android<br>api.src.main.java.org.geometerplus.fbreader<br>api.src.main.java.org.geometerplus.zlibrary<br>可以和主工程合到一起。</p>
+<h3 id="（7）、app主工程"><a href="#（7）、app主工程" class="headerlink" title="（7）、app主工程"></a>（7）、app主工程</h3><p>涉及到的包路径：<br>java.org.geometerplus.android<br>java.org.geometerplus.fbreader<br>java.org.geometerplus.zlibrary </p>
+<h2 id="5、assets目录"><a href="#5、assets目录" class="headerlink" title="5、assets目录"></a>5、assets目录</h2><h3 id="（1）、data"><a href="#（1）、data" class="headerlink" title="（1）、data"></a>（1）、data</h3><p>data.premium ，licences.html提供licences和购买信息。<br>data.whatsnew介绍新特性。</p>
+<h3 id="（2）、default"><a href="#（2）、default" class="headerlink" title="（2）、default"></a>（2）、default</h3><p>默认的按键，插件配置信息<br>tapzones，keymap.xml提供按键映射的xml文件<br>styles.css，styles.xml提供默认值配置文件<br>plugins.xml提供插件对应的包名信息</p>
+<h3 id="（3）、dictionaries"><a href="#（3）、dictionaries" class="headerlink" title="（3）、dictionaries"></a>（3）、dictionaries</h3><p>词典相关的配置信息<br>bitknights.xml 提供bitknights 官方网站提供多种词典下载的地址<br>main.xml提供多种词典打开的方式</p>
+<h3 id="（4）、encodings"><a href="#（4）、encodings" class="headerlink" title="（4）、encodings"></a>（4）、encodings</h3><p>编码方式设置信息<br>Encodings.xml列出支持的编码方式</p>
+<h3 id="（5）、formats"><a href="#（5）、formats" class="headerlink" title="（5）、formats"></a>（5）、formats</h3><p>包括，<br>formats.fb2<br>formats.html<br>formats.xhtml 三个目录。<br>为NativeFormats 的jni工程提供配置信息。</p>
+<h3 id="（6）、hyphenationPatterns"><a href="#（6）、hyphenationPatterns" class="headerlink" title="（6）、hyphenationPatterns"></a>（6）、hyphenationPatterns</h3><p>提供断字模式，模块ZLTextTeXHyphenator.java会调用到。</p>
+<h3 id="（7）、languagePatterns"><a href="#（7）、languagePatterns" class="headerlink" title="（7）、languagePatterns"></a>（7）、languagePatterns</h3><p>语言不同编码模式，languagePatterns.java和ZLLanguageList.cpp会用到。</p>
+<h3 id="（8）、resources"><a href="#（8）、resources" class="headerlink" title="（8）、resources"></a>（8）、resources</h3><p>多国语言字符串资源。</p>
+<h3 id="（9）、wallpapers"><a href="#（9）、wallpapers" class="headerlink" title="（9）、wallpapers"></a>（9）、wallpapers</h3><p>预置了几种墙纸文件，为jpg格式文件。</p>
+<h2 id="6、AndroidManifest文件分析"><a href="#6、AndroidManifest文件分析" class="headerlink" title="6、AndroidManifest文件分析"></a>6、AndroidManifest文件分析</h2><p>如果只需要阅读引擎的话，所有的activity都应该清理掉，下面只分析一下Service和Receiver。<br>    <!-- receiver --><br>    <!--BookDownloaderService　中调用，和下载相关的广播--><br>    <receiver android:name="com.laoxiao79.test.android.reader.network.ListenerCallback" android:process=":networkLibrary"><br>        <intent-filter><br>            <action android:name="android.fbreader.action.network.SIGNIN"><br>            <category android:name="android.intent.category.DEFAULT"><br>        </category></action></intent-filter><br>    </receiver></p>
+<pre><code>&lt;!-- service --&gt;
+&lt;!--ApiClientImplementation 类隐式启动， 没有找到启动ApiClientImplementation地方，所以此类应该是未用--&gt;
+&lt;service android:name=&quot;com.laoxiao79.test.android.reader.api.ApiService&quot;
+    android:launchMode=&quot;singleTask&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.fbreader.action.API&quot;/&gt;
+        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;
+
+&lt;!--BookCollectionShadow 中隐式启动，用来创建，访问数据库，存储book信息到本地--&gt;
+&lt;service android:name=&quot;com.laoxiao79.test.android.reader.libraryService.LibraryService&quot;
+    android:launchMode=&quot;singleTask&quot;
+    android:process=&quot;:libraryService&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.fbreader.action.LIBRARY_SERVICE&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;
+
+&lt;!--ConfigShadow 类隐式启动,只有在ZLAndroidApplication中的一个实例--&gt;
+&lt;service android:name=&quot;com.laoxiao79.test.android.reader.config.ConfigService&quot;
+    android:launchMode=&quot;singleTask&quot;
+    android:process=&quot;:configService&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.fbreader.action.CONFIG_SERVICE&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;
+
+&lt;!--和官网同步服务相关--&gt;
+&lt;service android:name=&quot;com.laoxiao79.test.android.reader.sync.SyncService&quot;
+    android:launchMode=&quot;singleTask&quot;
+    android:process=&quot;:synchroniser&quot;&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.fbreader.action.sync.START&quot;/&gt;
+    &lt;/intent-filter&gt;
+    &lt;intent-filter&gt;
+        &lt;action android:name=&quot;android.fbreader.action.sync.QUICK_SYNC&quot;/&gt;
+    &lt;/intent-filter&gt;
+&lt;/service&gt;
+
+&lt;!--BookDownloader下载相关的activity--&gt;
+&lt;service android:name=&quot;com.laoxiao79.test.android.reader.network.BookDownloaderService&quot;
+    android:launchMode=&quot;singleTask&quot;
+    android:process=&quot;:networkLibrary&quot;
+    android:exported=&quot;false&quot;/&gt;
+
+&lt;!--后台网络访问--&gt;
+&lt;service android:name=&quot;com.laoxiao79.test.android.reader.httpd.DataService&quot;
+    android:launchMode=&quot;singleTask&quot;
+    android:process=&quot;:dataService&quot;
+    android:exported=&quot;false&quot;/&gt;
+
+&lt;!--FileChooserActivity　中用到，和选择文件有关--&gt;
+&lt;service android:name=&quot;group.pals.android.lib.ui.filechooser.services.LocalFileProvider&quot;
+    android:exported=&quot;false&quot;/&gt;
+</code></pre><p>综上，以上就是整个FBReader工程的一个结构解析，再深入分析就需要研究每个activity,service或者具体类了，希望以上总结能给你带来帮助。</p>
+
       
     </div>
     
@@ -380,6 +495,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/经验-总结/" rel="tag"># 经验 总结</a>
+          
+        </div>
       
 
       
@@ -454,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -485,7 +615,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -521,6 +651,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、依赖工程"><span class="nav-number">1.</span> <span class="nav-text">1、依赖工程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、AmbilWarna："><span class="nav-number">1.1.</span> <span class="nav-text">（1）、AmbilWarna：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、android-filechooser："><span class="nav-number">1.2.</span> <span class="nav-text">（2）、android-filechooser：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、drag-sort-listview"><span class="nav-number">1.3.</span> <span class="nav-text">（3）、drag-sort-listview:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、superToasts："><span class="nav-number">1.4.</span> <span class="nav-text">（4）、superToasts：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、jar库"><span class="nav-number">2.</span> <span class="nav-text">2、jar库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、httpmime-4-2-5-jar"><span class="nav-number">2.1.</span> <span class="nav-text">（1）、httpmime-4.2.5.jar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、json-simple-1-1-1-jar"><span class="nav-number">2.2.</span> <span class="nav-text">（2）、json-simple-1.1.1.jar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、LingvoIntegration-2-5-2-12-jar"><span class="nav-number">2.3.</span> <span class="nav-text">（3）、LingvoIntegration_2.5.2.12.jar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、nanohttpd-2-0-5-jar"><span class="nav-number">2.4.</span> <span class="nav-text">（4）、nanohttpd-2.0.5.jar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）、open-dictionary-api-1-2-1-jar"><span class="nav-number">2.5.</span> <span class="nav-text">（5）、open-dictionary-api-1.2.1.jar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）、pdfparse-jar"><span class="nav-number">2.6.</span> <span class="nav-text">（6）、pdfparse.jar</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、jni"><span class="nav-number">3.</span> <span class="nav-text">3、jni</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、linebreak-："><span class="nav-number">3.1.</span> <span class="nav-text">（1）、linebreak ：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、Expat-："><span class="nav-number">3.2.</span> <span class="nav-text">（2）、Expat ：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、DeflatingDecompressor-："><span class="nav-number">3.3.</span> <span class="nav-text">（3）、DeflatingDecompressor ：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、NativeFormats"><span class="nav-number">3.4.</span> <span class="nav-text">（4）、NativeFormats</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、模块"><span class="nav-number">4.</span> <span class="nav-text">4、模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、zip-amse"><span class="nav-number">4.1.</span> <span class="nav-text">（1）、zip-amse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、util"><span class="nav-number">4.2.</span> <span class="nav-text">（2）、util</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、text-formats"><span class="nav-number">4.3.</span> <span class="nav-text">（3）、text-formats</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、resources"><span class="nav-number">4.4.</span> <span class="nav-text">（4）、resources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）、common"><span class="nav-number">4.5.</span> <span class="nav-text">（5）、common</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）、api"><span class="nav-number">4.6.</span> <span class="nav-text">（6）、api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（7）、app主工程"><span class="nav-number">4.7.</span> <span class="nav-text">（7）、app主工程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、assets目录"><span class="nav-number">5.</span> <span class="nav-text">5、assets目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#（1）、data"><span class="nav-number">5.1.</span> <span class="nav-text">（1）、data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（2）、default"><span class="nav-number">5.2.</span> <span class="nav-text">（2）、default</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（3）、dictionaries"><span class="nav-number">5.3.</span> <span class="nav-text">（3）、dictionaries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（4）、encodings"><span class="nav-number">5.4.</span> <span class="nav-text">（4）、encodings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（5）、formats"><span class="nav-number">5.5.</span> <span class="nav-text">（5）、formats</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（6）、hyphenationPatterns"><span class="nav-number">5.6.</span> <span class="nav-text">（6）、hyphenationPatterns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（7）、languagePatterns"><span class="nav-number">5.7.</span> <span class="nav-text">（7）、languagePatterns</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（8）、resources"><span class="nav-number">5.8.</span> <span class="nav-text">（8）、resources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#（9）、wallpapers"><span class="nav-number">5.9.</span> <span class="nav-text">（9）、wallpapers</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、AndroidManifest文件分析"><span class="nav-number">6.</span> <span class="nav-text">6、AndroidManifest文件分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
